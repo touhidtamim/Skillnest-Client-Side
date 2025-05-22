@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import Swal from "sweetalert2";
 
 const testimonials = [
   {
@@ -66,9 +67,19 @@ const StarRating = ({ rating }) => {
 const Testimonials = () => {
   const [activeCard, setActiveCard] = useState(null);
 
+  const handleReadMoreClick = () => {
+    Swal.fire({
+      title: "More Stories Coming Soon!",
+      text: "We're gathering more amazing success stories. Stay tuned!",
+      icon: "info",
+      confirmButtonColor: "#14b8a6",
+      confirmButtonText: "Got it!",
+    });
+  };
+
   return (
     <section className="bg-[#FAF7F5] rounded-2xl py-20 px-6 sm:px-8 lg:px-16">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto ">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -154,7 +165,10 @@ const Testimonials = () => {
           viewport={{ once: true }}
           className="mt-16 text-center"
         >
-          <button className=" cursor-pointer  px-8 py-3 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-full font-medium shadow-md hover:shadow-lg transition-all hover:scale-105">
+          <button
+            onClick={handleReadMoreClick}
+            className="cursor-pointer px-8 py-3 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-full font-medium shadow-md hover:shadow-lg transition-all hover:scale-105"
+          >
             Read More Stories
           </button>
         </motion.div>
