@@ -8,6 +8,9 @@ import MyTask from "../Pages/MyTask";
 import MyProfile from "./../Pages/MyProfile";
 import Login from "./../Pages/Login";
 import Register from "./../Pages/Register";
+import Contact from "./../Pages/Contact";
+import About from "./../Pages/About";
+import FAQ from "./../Pages/FAQ";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +46,21 @@ const router = createBrowserRouter([
       {
         path: "/skillnest/my-task",
         element: <MyProfile></MyProfile>,
+      },
+
+      {
+        path: "/skillnest/contact",
+        element: <Contact></Contact>,
+      },
+
+      {
+        path: "/skillnest/about",
+        element: <About></About>,
+      },
+
+      {
+        path: "/skillnest/faq",
+        element: <FAQ></FAQ>,
       },
 
       {

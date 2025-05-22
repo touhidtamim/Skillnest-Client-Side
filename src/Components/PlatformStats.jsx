@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const stats = [
   {
-    value: "5K+",
+    value: "100K+",
     label: "Projects Completed",
     icon: (
       <svg
@@ -22,7 +22,7 @@ const stats = [
     ),
   },
   {
-    value: "3K+",
+    value: "7K+",
     label: "Skilled Freelancers",
     icon: (
       <svg
@@ -41,7 +41,7 @@ const stats = [
     ),
   },
   {
-    value: "10K+",
+    value: "30K+",
     label: "Bids Submitted",
     icon: (
       <svg

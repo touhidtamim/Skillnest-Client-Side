@@ -1,14 +1,17 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Login = () => {
-  const { loginUser, googleSignIn, user } = useContext(AuthContext);
+  const { signInUser, googleSignIn } = useContext(AuthContext);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -23,7 +26,7 @@ const Login = () => {
     try {
       setIsLoading(true);
       setError("");
-      await loginUser(email, password);
+      await signInUser(email, password);
 
       await Swal.fire({
         title: "Login Successful!",
@@ -32,7 +35,7 @@ const Login = () => {
         confirmButtonColor: "#0d9488",
       });
 
-      navigate("/");
+      navigate(from, { replace: true });
     } catch (err) {
       let errorMessage = "Login failed. Please try again.";
       switch (err.code) {
@@ -65,7 +68,7 @@ const Login = () => {
         confirmButtonColor: "#0d9488",
       });
 
-      navigate("/");
+      navigate(from, { replace: true });
     } catch (err) {
       setError("Google sign-in failed. Please try again.");
     } finally {
@@ -169,29 +172,13 @@ const Login = () => {
               </div>
             </div>
 
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <input
-                  id="remember-me"
-                  name="remember-me"
-                  type="checkbox"
-                  className="h-4 cursor-pointer w-4 text-teal-600 focus:ring-teal-500 border-gray-300 rounded"
-                />
-                <label
-                  htmlFor="remember-me"
-                  className="ml-2 block text-sm text-gray-600"
-                >
-                  Remember me
-                </label>
-              </div>
-              <div className="text-sm">
-                <Link
-                  to="/forgot-password"
-                  className="text-teal-600 hover:text-teal-500 hover:underline"
-                >
-                  Forgot password?
-                </Link>
-              </div>
+            <div className="text-left text-sm">
+              <Link
+                to="/skillnest/forgot-password"
+                className="text-teal-600 hover:text-teal-500 hover:underline"
+              >
+                Forgot password?
+              </Link>
             </div>
 
             <button
@@ -260,22 +247,23 @@ const Login = () => {
                 fill="#FBBC05"
               />
               <path
-                d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+                d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.07 14.96 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.83c.87-2.6 3.3-4.53 6.16-4.53z"
                 fill="#EA4335"
               />
+              <path fill="none" d="M0 0h24v24H0z" />
             </svg>
-            Continue with Google
+            Sign in with Google
           </button>
 
-          <div className="mt-6 text-center text-sm text-gray-500">
+          <p className="mt-6 text-center text-sm text-gray-600">
             Don't have an account?{" "}
             <Link
               to="/skillnest/register"
-              className="text-teal-600 hover:underline"
+              className="text-teal-600 hover:text-teal-500 hover:underline"
             >
               Register
             </Link>
-          </div>
+          </p>
         </div>
       </div>
     </div>
