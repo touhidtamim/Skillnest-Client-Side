@@ -3,10 +3,13 @@ import PlatformStats from "../Components/PlatformStats";
 import HowItWorks from "../Components/HowItWorks";
 import Testimonials from "../Components/Testimonials";
 import TopFreelancersClients from "../Components/MentionTopRated";
+import HeroSlide from "../Components/HeroSlide";
 
 const Home = () => {
   return (
     <div>
+      <HeroSlide></HeroSlide>
+
       <div className=" mt-2 md:mt-4 lg:mt-8">
         <TopFreelancersClients></TopFreelancersClients>
       </div>

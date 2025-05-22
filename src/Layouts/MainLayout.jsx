@@ -14,7 +14,7 @@ const MainLayout = () => {
       <ScrollToTop></ScrollToTop>
 
       {navigation.state === "loading" && <Spinner />}
-      <div className="w-11/12 mx-auto min-h-screen">
+      <div className="md:w-11/12 mx-auto min-h-screen">
         <Outlet />
       </div>
 
