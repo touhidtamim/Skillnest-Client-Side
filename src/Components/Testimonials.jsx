@@ -4,36 +4,40 @@ import { motion } from "framer-motion";
 const testimonials = [
   {
     id: 1,
-    name: "Alexandra K.",
+    name: "Zarin Tasnim ",
     role: "UX/UI Designer",
-    photo: "https://randomuser.me/api/portraits/women/65.jpg",
+    photo:
+      "https://i.postimg.cc/8k48VT3q/c-HJpdm-F0-ZS9sci9pb-WFn-ZXMvd2-Vic2l0-ZS8y-MDI0-LTA4-L3-Jhd3-Bpe-GVs-X29m-Zmlj-ZV8z-NV9i-ZWF1d-Glmd-Wxfc21pb-Glu-Z195b3-Vu.jpg",
     quote:
       "SkillNest transformed my freelance career. The quality of clients and projects is exceptional.",
     rating: 5,
   },
   {
     id: 2,
-    name: "James L.",
+    name: "Mirza Ashfaq",
     role: "Fullstack Developer",
-    photo: "https://randomuser.me/api/portraits/men/75.jpg",
+    photo:
+      "https://i.postimg.cc/8Pf70XXf/young-man-happy-expression-business-desk-company-concept-ai-generated-1194-589229.jpg",
     quote:
       "I doubled my income within 3 months thanks to SkillNest's premium projects.",
     rating: 5,
   },
   {
     id: 3,
-    name: "Sophia M.",
+    name: "Farzana Haque",
     role: "Digital Marketer",
-    photo: "https://randomuser.me/api/portraits/women/33.jpg",
+    photo:
+      "https://i.postimg.cc/bNr5ck1t/smiling-student-girl-formal-attire-isolated-background-920413-3043.jpg",
     quote:
       "The platform's intuitive interface saved me hours of client hunting each week.",
     rating: 4,
   },
   {
     id: 4,
-    name: "Michael T.",
+    name: "Fahim Chowdhury",
     role: "Data Scientist",
-    photo: "https://randomuser.me/api/portraits/men/42.jpg",
+    photo:
+      "https://i.postimg.cc/DwjyfqN3/man-with-his-arms-crossed-shirt-that-says-hes-smiling-979520-165623.jpg",
     quote:
       "Secure payments and professional community make this my go-to platform.",
     rating: 5,
