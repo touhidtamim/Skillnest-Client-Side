@@ -178,7 +178,7 @@ const Register = () => {
                 type="email"
                 id="email"
                 name="email"
-                placeholder="abc@example.com"
+                placeholder="your@email.com"
                 required
                 className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
               />
@@ -220,7 +220,7 @@ const Register = () => {
                 <button
                   type="button"
                   onClick={togglePasswordVisibility}
-                  className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600"
+                  className="absolute  inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600 cursor-pointer"
                   aria-label={showPassword ? "Hide password" : "Show password"}
                 >
                   {showPassword ? (
@@ -285,14 +285,14 @@ const Register = () => {
             <button
               type="submit"
               disabled={isLoading}
-              className={`w-full py-3 px-4 bg-teal-600 text-white rounded-lg flex items-center justify-center ${
+              className={`w-full cursor-pointer py-3 px-4 bg-teal-600 text-white rounded-lg flex items-center justify-center ${
                 isLoading ? "opacity-80" : "hover:bg-teal-700"
               }`}
             >
               {isLoading ? (
                 <>
                   <svg
-                    className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
+                    className="animate-spin -ml-1 mr-2 h-4 w-4 text-white "
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
@@ -328,7 +328,7 @@ const Register = () => {
           <button
             onClick={handleGoogle}
             disabled={isLoading}
-            className="w-full flex items-center justify-center py-2.5 px-4 border border-gray-200 rounded-lg bg-white hover:bg-gray-50"
+            className="w-full cursor-pointer flex items-center justify-center py-2.5 px-4 border border-gray-200 rounded-lg bg-white hover:bg-gray-50"
           >
             <svg
               className="w-5 h-5 mr-3"
