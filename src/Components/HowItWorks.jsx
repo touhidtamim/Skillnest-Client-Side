@@ -1,52 +1,93 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { ClipboardList, Users, CheckCircle } from "lucide-react";
 
 const HowItWorks = () => {
   const steps = [
     {
       id: 1,
-      title: "Post a Task",
+      title: "Post Your Project",
       description:
-        "Describe your project and post your task quickly to get bids.",
-      icon: <ClipboardList size={40} className="text-[#F4C22C]" />,
+        "Create a detailed project brief and receive competitive bids from skilled professionals within hours.",
+      icon: <ClipboardList size={48} className="text-[#F4C22C]" />,
+      accentColor: "bg-[#F4C22C]/10",
     },
     {
       id: 2,
-      title: "Get Bids from Freelancers",
+      title: "Evaluate Talent",
       description:
-        "Review offers from skilled freelancers and select the best one.",
-      icon: <Users size={40} className="text-[#F4C22C]" />,
+        "Review portfolios, ratings, and proposals to select the perfect freelancer for your needs.",
+      icon: <Users size={48} className="text-[#F4C22C]" />,
+      accentColor: "bg-[#F4C22C]/10",
     },
     {
       id: 3,
-      title: "Hire & Get Work Done",
+      title: "Collaborate Securely",
       description:
-        "Hire the freelancer, track progress, and complete your project smoothly.",
-      icon: <CheckCircle size={40} className="text-[#F4C22C]" />,
+        "Work together through our platform with milestone payments and dedicated support.",
+      icon: <CheckCircle size={48} className="text-[#F4C22C]" />,
+      accentColor: "bg-[#F4C22C]/10",
     },
   ];
 
   return (
-    <section className="bg-[#FAF7F5] rounded-2xl py-16 px-6 sm:px-12 lg:px-24">
-      <div className="max-w-7xl mx-auto text-center">
-        <h2 className="text-4xl font-bold text-[#43727A] mb-6">How It Works</h2>
-        <p className="text-[#1E1E1E] mb-12 max-w-3xl mx-auto text-lg">
-          Get started in just a few easy steps — manage your freelance projects
-          effortlessly.
-        </p>
+    <section className="bg-[#FAF7F5] rounded-2xl py-20 px-6 sm:px-12 lg:px-24">
+      <div className="max-w-7xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl font-bold text-[#43727A] mb-4">
+            Simple, Transparent Process
+          </h2>
+          <p className="text-[#1E1E1E] text-lg max-w-3xl mx-auto">
+            Three easy steps to connect with top talent and get your projects
+            completed
+          </p>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 ">
-          {steps.map(({ id, title, description, icon }) => (
-            <div
-              key={id}
-              className="bg-white rounded-3xl shadow-md p-8 flex flex-col items-center text-center hover:shadow-xl transition"
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {steps.map((step, index) => (
+            <motion.div
+              key={step.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -10 }}
+              className="relative group"
             >
-              <div className="mb-6">{icon}</div>
-              <h3 className="text-2xl font-semibold text-[#43727A] mb-3">
-                {title}
-              </h3>
-              <p className="text-[#1E1E1E]">{description}</p>
-            </div>
+              <div
+                className={`absolute -inset-1 rounded-2xl ${step.accentColor} opacity-0 group-hover:opacity-100 transition-all duration-300 blur-sm`}
+              ></div>
+
+              <div className="relative bg-white rounded-2xl p-8 h-full flex flex-col items-center text-center shadow-sm hover:shadow-md transition-all">
+                <div className="mb-6 p-4 rounded-full bg-[#FAF7F5]">
+                  {step.icon}
+                </div>
+                <div className="flex items-center justify-center w-10 h-10 bg-[#43727A] text-white rounded-full font-bold absolute -top-5">
+                  {step.id}
+                </div>
+                <h3 className="text-2xl font-semibold text-[#43727A] mb-4">
+                  {step.title}
+                </h3>
+                <p className="text-[#1E1E1E] mb-6">{step.description}</p>
+                <div className="mt-auto w-full">
+                  <div className="h-1 bg-[#F4C22C]/30 w-full rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: "100%" }}
+                      transition={{ duration: 0.8, delay: index * 0.2 }}
+                      viewport={{ once: true }}
+                      className="h-full bg-[#F4C22C]"
+                    />
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           ))}
         </div>
       </div>
