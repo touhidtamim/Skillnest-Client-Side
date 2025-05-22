@@ -89,7 +89,7 @@ const Navbar = () => {
                       isActive ? activeClass : normalClass
                     }
                   >
-                    Profile
+                    My Profile
                   </NavLink>
                 </>
               )}
