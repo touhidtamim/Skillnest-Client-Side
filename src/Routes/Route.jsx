@@ -11,6 +11,8 @@ import Register from "./../Pages/Register";
 import Contact from "./../Pages/Contact";
 import About from "./../Pages/About";
 import FAQ from "./../Pages/FAQ";
+import PrivacyPolicy from "./../Pages/PrivacyPolicy";
+import TermsAndConditions from "./../Pages/TermsAndConditions";
 
 const router = createBrowserRouter([
   {
@@ -40,12 +42,12 @@ const router = createBrowserRouter([
 
       {
         path: "/skillnest/my-profile",
-        element: <MyTask></MyTask>,
+        element: <MyProfile></MyProfile>,
       },
 
       {
         path: "/skillnest/my-task",
-        element: <MyProfile></MyProfile>,
+        element: <MyTask></MyTask>,
       },
 
       {
@@ -61,6 +63,16 @@ const router = createBrowserRouter([
       {
         path: "/skillnest/faq",
         element: <FAQ></FAQ>,
+      },
+
+      {
+        path: "/skillnest/privacy-policy",
+        element: <PrivacyPolicy></PrivacyPolicy>,
+      },
+
+      {
+        path: "/skillnest/terms-conditions",
+        element: <TermsAndConditions></TermsAndConditions>,
       },
 
       {

@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { Menu, X, Moon, Sun } from "lucide-react";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../Firebase/Firebase.config";
+import { Tooltip } from "react-tooltip";
+import "react-tooltip/dist/react-tooltip.css";
 
 const Navbar = () => {
   const [user, setUser] = useState(null);
@@ -32,9 +34,9 @@ const Navbar = () => {
   };
 
   const activeClass =
-    "bg-[#DCEEEF] dark:bg-[#365c63] text-[#43727A] dark:text-blue-100 font-semibold px-3 py-1 rounded";
+    "text-base bg-[#DCEEEF] dark:bg-[#365c63] text-[#43727A] dark:text-blue-100 font-semibold px-3 py-1 rounded";
   const normalClass =
-    "hover:bg-[#f0f7f8] dark:hover:bg-gray-800 px-3 py-1 rounded transition";
+    "text-base hover:bg-[#f0f7f8] dark:hover:bg-gray-800 px-3 py-1 rounded transition";
 
   const commonLinks = (
     <>
@@ -140,32 +142,44 @@ const Navbar = () => {
             </button>
 
             {/* Desktop Auth Buttons */}
-            <div className="hidden md:flex gap-3">
+            <div className="hidden md:flex gap-3 items-center">
               {user ? (
-                <div className="flex items-center gap-3">
+                <>
                   <img
-                    src={user.photoURL || "https://i.pravatar.cc/40"}
+                    id="user-avatar"
+                    src={
+                      user.photoURL
+                        ? user.photoURL
+                        : "https://i.ibb.co/5hVGBLFZ/avatar-default-symbolic-icon-479x512-n8sg74wg.png"
+                    }
                     alt="avatar"
-                    className="h-9 w-9 rounded-full border-2 border-blue-500"
+                    className="h-9 w-9 rounded-full border-2 border-blue-500 cursor-pointer"
+                    onClick={() => navigate("/skillnest/my-profile")}
+                  />
+                  <Tooltip
+                    anchorId="user-avatar"
+                    place="bottom"
+                    content={user.displayName || "My Profile"}
+                    delayShow={200}
                   />
                   <button
                     onClick={handleLogout}
-                    className="text-sm font-semibold px-4 py-1.5 bg-red-500 text-white rounded hover:bg-red-600"
+                    className="text-base font-semibold px-4 py-1.5 bg-red-500 text-white rounded hover:bg-red-600"
                   >
                     Logout
                   </button>
-                </div>
+                </>
               ) : (
                 <>
                   <Link
                     to="/skillnest/login"
-                    className="text-sm font-semibold px-4 py-1.5 border border-[#F4C22C] text-[#F4C22C]  text-black rounded hover:bg-[#efdfb1] dark:hover:bg-gray-800"
+                    className="text-base font-semibold px-4 py-1.5 border border-[#F4C22C] text-[#F4C22C] text-black rounded hover:bg-[#efdfb1] dark:hover:bg-gray-800"
                   >
                     Login
                   </Link>
                   <Link
                     to="/skillnest/register"
-                    className="text-sm font-semibold px-4 py-1.5 bg-teal-500 text-white rounded hover:bg-teal-600"
+                    className="text-base font-semibold px-4 py-1.5 bg-teal-500 text-white rounded hover:bg-teal-600"
                   >
                     Register
                   </Link>
@@ -176,15 +190,29 @@ const Navbar = () => {
             {/* Mobile: Avatar or Login only */}
             <div className="md:hidden">
               {user ? (
-                <img
-                  src={user.photoURL || "https://i.pravatar.cc/40"}
-                  alt="avatar"
-                  className="h-9 w-9 rounded-full border-2 border-blue-500"
-                />
+                <>
+                  <img
+                    id="mobile-avatar"
+                    src={
+                      user.photoURL
+                        ? user.photoURL
+                        : "https://i.ibb.co/5hVGBLFZ/avatar-default-symbolic-icon-479x512-n8sg74wg.png"
+                    }
+                    alt="avatar"
+                    className="h-9 w-9 rounded-full border-2 border-blue-500 cursor-pointer"
+                    onClick={() => navigate("/skillnest/my-profile")}
+                  />
+                  <Tooltip
+                    anchorId="mobile-avatar"
+                    place="bottom"
+                    content={user.displayName || "My Profile"}
+                    delayShow={200}
+                  />
+                </>
               ) : (
                 <Link
                   to="/skillnest/login"
-                  className="text-sm font-semibold px-3 py-1 border border-[#43727A] text-[#43727A] dark:text-teal-400 hover:bg-teal-100 hover:text-black rounded"
+                  className="text-base font-semibold px-3 py-1 border border-[#43727A] text-[#43727A] dark:text-teal-400 hover:bg-teal-100 hover:text-black rounded"
                 >
                   Login
                 </Link>
@@ -206,7 +234,7 @@ const Navbar = () => {
             <div className="mt-4">
               <button
                 onClick={handleLogout}
-                className="mt-3 w-full font-semibold bg-red-500 hover:bg-red-600 text-white text-sm py-2 rounded"
+                className="mt-3 w-full font-semibold bg-red-500 hover:bg-red-600 text-white text-base py-2 rounded"
               >
                 Logout
               </button>
