@@ -152,7 +152,7 @@ const FAQ = () => {
             <button
               key={category.id}
               onClick={() => setActiveCategory(category.id)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition ${
+              className={`px-4 py-2 cursor-pointer rounded-full text-sm font-medium transition ${
                 activeCategory === category.id
                   ? "bg-teal-600 text-white"
                   : "bg-gray-100 text-gray-700 hover:bg-gray-200"
@@ -169,10 +169,10 @@ const FAQ = () => {
           filteredFAQs.map((faq, index) => (
             <div
               key={index}
-              className="border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition"
+              className="border  border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition"
             >
               <button
-                className="w-full px-6 py-5 text-left focus:outline-none flex justify-between items-center"
+                className="w-full cursor-pointer px-6 py-5 text-left focus:outline-none flex justify-between items-center"
                 onClick={() => toggleFAQ(index)}
               >
                 <h2 className="text-lg font-semibold text-gray-800">

@@ -1,3 +1,4 @@
+import { Mail } from "lucide-react";
 import { FaLock, FaUserShield, FaDatabase, FaShieldAlt } from "react-icons/fa";
 
 const PrivacyPolicy = () => {
@@ -15,7 +16,7 @@ const PrivacyPolicy = () => {
 
       <div className="bg-teal-50 p-6 rounded-xl mb-12">
         <p className="text-lg text-center text-teal-700 font-medium">
-          Last Updated: June 15, 2023
+          Last Updated: May 15, 2025
         </p>
       </div>
 
@@ -134,7 +135,12 @@ const PrivacyPolicy = () => {
             Questions About Our Privacy Policy?
           </h3>
           <p className="mb-4">Contact our Data Protection Officer at:</p>
-          <p className="text-xl font-medium">privacy@skillnest.com</p>
+          <div className="flex gap-2 justify-center">
+            <span className="mt-1.5">
+              <Mail size={23} />
+            </span>
+            <p className="text-xl font-medium">privacy@skillnest.com</p>
+          </div>
         </div>
       </div>
     </div>

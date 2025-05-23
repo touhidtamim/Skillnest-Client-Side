@@ -13,6 +13,7 @@ import About from "./../Pages/About";
 import FAQ from "./../Pages/FAQ";
 import PrivacyPolicy from "./../Pages/PrivacyPolicy";
 import TermsAndConditions from "./../Pages/TermsAndConditions";
+import PrivateRouter from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -32,22 +33,29 @@ const router = createBrowserRouter([
 
       {
         path: "/skillnest/add-task",
-        element: <AddTask></AddTask>,
+        element: (
+          <PrivateRouter>
+            <AddTask></AddTask>
+          </PrivateRouter>
+        ),
       },
 
       {
         path: "/skillnest/my-task",
-        element: <MyTask></MyTask>,
+        element: (
+          <PrivateRouter>
+            <MyTask></MyTask>
+          </PrivateRouter>
+        ),
       },
 
       {
         path: "/skillnest/my-profile",
-        element: <MyProfile></MyProfile>,
-      },
-
-      {
-        path: "/skillnest/my-task",
-        element: <MyTask></MyTask>,
+        element: (
+          <PrivateRouter>
+            <MyProfile></MyProfile>
+          </PrivateRouter>
+        ),
       },
 
       {

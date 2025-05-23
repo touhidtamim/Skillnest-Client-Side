@@ -97,7 +97,7 @@ const Footer = () => {
               />
               <button
                 type="submit"
-                className="px-5 py-2 bg-gradient-to-r from-[#3a636b] to-[#2c4d54] text-white rounded-lg hover:from-[#7adce6] hover:to-[#9ee5ec] text-sm font-medium shadow-lg hover:shadow-[#7adce6]/30 transition-all duration-300 whitespace-nowrap hover:scale-105"
+                className="px-5 py-2 cursor-pointer hover:text-black bg-gradient-to-r from-[#3a636b] to-[#2c4d54] text-white rounded-lg hover:from-[#7adce6] hover:to-[#9ee5ec] text-sm font-medium shadow-lg hover:shadow-[#7adce6]/30 transition-all duration-300 whitespace-nowrap hover:scale-105"
               >
                 Subscribe
               </button>
@@ -110,21 +110,21 @@ const Footer = () => {
             </h3>
             <div className="flex gap-5">
               <a
-                href="#"
+                href="https://web.facebook.com/touhidtamim01"
                 className="p-2 bg-gray-800 rounded-full hover:bg-blue-900/50 text-blue-400 hover:text-blue-300 transition-all hover:shadow-[0_0_10px_2px_rgba(59,130,246,0.5)]"
                 aria-label="Facebook"
               >
                 <Facebook size={20} />
               </a>
               <a
-                href="#"
+                href="https://x.com/touhidtamim"
                 className="p-2 bg-gray-800 rounded-full hover:bg-sky-900/50 text-sky-400 hover:text-sky-300 transition-all hover:shadow-[0_0_10px_2px_rgba(56,189,248,0.5)]"
                 aria-label="Twitter"
               >
                 <Twitter size={20} />
               </a>
               <a
-                href="#"
+                href="https://instagram.com/touhidunknown"
                 className="p-2 bg-gray-800 rounded-full hover:bg-pink-900/50 text-pink-400 hover:text-pink-300 transition-all hover:shadow-[0_0_10px_2px_rgba(236,72,153,0.5)]"
                 aria-label="Instagram"
               >

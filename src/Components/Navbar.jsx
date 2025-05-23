@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { Menu, X, Moon, Sun } from "lucide-react";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../Firebase/Firebase.config";
+import { useLocation } from "react-router-dom";
+import Swal from "sweetalert2";
 import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
 
@@ -10,7 +12,12 @@ const Navbar = () => {
   const [user, setUser] = useState(null);
   const [darkMode, setDarkMode] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [location]);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -20,17 +27,41 @@ const Navbar = () => {
   }, []);
 
   const handleLogout = async () => {
-    try {
-      await signOut(auth);
-      navigate("/");
-    } catch (error) {
-      console.error("Logout error:", error);
+    const result = await Swal.fire({
+      title: "Are you sure?",
+      text: "You will be logged out!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, logout!",
+    });
+
+    if (result.isConfirmed) {
+      try {
+        await signOut(auth);
+        Swal.fire("Logged out!", "You have been logged out.", "success");
+        navigate("/");
+      } catch (error) {
+        console.error("Logout error:", error);
+        Swal.fire("Error", "Failed to logout. Please try again.", "error");
+      }
     }
   };
 
+  useEffect(() => {
+    const storedTheme = localStorage.getItem("theme");
+    if (storedTheme === "dark") {
+      setDarkMode(true);
+      document.documentElement.classList.add("dark");
+    }
+  }, []);
+
   const toggleTheme = () => {
-    setDarkMode(!darkMode);
+    const newMode = !darkMode;
+    setDarkMode(newMode);
     document.documentElement.classList.toggle("dark");
+    localStorage.setItem("theme", newMode ? "dark" : "light");
   };
 
   const activeClass =
@@ -132,7 +163,7 @@ const Navbar = () => {
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+              className="p-2 cursor-pointer rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
             >
               {darkMode ? (
                 <Sun size={26} className="text-yellow-400" />
@@ -150,7 +181,7 @@ const Navbar = () => {
                     src={
                       user.photoURL
                         ? user.photoURL
-                        : "https://i.ibb.co/5hVGBLFZ/avatar-default-symbolic-icon-479x512-n8sg74wg.png"
+                        : "https://i.ibb.co/LDyv7RjM/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg"
                     }
                     alt="avatar"
                     className="h-9 w-9 rounded-full border-2 border-blue-500 cursor-pointer"
@@ -159,8 +190,15 @@ const Navbar = () => {
                   <Tooltip
                     anchorId="user-avatar"
                     place="bottom"
-                    content={user.displayName || "My Profile"}
-                    delayShow={200}
+                    content={user.displayName || user.email || "My Profile"}
+                    delayShow={300}
+                    style={{
+                      zIndex: 9999,
+                      backgroundColor: "#1E40AF",
+                      padding: "6px 12px",
+                      borderRadius: "6px",
+                      fontSize: "14px",
+                    }}
                   />
                   <button
                     onClick={handleLogout}
@@ -196,7 +234,7 @@ const Navbar = () => {
                     src={
                       user.photoURL
                         ? user.photoURL
-                        : "https://i.ibb.co/5hVGBLFZ/avatar-default-symbolic-icon-479x512-n8sg74wg.png"
+                        : "https://i.ibb.co/LDyv7RjM/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg"
                     }
                     alt="avatar"
                     className="h-9 w-9 rounded-full border-2 border-blue-500 cursor-pointer"
@@ -204,9 +242,10 @@ const Navbar = () => {
                   />
                   <Tooltip
                     anchorId="mobile-avatar"
-                    place="bottom"
+                    place="top"
                     content={user.displayName || "My Profile"}
                     delayShow={200}
+                    style={{ zIndex: 9999 }}
                   />
                 </>
               ) : (

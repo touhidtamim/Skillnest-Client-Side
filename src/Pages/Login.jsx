@@ -259,7 +259,7 @@ const Login = () => {
             Don't have an account?{" "}
             <Link
               to="/skillnest/register"
-              className="text-teal-600 hover:text-teal-500 hover:underline"
+              className="text-teal-600 hover:text-teal-500 font-semibold hover:underline"
             >
               Register
             </Link>

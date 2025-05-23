@@ -134,7 +134,7 @@ const HeroSlide = () => {
                         key={i}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className={`px-6 py-3 text-sm sm:text-base rounded-full font-semibold shadow-sm hover:shadow-md transition-all duration-300 ${cta.color} ${cta.textColor}`}
+                        className={`px-6 py-3 cursor-pointer text-sm sm:text-base rounded-full font-semibold shadow-sm hover:shadow-md transition-all duration-300 ${cta.color} ${cta.textColor}`}
                       >
                         {cta.label}
                       </motion.button>

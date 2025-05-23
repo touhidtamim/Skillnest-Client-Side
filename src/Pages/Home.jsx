@@ -8,7 +8,9 @@ import HeroSlide from "../Components/HeroSlide";
 const Home = () => {
   return (
     <div>
-      <HeroSlide></HeroSlide>
+      <div className=" mt-2 lg:mt-4">
+        <HeroSlide></HeroSlide>
+      </div>
 
       <div className=" mt-2 md:mt-4 lg:mt-8">
         <TopFreelancersClients></TopFreelancersClients>

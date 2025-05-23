@@ -359,7 +359,7 @@ const Register = () => {
             Already have an account?{" "}
             <Link
               to="/skillnest/login"
-              className="text-teal-600 hover:underline"
+              className="text-teal-600 font-semibold hover:underline"
             >
               Login
             </Link>
