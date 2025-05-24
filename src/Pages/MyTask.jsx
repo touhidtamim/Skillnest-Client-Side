@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
+import { useNavigate } from "react-router-dom"; // import useNavigate
 import { AuthContext } from "../Provider/AuthProvider";
 
 const MyTask = () => {
@@ -6,6 +7,7 @@ const MyTask = () => {
   const [loading, setLoading] = useState(true);
   const { user } = useContext(AuthContext);
   const userEmail = user?.email;
+  const navigate = useNavigate(); // initialize navigate
 
   useEffect(() => {
     if (!userEmail) return; // wait until userEmail is available
@@ -68,7 +70,7 @@ const MyTask = () => {
               <td className="p-2 border border-gray-300">${budget}</td>
               <td className="p-2 border border-gray-300 space-x-2">
                 <button
-                  onClick={() => alert("Update functionality coming soon!")}
+                  onClick={() => navigate(`/skillnest/update-task/${_id}`)} // navigate to update page with task id
                   className="bg-blue-500 text-white px-3 py-1 rounded"
                 >
                   Update

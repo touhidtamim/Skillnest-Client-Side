@@ -15,6 +15,7 @@ import PrivacyPolicy from "./../Pages/PrivacyPolicy";
 import TermsAndConditions from "./../Pages/TermsAndConditions";
 import PrivateRouter from "./PrivateRoute";
 import TaskDetails from "./../Pages/TaskDetails";
+import UpdateTask from "../Pages/UpdateTask";
 
 const router = createBrowserRouter([
   {
@@ -55,6 +56,15 @@ const router = createBrowserRouter([
         element: (
           <PrivateRouter>
             <MyTask></MyTask>
+          </PrivateRouter>
+        ),
+      },
+
+      {
+        path: "/skillnest/update-task/:id",
+        element: (
+          <PrivateRouter>
+            <UpdateTask></UpdateTask>
           </PrivateRouter>
         ),
       },
