@@ -4,12 +4,17 @@ import HowItWorks from "../Components/HowItWorks";
 import Testimonials from "../Components/Testimonials";
 import TopFreelancersClients from "../Components/MentionTopRated";
 import HeroSlide from "../Components/HeroSlide";
+import FeaturedTasks from "../Components/FeaturedTask";
 
 const Home = () => {
   return (
     <div>
       <div className=" mt-2 lg:mt-4">
         <HeroSlide></HeroSlide>
+      </div>
+
+      <div className=" mt-2 md:mt-4 lg:mt-8">
+        <FeaturedTasks></FeaturedTasks>
       </div>
 
       <div className=" mt-2 md:mt-4 lg:mt-8">
