@@ -1,6 +1,6 @@
 # 🚀 Skillnest – Freelance Task Marketplace
 
-**Live Site:** [https://your-live-site-link.com](https://your-live-site-link.com)
+**Live Site:** [https://test-skillnest.netlify.app/](https://test-skillnest.netlify.app/)
 
 ---
 
