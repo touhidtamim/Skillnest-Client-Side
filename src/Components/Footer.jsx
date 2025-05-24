@@ -58,7 +58,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Legal */}
+        {/* Legal Section */}
         <div className="space-y-4">
           <h3 className="text-lg font-bold mb-3 text-[#7adce6] dark:text-[#9ee5ec]">
             Legal

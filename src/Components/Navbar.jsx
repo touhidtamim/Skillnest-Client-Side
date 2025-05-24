@@ -10,7 +10,6 @@ import "react-tooltip/dist/react-tooltip.css";
 
 const Navbar = () => {
   const [user, setUser] = useState(null);
-  const [darkMode, setDarkMode] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
@@ -26,48 +25,22 @@ const Navbar = () => {
     return () => unsubscribe();
   }, []);
 
-  const handleLogout = async () => {
-    const result = await Swal.fire({
-      title: "Are you sure?",
-      text: "You will be logged out!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, logout!",
-    });
-
-    if (result.isConfirmed) {
-      try {
-        await signOut(auth);
-        Swal.fire("Logged out!", "You have been logged out.", "success");
-        navigate("/");
-      } catch (error) {
-        console.error("Logout error:", error);
-        Swal.fire("Error", "Failed to logout. Please try again.", "error");
-      }
-    }
-  };
-
   useEffect(() => {
-    const storedTheme = localStorage.getItem("theme");
-    if (storedTheme === "dark") {
-      setDarkMode(true);
-      document.documentElement.classList.add("dark");
-    }
+    const savedTheme = localStorage.getItem("theme") || "light";
+    document.documentElement.setAttribute("data-theme", savedTheme);
   }, []);
 
   const toggleTheme = () => {
-    const newMode = !darkMode;
-    setDarkMode(newMode);
-    document.documentElement.classList.toggle("dark");
-    localStorage.setItem("theme", newMode ? "dark" : "light");
+    const current = document.documentElement.getAttribute("data-theme");
+    const newTheme = current === "dark" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", newTheme);
+    localStorage.setItem("theme", newTheme);
   };
 
   const activeClass =
-    "text-base bg-[#DCEEEF] dark:bg-[#365c63] text-[#43727A] dark:text-blue-100 font-semibold px-3 py-1 rounded";
+    "text-base bg-[#DCEEEF] text-[#43727A] font-semibold px-3 py-1 rounded";
   const normalClass =
-    "text-base hover:bg-[#f0f7f8] dark:hover:bg-gray-800 px-3 py-1 rounded transition";
+    "text-base hover:bg-[#f0f7f8] px-3 py-1 rounded transition";
 
   const commonLinks = (
     <>
@@ -126,15 +99,38 @@ const Navbar = () => {
     </>
   );
 
+  const handleLogout = async () => {
+    const result = await Swal.fire({
+      title: "Are you sure?",
+      text: "You will be logged out!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, logout!",
+    });
+
+    if (result.isConfirmed) {
+      try {
+        await signOut(auth);
+        Swal.fire("Logged out!", "You have been logged out.", "success");
+        navigate("/");
+      } catch (error) {
+        console.error("Logout error:", error);
+        Swal.fire("Error", "Failed to logout. Please try again.", "error");
+      }
+    }
+  };
+
   return (
-    <nav className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
+    <nav className="bg-base-100 border-b border-gray-200 dark:border-gray-700">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Left: Hamburger + Logo */}
           <div className="flex items-center gap-2">
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="md:hidden text-gray-500 dark:text-gray-400"
+              className="md:hidden text-base-content"
             >
               {menuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -153,7 +149,7 @@ const Navbar = () => {
           </div>
 
           {/* Center: Desktop Links */}
-          <div className="hidden md:flex gap-6 text-gray-700 dark:text-gray-200 font-medium">
+          <div className="hidden md:flex gap-6 text-base-content font-medium">
             {commonLinks}
             {user ? authLinks : guestLinks}
           </div>
@@ -163,9 +159,10 @@ const Navbar = () => {
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className="p-2 cursor-pointer rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+              className="p-2 cursor-pointer rounded-full text-base-content hover:bg-base-200 transition"
             >
-              {darkMode ? (
+              {document.documentElement.getAttribute("data-theme") ===
+              "dark" ? (
                 <Sun size={26} className="text-yellow-400" />
               ) : (
                 <Moon size={26} />
@@ -211,7 +208,7 @@ const Navbar = () => {
                 <>
                   <Link
                     to="/skillnest/login"
-                    className="text-base font-semibold px-4 py-1.5 border border-[#F4C22C] text-[#F4C22C] text-black rounded hover:bg-[#efdfb1] dark:hover:bg-gray-800"
+                    className="text-base font-semibold px-4 py-1.5 border border-[#F4C22C] text-[#F4C22C] hover:bg-[#efdfb1] rounded"
                   >
                     Login
                   </Link>
@@ -251,7 +248,7 @@ const Navbar = () => {
               ) : (
                 <Link
                   to="/skillnest/login"
-                  className="text-base font-semibold px-3 py-1 border border-[#43727A] text-[#43727A] dark:text-teal-400 hover:bg-teal-100 hover:text-black rounded"
+                  className="text-base font-semibold px-3 py-1 border border-[#43727A] text-[#43727A] hover:bg-teal-100 hover:text-black rounded"
                 >
                   Login
                 </Link>
@@ -263,8 +260,8 @@ const Navbar = () => {
 
       {/* Mobile Dropdown */}
       {menuOpen && (
-        <div className="md:hidden border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 px-4 pt-2 pb-4">
-          <div className="flex flex-col gap-2 text-gray-700 dark:text-gray-200">
+        <div className="md:hidden border-t border-gray-200 dark:border-gray-700 bg-base-100 px-4 pt-2 pb-4">
+          <div className="flex flex-col gap-2 text-base-content">
             {commonLinks}
             {user ? authLinks : guestLinks}
           </div>

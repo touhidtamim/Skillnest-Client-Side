@@ -211,7 +211,6 @@ const ProfilePage = () => {
         </div>
       </motion.div>
 
-      {/* Enlarge Image Modal */}
       <AnimatePresence>
         {showModal && (
           <motion.div

@@ -15,6 +15,7 @@ const MyTask = () => {
 
     setLoading(true);
     fetch(
+      // LOCAL HOST
       `http://localhost:5000/my-tasks?email=${encodeURIComponent(userEmail)}`
     )
       .then((res) => res.json())
@@ -84,7 +85,7 @@ const MyTask = () => {
   return (
     <div className="max-w-4xl mx-auto px-4 py-6">
       <h2 className="text-2xl font-bold mb-4 text-center">My Posted Tasks</h2>
-      {/* Table container scrollable on small devices */}
+
       <div className="overflow-x-auto">
         <table className="w-full border border-gray-300 rounded min-w-[600px]">
           <thead>

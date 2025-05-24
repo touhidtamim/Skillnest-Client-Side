@@ -14,6 +14,7 @@ const TaskDetails = () => {
 
   useEffect(() => {
     setLoading(true);
+    // LOCAL HOST
     fetch(`http://localhost:5000/tasks/${id}`)
       .then(async (res) => {
         if (!res.ok) {
@@ -53,7 +54,7 @@ const TaskDetails = () => {
   };
 
   const handleBack = () => {
-    navigate(-1); // go back to previous page
+    navigate(-1);
   };
 
   if (loading) {

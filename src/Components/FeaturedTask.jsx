@@ -7,7 +7,7 @@ const FeaturedTasks = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:5000/featured-tasks") // your backend endpoint
+    fetch("http://localhost:5000/featured-tasks") //  backend endpoint
       .then((res) => res.json())
       .then((data) => {
         setTasks(data);
@@ -20,14 +20,14 @@ const FeaturedTasks = () => {
   }, []);
 
   return (
-    <section className="bg-[#FAF7F5] rounded-2xl py-20 px-6 sm:px-8 lg:px-16">
+    <section className="bg-[#FAF7F5] rounded-2xl py-10 lg:py-20 px-6 sm:px-8 lg:px-16">
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-8 md:mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-[#43727A] mb-4">
             Featured <span className="text-teal-600">Tasks</span>
           </h2>
-          <p className="text-lg text-[#1E1E1E] max-w-2xl mx-auto">
+          <p className="text-md md:text-lg text-[#1E1E1E] max-w-2xl mx-auto">
             Explore urgent tasks with the nearest deadlines.
           </p>
         </div>

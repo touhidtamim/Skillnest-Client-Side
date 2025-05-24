@@ -13,7 +13,7 @@ const Home = () => {
         <HeroSlide></HeroSlide>
       </div>
 
-      <div className=" mt-2 md:mt-4 lg:mt-8">
+      <div className=" mt-2 lg:mt-4">
         <FeaturedTasks></FeaturedTasks>
       </div>
 

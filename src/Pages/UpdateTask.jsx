@@ -14,18 +14,12 @@ const UpdateTask = () => {
     "UI/UX Design",
     "Graphic Design",
     "Content Writing",
-    "Copywriting",
     "Digital Marketing",
     "Social Media Management",
     "SEO Services",
     "Data Entry",
-    "Virtual Assistant",
-    "Customer Service",
     "Video Editing",
     "Audio Production",
-    "Translation",
-    "Legal Services",
-    "Accounting",
     "Business Consulting",
     "Photography",
     "Other",
@@ -44,12 +38,12 @@ const UpdateTask = () => {
   const [loading, setLoading] = useState(true);
   const [updating, setUpdating] = useState(false);
 
-  // Fetch task data by id on mount
   useEffect(() => {
     if (!id) return;
 
     const fetchTask = async () => {
       try {
+        // LOCAL HOST
         const response = await fetch(`http://localhost:5000/tasks/${id}`);
         if (!response.ok) throw new Error("Task not found");
 
@@ -79,7 +73,6 @@ const UpdateTask = () => {
     fetchTask();
   }, [id, user, navigate]);
 
-  // Handle form input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setTaskData((prev) => ({
@@ -94,7 +87,6 @@ const UpdateTask = () => {
     setUpdating(true);
 
     try {
-      // Basic validation
       if (!taskData.title || !taskData.category || !taskData.deadline) {
         throw new Error("Please fill in all required fields");
       }
@@ -270,8 +262,8 @@ const UpdateTask = () => {
             disabled={updating}
             className={`w-full py-3 px-4 rounded-lg font-medium text-white transition-colors ${
               updating
-                ? "bg-blue-400 cursor-not-allowed"
-                : "bg-blue-600 hover:bg-blue-700"
+                ? "bg-teal-400 cursor-not-allowed"
+                : "bg-teal-600 hover:bg-teal-700"
             }`}
           >
             {updating ? (

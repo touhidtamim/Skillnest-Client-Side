@@ -12,18 +12,13 @@ const AddTask = () => {
     "UI/UX Design",
     "Graphic Design",
     "Content Writing",
-    "Copywriting",
     "Digital Marketing",
     "Social Media Management",
     "SEO Services",
     "Data Entry",
     "Virtual Assistant",
-    "Customer Service",
     "Video Editing",
     "Audio Production",
-    "Translation",
-    "Legal Services",
-    "Accounting",
     "Business Consulting",
     "Photography",
     "Other",
@@ -46,6 +41,7 @@ const AddTask = () => {
     };
 
     try {
+      // LOCAL HOST
       const res = await fetch("http://localhost:5000/tasks", {
         method: "POST",
         headers: {

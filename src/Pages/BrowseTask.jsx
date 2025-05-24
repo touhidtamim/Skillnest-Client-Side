@@ -6,6 +6,7 @@ const BrowseTasks = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // Local HOST
     fetch("http://localhost:5000/tasks")
       .then((res) => res.json())
       .then((data) => {
@@ -38,7 +39,6 @@ const BrowseTasks = () => {
             <div className="animate-spin h-10 w-10 border-4 border-teal-500 border-t-transparent rounded-full"></div>
           </div>
         ) : tasks.length === 0 ? (
-          // Empty State
           <div className="text-center py-20 text-gray-600">
             <svg
               className="mx-auto h-20 w-20 mb-4 text-gray-400"

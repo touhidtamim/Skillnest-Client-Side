@@ -2,6 +2,8 @@ import React, { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import { motion } from "framer-motion";
+import { scroller } from "react-scroll";
+import Swal from "sweetalert2";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -16,11 +18,13 @@ const slides = [
         label: "Find Talent",
         color: "bg-[#F4C22C] hover:bg-[#e0b123]",
         textColor: "text-[#1E1E1E]",
+        path: "find-talent-section",
       },
       {
         label: "Join as Freelancer",
         color: "bg-[#43727A] hover:bg-[#365c63]",
         textColor: "text-white",
+        path: "/skillnest/add-task",
       },
     ],
     img: "/Images/Slide1.png",
@@ -35,11 +39,13 @@ const slides = [
         label: "Post a Task",
         color: "bg-[#F4C22C] hover:bg-[#e0b123]",
         textColor: "text-[#1E1E1E]",
+        path: "/skillnest/add-task",
       },
       {
         label: "How It Works",
         color: "bg-white hover:bg-gray-100 border border-[#43727A]",
         textColor: "text-[#43727A]",
+        path: "",
       },
     ],
     img: "/Images/Slide2.png",
@@ -54,6 +60,7 @@ const slides = [
         label: "Start Freelancing",
         color: "bg-[#43727A] hover:bg-[#365c63]",
         textColor: "text-white",
+        path: "/skillnest/add-task",
       },
     ],
     img: "/Images/Slide3.png",
@@ -68,11 +75,13 @@ const slides = [
         label: "Explore Marketplace",
         color: "bg-[#43727A] hover:bg-[#365c63]",
         textColor: "text-white",
+        path: "/skillnest/all-tasks",
       },
       {
         label: "Learn More",
         color: "bg-white hover:bg-gray-100 border border-[#43727A]",
         textColor: "text-[#43727A]",
+        path: "",
       },
     ],
     img: "/Images/Slide4.png",
@@ -88,6 +97,29 @@ const HeroSlide = () => {
   const onAutoplayTimeLeft = (s, time, progress) => {
     progressCircle.current.style.setProperty("--progress", 1 - progress);
     progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
+  };
+
+  const handleCTAClick = (path) => {
+    if (!path) {
+      Swal.fire({
+        icon: "info",
+        title: "Coming Soon",
+        text: "This feature is coming soon. Stay tuned!",
+        confirmButtonColor: "#43727A",
+      });
+      return;
+    }
+
+    if (path.startsWith("/")) {
+      window.location.href = path;
+    } else {
+      scroller.scrollTo(path, {
+        duration: 800,
+        delay: 0,
+        smooth: "easeInOutQuart",
+        offset: -70,
+      });
+    }
   };
 
   return (
@@ -134,6 +166,7 @@ const HeroSlide = () => {
                         key={i}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
+                        onClick={() => handleCTAClick(cta.path)}
                         className={`px-6 py-3 cursor-pointer text-sm sm:text-base rounded-full font-semibold shadow-sm hover:shadow-md transition-all duration-300 ${cta.color} ${cta.textColor}`}
                       >
                         {cta.label}
