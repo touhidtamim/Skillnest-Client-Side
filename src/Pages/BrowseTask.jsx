@@ -27,7 +27,7 @@ const BrowseTasks = () => {
               </p>
               <p className="text-sm mb-1">Budget: ${task.budget}</p>
               <p className="text-sm mb-2">Deadline: {task.deadline}</p>
-              <Link to={`/task/${task._id}`}>
+              <Link to={`/skillnest/all-tasks/${task._id}`}>
                 <button className="bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700">
                   See Details
                 </button>

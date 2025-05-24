@@ -14,6 +14,7 @@ import FAQ from "./../Pages/FAQ";
 import PrivacyPolicy from "./../Pages/PrivacyPolicy";
 import TermsAndConditions from "./../Pages/TermsAndConditions";
 import PrivateRouter from "./PrivateRoute";
+import TaskDetails from "./../Pages/TaskDetails";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,11 @@ const router = createBrowserRouter([
       {
         path: "/skillnest/all-tasks",
         element: <BrowseTask></BrowseTask>,
+      },
+
+      {
+        path: "/skillnest/all-tasks/:id",
+        element: <TaskDetails></TaskDetails>,
       },
 
       {
