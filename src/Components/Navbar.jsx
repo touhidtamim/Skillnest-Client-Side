@@ -184,7 +184,7 @@ const Navbar = () => {
                         : "https://i.ibb.co/LDyv7RjM/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg"
                     }
                     alt="avatar"
-                    className="h-9 w-9 rounded-full border-2 border-blue-500 cursor-pointer"
+                    className="h-9 w-9 rounded-full border-2 border-blue-500 object-cover cursor-pointer"
                     onClick={() => navigate("/skillnest/my-profile")}
                   />
                   <Tooltip
@@ -194,7 +194,7 @@ const Navbar = () => {
                     delayShow={300}
                     style={{
                       zIndex: 9999,
-                      backgroundColor: "#1E40AF",
+                      backgroundColor: "#63635c",
                       padding: "6px 12px",
                       borderRadius: "6px",
                       fontSize: "14px",
