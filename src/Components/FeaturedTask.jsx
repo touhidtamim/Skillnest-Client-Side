@@ -7,7 +7,7 @@ const FeaturedTasks = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:5000/featured-tasks") //  backend endpoint
+    fetch("https://skillnest-server-side.vercel.app/featured-tasks")
       .then((res) => res.json())
       .then((data) => {
         setTasks(data);

@@ -6,8 +6,7 @@ const BrowseTasks = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Local HOST
-    fetch("http://localhost:5000/tasks")
+    fetch("https://skillnest-server-side.vercel.app/tasks")
       .then((res) => res.json())
       .then((data) => {
         setTasks(data);

@@ -14,8 +14,8 @@ const TaskDetails = () => {
 
   useEffect(() => {
     setLoading(true);
-    // LOCAL HOST
-    fetch(`http://localhost:5000/tasks/${id}`)
+
+    fetch(`https://skillnest-server-side.vercel.app/tasks/${id}`)
       .then(async (res) => {
         if (!res.ok) {
           const errorData = await res.json().catch(() => ({}));
@@ -35,9 +35,12 @@ const TaskDetails = () => {
   const handleBid = async () => {
     setBidLoading(true);
     try {
-      const res = await fetch(`http://localhost:5000/tasks/${id}/bid`, {
-        method: "PATCH",
-      });
+      const res = await fetch(
+        `https://skillnest-server-side.vercel.app/tasks/${id}/bid`,
+        {
+          method: "PATCH",
+        }
+      );
       const data = await res.json();
 
       if (!res.ok) {

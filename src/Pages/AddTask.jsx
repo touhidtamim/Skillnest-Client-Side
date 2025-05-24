@@ -41,14 +41,16 @@ const AddTask = () => {
     };
 
     try {
-      // LOCAL HOST
-      const res = await fetch("http://localhost:5000/tasks", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(taskData),
-      });
+      const res = await fetch(
+        "https://skillnest-server-side.vercel.app/tasks",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(taskData),
+        }
+      );
 
       const data = await res.json();
       if (data.insertedId || data.acknowledged) {
