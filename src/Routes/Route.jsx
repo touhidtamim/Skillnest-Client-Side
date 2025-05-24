@@ -34,7 +34,11 @@ const router = createBrowserRouter([
 
       {
         path: "/skillnest/all-tasks/:id",
-        element: <TaskDetails></TaskDetails>,
+        element: (
+          <PrivateRouter>
+            <TaskDetails></TaskDetails>
+          </PrivateRouter>
+        ),
       },
 
       {
