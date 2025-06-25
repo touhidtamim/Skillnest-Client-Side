@@ -9,15 +9,17 @@ import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
 
 const Navbar = () => {
-  const [user, setUser] = useState(null);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [user, setUser] = useState(null); // Current logged-in user state
+  const [menuOpen, setMenuOpen] = useState(false); // Mobile menu toggle state
   const location = useLocation();
   const navigate = useNavigate();
 
+  // Close mobile menu on route change
   useEffect(() => {
     setMenuOpen(false);
   }, [location]);
 
+  // Listen for Firebase auth state changes
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -25,11 +27,13 @@ const Navbar = () => {
     return () => unsubscribe();
   }, []);
 
+  // Load saved theme from localStorage on mount
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme") || "light";
     document.documentElement.setAttribute("data-theme", savedTheme);
   }, []);
 
+  // Toggle light/dark theme & save preference
   const toggleTheme = () => {
     const current = document.documentElement.getAttribute("data-theme");
     const newTheme = current === "dark" ? "light" : "dark";
@@ -37,11 +41,13 @@ const Navbar = () => {
     localStorage.setItem("theme", newTheme);
   };
 
+  // Active and default link styles
   const activeClass =
     "text-base bg-[#DCEEEF] text-[#43727A] font-semibold px-3 py-1 rounded";
   const normalClass =
     "text-base hover:bg-[#f0f7f8] px-3 py-1 rounded transition";
 
+  // Links visible to all users
   const commonLinks = (
     <>
       <NavLink
@@ -59,6 +65,7 @@ const Navbar = () => {
     </>
   );
 
+  // Links for authenticated users
   const authLinks = (
     <>
       <NavLink
@@ -76,6 +83,7 @@ const Navbar = () => {
     </>
   );
 
+  // Links for guests (not logged in)
   const guestLinks = (
     <>
       <NavLink
@@ -99,6 +107,7 @@ const Navbar = () => {
     </>
   );
 
+  // Logout handler with confirmation alert
   const handleLogout = async () => {
     const result = await Swal.fire({
       title: "Are you sure?",
@@ -126,11 +135,12 @@ const Navbar = () => {
     <nav className="bg-base-100 border-b border-gray-200 dark:border-gray-700">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          {/* Left: Hamburger + Logo */}
+          {/* Left side: Mobile menu button + logo */}
           <div className="flex items-center gap-2">
             <button
               onClick={() => setMenuOpen(!menuOpen)}
               className="md:hidden text-base-content"
+              aria-label="Toggle menu"
             >
               {menuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -148,18 +158,19 @@ const Navbar = () => {
             </Link>
           </div>
 
-          {/* Center: Desktop Links */}
+          {/* Center: Desktop navigation links */}
           <div className="hidden md:flex gap-6 text-base-content font-medium">
             {commonLinks}
             {user ? authLinks : guestLinks}
           </div>
 
-          {/* Right: Theme Toggle + Auth Buttons */}
+          {/* Right side: Theme toggle + auth buttons */}
           <div className="flex items-center gap-3">
-            {/* Theme Toggle */}
+            {/* Theme toggle button */}
             <button
               onClick={toggleTheme}
               className="p-2 cursor-pointer rounded-full text-base-content hover:bg-base-200 transition"
+              aria-label="Toggle theme"
             >
               {document.documentElement.getAttribute("data-theme") ===
               "dark" ? (
@@ -169,16 +180,15 @@ const Navbar = () => {
               )}
             </button>
 
-            {/* Desktop Auth Buttons */}
+            {/* Desktop auth buttons or user avatar */}
             <div className="hidden md:flex gap-3 items-center">
               {user ? (
                 <>
                   <img
                     id="user-avatar"
                     src={
-                      user.photoURL
-                        ? user.photoURL
-                        : "https://i.ibb.co/LDyv7RjM/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg"
+                      user.photoURL ||
+                      "https://i.ibb.co/LDyv7RjM/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg"
                     }
                     alt="avatar"
                     className="h-9 w-9 rounded-full border-2 border-blue-500 object-cover cursor-pointer"
@@ -222,16 +232,15 @@ const Navbar = () => {
               )}
             </div>
 
-            {/* Mobile: Avatar or Login only */}
+            {/* Mobile view: avatar or login button */}
             <div className="md:hidden">
               {user ? (
                 <>
                   <img
                     id="mobile-avatar"
                     src={
-                      user.photoURL
-                        ? user.photoURL
-                        : "https://i.ibb.co/LDyv7RjM/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg"
+                      user.photoURL ||
+                      "https://i.ibb.co/LDyv7RjM/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg"
                     }
                     alt="avatar"
                     className="h-9 w-9 rounded-full border-2 border-blue-500 cursor-pointer"
@@ -258,7 +267,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Dropdown */}
+      {/* Mobile dropdown menu */}
       {menuOpen && (
         <div className="md:hidden border-t border-gray-200 dark:border-gray-700 bg-base-100 px-4 pt-2 pb-4">
           <div className="flex flex-col gap-2 text-base-content">

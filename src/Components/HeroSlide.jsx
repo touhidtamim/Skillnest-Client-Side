@@ -90,15 +90,17 @@ const slides = [
 ];
 
 const HeroSlide = () => {
-  const progressCircle = useRef(null);
-  const progressContent = useRef(null);
-  const swiperRef = useRef(null);
+  const progressCircle = useRef(null); // Ref for progress circle svg
+  const progressContent = useRef(null); // Ref for progress text
+  const swiperRef = useRef(null); // Swiper instance ref
 
-  const onAutoplayTimeLeft = (s, time, progress) => {
+  // Update progress circle and countdown text on autoplay time left event
+  const onAutoplayTimeLeft = (swiper, time, progress) => {
     progressCircle.current.style.setProperty("--progress", 1 - progress);
     progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
   };
 
+  // Handle CTA button clicks: scroll or navigate or show alert if path empty
   const handleCTAClick = (path) => {
     if (!path) {
       Swal.fire({
@@ -111,13 +113,13 @@ const HeroSlide = () => {
     }
 
     if (path.startsWith("/")) {
-      window.location.href = path;
+      window.location.href = path; // Redirect to path
     } else {
       scroller.scrollTo(path, {
         duration: 800,
         delay: 0,
         smooth: "easeInOutQuart",
-        offset: -70,
+        offset: -70, // Offset for fixed header
       });
     }
   };
@@ -144,6 +146,7 @@ const HeroSlide = () => {
         onMouseEnter={() => swiperRef.current?.swiper.autoplay.stop()}
         onMouseLeave={() => swiperRef.current?.swiper.autoplay.start()}
       >
+        {/* Render each slide */}
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>
             <div className={`bg-gradient-to-r ${slide.bgGradient} h-full`}>
@@ -161,6 +164,7 @@ const HeroSlide = () => {
                     {slide.subtitle}
                   </p>
                   <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
+                    {/* Render CTAs */}
                     {slide.ctas.map((cta, i) => (
                       <motion.button
                         key={i}
@@ -175,6 +179,7 @@ const HeroSlide = () => {
                   </div>
                 </motion.div>
 
+                {/* Slide image */}
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -194,6 +199,7 @@ const HeroSlide = () => {
           </SwiperSlide>
         ))}
 
+        {/* Autoplay progress indicator */}
         <div className="autoplay-progress" slot="container-end">
           <svg viewBox="0 0 48 48" ref={progressCircle}>
             <circle cx="24" cy="24" r="20"></circle>
@@ -202,6 +208,7 @@ const HeroSlide = () => {
         </div>
       </Swiper>
 
+      {/* Swiper custom styles */}
       <style jsx global>{`
         .hero-swiper {
           --swiper-theme-color: #43727a;

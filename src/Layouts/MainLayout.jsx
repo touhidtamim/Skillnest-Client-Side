@@ -5,20 +5,26 @@ import NAvbar from "../Components/NAvbar";
 import Footer from "../Components/Footer";
 
 const MainLayout = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation(); // Track navigation/loading state
 
   return (
     <>
-      <NAvbar></NAvbar>
+      {/* Navigation bar */}
+      <NAvbar />
 
-      <ScrollToTop></ScrollToTop>
+      {/* Scroll to top on route change */}
+      <ScrollToTop />
 
+      {/* Show spinner while loading */}
       {navigation.state === "loading" && <Spinner />}
+
+      {/* Main content area with responsive width */}
       <div className="md:w-11/12 mx-auto min-h-screen">
-        <Outlet />
+        <Outlet /> {/* Render matched child routes */}
       </div>
 
-      <Footer></Footer>
+      {/* Footer section */}
+      <Footer />
     </>
   );
 };

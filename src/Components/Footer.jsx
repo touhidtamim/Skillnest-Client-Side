@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className="bg-black text-gray-300 border-t border-gray-800 mt-12 dark:bg-gray-900 dark:border-gray-700">
       <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-10">
-        {/* Logo & Description */}
+        {/* Logo & description */}
         <div className="space-y-4">
           <Link to="/" className="flex items-center group">
             <img
@@ -25,7 +25,7 @@ const Footer = () => {
           </p>
         </div>
 
-        {/* Navigation Links */}
+        {/* Navigation links */}
         <div className="space-y-4">
           <h3 className="text-lg font-bold mb-3 text-[#7adce6] dark:text-[#9ee5ec]">
             Explore
@@ -58,7 +58,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Legal Section */}
+        {/* Legal links */}
         <div className="space-y-4">
           <h3 className="text-lg font-bold mb-3 text-[#7adce6] dark:text-[#9ee5ec]">
             Legal
@@ -79,7 +79,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Newsletter & Socials */}
+        {/* Newsletter signup & social links */}
         <div className="space-y-6">
           <div className="space-y-4">
             <h3 className="text-lg font-bold text-[#7adce6] dark:text-[#9ee5ec]">
@@ -109,6 +109,7 @@ const Footer = () => {
               Connect With Us
             </h3>
             <div className="flex gap-5">
+              {/* Social media icons with hover effects */}
               <a
                 href="https://web.facebook.com/touhidtamim01"
                 className="p-2 bg-gray-800 rounded-full hover:bg-blue-900/50 text-blue-400 hover:text-blue-300 transition-all hover:shadow-[0_0_10px_2px_rgba(59,130,246,0.5)]"
@@ -149,7 +150,8 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="text-center text-sm text-gray-500 pb-5  bg-black/50 dark:bg-gray-900/50 dark:border-gray-700">
+      {/* Footer copyright */}
+      <div className="text-center text-sm text-gray-500 pb-5 bg-black/50 dark:bg-gray-900/50 dark:border-gray-700">
         &copy; {new Date().getFullYear()} Skillnest. All rights reserved.
       </div>
     </footer>

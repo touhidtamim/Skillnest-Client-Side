@@ -18,6 +18,7 @@ const TermsAndConditions = () => {
         </p>
       </div>
 
+      {/* Notice Banner */}
       <div className="bg-orange-50 p-6 rounded-xl mb-12 text-center">
         <p className="text-lg text-orange-700 font-medium">
           Please read these Terms carefully before using our platform
@@ -26,6 +27,7 @@ const TermsAndConditions = () => {
 
       {/* Main Content */}
       <div className="mb-16">
+        {/* 1. Acceptance of Terms */}
         <h2 className="text-2xl font-bold mb-8 text-gray-800">
           1. Acceptance of Terms
         </h2>
@@ -35,10 +37,12 @@ const TermsAndConditions = () => {
           platform.
         </p>
 
+        {/* 2. User Accounts */}
         <h2 className="text-2xl font-bold mb-8 text-gray-800">
           2. User Accounts
         </h2>
         <div className="grid md:grid-cols-2 gap-8 mb-12">
+          {/* Registration */}
           <div className="border border-teal-100 rounded-xl p-6">
             <div className="flex items-center mb-4">
               <FaFileContract className="text-teal-600 text-2xl mr-3" />
@@ -50,6 +54,8 @@ const TermsAndConditions = () => {
               <li>Minimum age requirement: 18 years</li>
             </ul>
           </div>
+
+          {/* Prohibited Conduct */}
           <div className="border border-teal-100 rounded-xl p-6">
             <div className="flex items-center mb-4">
               <FaExclamationTriangle className="text-teal-600 text-2xl mr-3" />
@@ -64,9 +70,11 @@ const TermsAndConditions = () => {
           </div>
         </div>
 
+        {/* 3. Services */}
         <h2 className="text-2xl font-bold mb-8 text-gray-800">3. Services</h2>
         <div className="bg-teal-50 p-8 rounded-xl mb-8">
           <div className="grid md:grid-cols-2 gap-6">
+            {/* For Freelancers */}
             <div>
               <h3 className="font-bold mb-4 text-lg">For Freelancers</h3>
               <ul className="list-disc pl-5 text-gray-600 space-y-2">
@@ -75,6 +83,8 @@ const TermsAndConditions = () => {
                 <li>You must honor agreed-upon deadlines</li>
               </ul>
             </div>
+
+            {/* For Clients */}
             <div>
               <h3 className="font-bold mb-4 text-lg">For Clients</h3>
               <ul className="list-disc pl-5 text-gray-600 space-y-2">
@@ -86,6 +96,7 @@ const TermsAndConditions = () => {
           </div>
         </div>
 
+        {/* 4. Payments & Fees */}
         <h2 className="text-2xl font-bold mb-8 text-gray-800">
           4. Payments & Fees
         </h2>
@@ -102,6 +113,7 @@ const TermsAndConditions = () => {
           </ul>
         </div>
 
+        {/* 5. Intellectual Property */}
         <h2 className="text-2xl font-bold mb-8 text-gray-800">
           5. Intellectual Property
         </h2>
@@ -111,6 +123,7 @@ const TermsAndConditions = () => {
           agreement. SkillNest retains no ownership of work products.
         </p>
 
+        {/* 6. Disputes */}
         <h2 className="text-2xl font-bold mb-8 text-gray-800">6. Disputes</h2>
         <p className="mb-6 text-lg leading-relaxed">
           In case of disputes, SkillNest may mediate but is not obligated to do
@@ -118,6 +131,7 @@ const TermsAndConditions = () => {
           must be brought in courts of Bangladesh.
         </p>
 
+        {/* 7. Limitation of Liability */}
         <h2 className="text-2xl font-bold mb-8 text-gray-800">
           7. Limitation of Liability
         </h2>
@@ -127,6 +141,7 @@ const TermsAndConditions = () => {
           fees paid to us in the past six months.
         </p>
 
+        {/* 8. Changes to Terms */}
         <h2 className="text-2xl font-bold mb-8 text-gray-800">
           8. Changes to Terms
         </h2>
@@ -135,6 +150,7 @@ const TermsAndConditions = () => {
           constitutes acceptance. We'll notify users of significant changes.
         </p>
 
+        {/* Governing Law */}
         <div className="bg-teal-600 text-white p-8 rounded-xl">
           <div className="flex items-center justify-center mb-4">
             <FaGavel className="text-3xl mr-4" />

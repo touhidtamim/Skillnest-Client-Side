@@ -9,26 +9,27 @@ import FeaturedTasks from "../Components/FeaturedTask";
 const Home = () => {
   return (
     <div>
-      <div className=" mt-2 lg:mt-4">
-        <HeroSlide></HeroSlide>
+      <div className="mt-2 lg:mt-4">
+        <HeroSlide />
       </div>
 
-      <div className=" mt-2 lg:mt-4">
-        <FeaturedTasks></FeaturedTasks>
+      <div className="mt-2 lg:mt-4">
+        <FeaturedTasks />
       </div>
 
-      <div className=" mt-2 md:mt-4 lg:mt-8">
-        <TopFreelancersClients></TopFreelancersClients>
+      <div className="mt-2 md:mt-4 lg:mt-8">
+        <TopFreelancersClients />
       </div>
 
-      <div className=" my-2 md:my-4 lg:my-8">
-        <HowItWorks></HowItWorks>
+      <div className="my-2 md:my-4 lg:my-8">
+        <HowItWorks />
       </div>
 
-      <div className=" mb-2 md:mb-4 lg:mb-8">
-        <Testimonials></Testimonials>
+      <div className="mb-2 md:mb-4 lg:mb-8">
+        <Testimonials />
       </div>
-      <PlatformStats></PlatformStats>
+
+      <PlatformStats />
     </div>
   );
 };

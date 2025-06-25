@@ -22,6 +22,7 @@ const ProfilePage = () => {
   const [success, setSuccess] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
+  // Save updated profile info
   const handleSave = async () => {
     if (!user) return;
 
@@ -51,6 +52,7 @@ const ProfilePage = () => {
     }
   };
 
+  // Reset form to original user data
   const resetForm = () => {
     setTempName(user?.displayName || "");
     setTempPhotoURL(user?.photoURL || "");
@@ -97,7 +99,6 @@ const ProfilePage = () => {
               </div>
             </div>
 
-            {/* Success/Error Messages */}
             {error && (
               <motion.div
                 initial={{ opacity: 0, y: -10 }}
@@ -117,7 +118,6 @@ const ProfilePage = () => {
               </motion.div>
             )}
 
-            {/* Name Field */}
             <div className="mb-4">
               <label className="flex items-center text-gray-700 font-medium mb-2">
                 <FiUser className="mr-2 text-teal-600" />
@@ -138,7 +138,6 @@ const ProfilePage = () => {
               )}
             </div>
 
-            {/* PhotoURL Field */}
             {editMode && (
               <motion.div
                 initial={{ opacity: 0, height: 0 }}
@@ -159,7 +158,6 @@ const ProfilePage = () => {
               </motion.div>
             )}
 
-            {/* Email Field */}
             <div className="mb-6">
               <label className="flex items-center text-gray-700 font-medium mb-2">
                 <FiMail className="mr-2 text-teal-600" />
@@ -170,7 +168,6 @@ const ProfilePage = () => {
               </p>
             </div>
 
-            {/* Action Buttons */}
             <div className="flex justify-center space-x-4">
               {editMode ? (
                 <>

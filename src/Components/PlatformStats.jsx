@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
+// Stats data with icons, values, and labels
 const stats = [
   {
     value: "100K+",
@@ -84,6 +85,7 @@ const PlatformStats = () => {
   return (
     <section className="bg-[#FAF7F5] rounded-2xl py-20 px-4 sm:px-8 lg:px-16">
       <div className="max-w-7xl mx-auto">
+        {/* Section header with animation */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -100,6 +102,7 @@ const PlatformStats = () => {
           </p>
         </motion.div>
 
+        {/* Stats grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {stats.map((stat, index) => (
             <motion.div
@@ -112,10 +115,13 @@ const PlatformStats = () => {
               className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-all"
             >
               <div className="flex flex-col items-center text-center">
+                {/* Icon */}
                 <div className="text-[#F4C22C] mb-4">{stat.icon}</div>
+                {/* Value */}
                 <h3 className="text-4xl font-extrabold text-[#F4C22C] mb-2">
                   {stat.value}
                 </h3>
+                {/* Label */}
                 <p className="text-[#43727A] text-lg font-medium">
                   {stat.label}
                 </p>
@@ -124,6 +130,7 @@ const PlatformStats = () => {
           ))}
         </div>
 
+        {/* Call to action button */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -131,7 +138,7 @@ const PlatformStats = () => {
           viewport={{ once: true }}
           className="mt-16 text-center"
         >
-          <button className=" cursor-pointer px-8 py-3 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-full font-medium shadow-md hover:shadow-lg transition-all hover:scale-105">
+          <button className="cursor-pointer px-8 py-3 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-full font-medium shadow-md hover:shadow-lg transition-all hover:scale-105">
             Join Our Community
           </button>
         </motion.div>

@@ -61,7 +61,7 @@ const About = () => {
             relationships matter, and everyone has the tools to succeed.
           </p>
           <div className="grid md:grid-cols-3 gap-8">
-            {/* Card 1 */}
+            {/* Mission Card 1 */}
             <div className="bg-white/20 p-6 rounded-lg shadow-lg border border-white/30">
               <div className="flex justify-center text-white mb-4">
                 <FaRocket className="text-4xl" />
@@ -72,7 +72,7 @@ const About = () => {
               </p>
             </div>
 
-            {/* Card 2 */}
+            {/* Mission Card 2 */}
             <div className="bg-white/20 p-6 rounded-lg shadow-lg border border-white/30">
               <div className="flex justify-center text-white mb-4">
                 <FaHandshake className="text-4xl" />
@@ -83,7 +83,7 @@ const About = () => {
               </p>
             </div>
 
-            {/* Card 3 */}
+            {/* Mission Card 3 */}
             <div className="bg-white/20 p-6 rounded-lg shadow-lg border border-white/30">
               <div className="flex justify-center text-white mb-4">
                 <FaChartLine className="text-4xl" />
@@ -105,6 +105,7 @@ const About = () => {
           Our Core Values
         </h2>
         <div className="grid md:grid-cols-3 gap-8">
+          {/* Value 1: Community First */}
           <div className="border border-teal-100 rounded-xl p-8 hover:shadow-lg transition">
             <div className="bg-teal-100 text-teal-600 w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto">
               <FaUsers className="text-2xl" />
@@ -117,6 +118,8 @@ const About = () => {
               prioritizes the needs of our members.
             </p>
           </div>
+
+          {/* Value 2: Radical Transparency */}
           <div className="border border-teal-100 rounded-xl p-8 hover:shadow-lg transition">
             <div className="bg-teal-100 text-teal-600 w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto">
               <FaShieldAlt className="text-2xl" />
@@ -129,6 +132,8 @@ const About = () => {
               works and how we make money.
             </p>
           </div>
+
+          {/* Value 3: Fair Exchange */}
           <div className="border border-teal-100 rounded-xl p-8 hover:shadow-lg transition">
             <div className="bg-teal-100 text-teal-600 w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto">
               <FaHandshake className="text-2xl" />
@@ -150,6 +155,7 @@ const About = () => {
           Meet The Founders
         </h2>
         <div className="grid md:grid-cols-3 gap-8">
+          {/* Founder 1 */}
           <div className="text-center">
             <div className="bg-gray-200 w-40 h-40 rounded-full mx-auto mb-6 overflow-hidden">
               <img
@@ -165,6 +171,8 @@ const About = () => {
               better work ecosystems.
             </p>
           </div>
+
+          {/* Founder 2 */}
           <div className="text-center">
             <div className="bg-gray-200 w-40 h-40 rounded-full mx-auto mb-6 overflow-hidden">
               <img
@@ -180,6 +188,8 @@ const About = () => {
               people love to use.
             </p>
           </div>
+
+          {/* Founder 3 */}
           <div className="text-center">
             <div className="bg-gray-200 w-40 h-40 rounded-full mx-auto mb-6 overflow-hidden">
               <img

@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const FeaturedTasks = () => {
-  const [tasks, setTasks] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [tasks, setTasks] = useState([]); // Store fetched tasks
+  const [loading, setLoading] = useState(true); // Loading state
   const navigate = useNavigate();
 
   useEffect(() => {
+    // Fetch featured tasks on mount
     fetch("https://skillnest-server-side.vercel.app/featured-tasks")
       .then((res) => res.json())
       .then((data) => {
@@ -32,7 +33,7 @@ const FeaturedTasks = () => {
           </p>
         </div>
 
-        {/* Loading */}
+        {/* Loading spinner */}
         {loading ? (
           <div className="flex justify-center items-center h-48">
             <div className="animate-spin h-8 w-8 border-4 border-teal-500 border-t-transparent rounded-full"></div>
@@ -45,6 +46,7 @@ const FeaturedTasks = () => {
                 className="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-shadow duration-300 border border-teal-200 flex flex-col justify-between"
               >
                 <div className="p-6">
+                  {/* Task category and budget */}
                   <div className="flex justify-between items-center mb-4">
                     <span className="bg-teal-100 text-black text-md font-semibold px-3 py-1 rounded-full">
                       {task.category}
@@ -54,6 +56,7 @@ const FeaturedTasks = () => {
                     </span>
                   </div>
 
+                  {/* Task title and description */}
                   <h3 className="text-lg font-semibold text-[#43727A] mb-2 line-clamp-2">
                     {task.title}
                   </h3>
@@ -61,6 +64,7 @@ const FeaturedTasks = () => {
                     {task.description}
                   </p>
 
+                  {/* Deadline info */}
                   <div className="flex items-center text-sm text-teal-600">
                     <svg
                       className="w-4 h-4 mr-2"
@@ -79,6 +83,7 @@ const FeaturedTasks = () => {
                   </div>
                 </div>
 
+                {/* View details button */}
                 <div className="px-6 pb-6">
                   <Link
                     to={`/skillnest/all-tasks/${task._id}`}
@@ -92,7 +97,7 @@ const FeaturedTasks = () => {
           </div>
         )}
 
-        {/* CTA Button */}
+        {/* Browse all tasks button */}
         <div className="mt-16 text-center">
           <button
             onClick={() => navigate("/skillnest/all-tasks")}

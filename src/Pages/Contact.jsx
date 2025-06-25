@@ -10,7 +10,8 @@ import {
 
 const Contact = () => {
   return (
-    <div className="max-w-4xl mx-auto py-6  md:py-16 px-6 text-gray-800">
+    <div className="max-w-4xl mx-auto py-6 md:py-16 px-6 text-gray-800">
+      {/* Header */}
       <div className="text-center mb-12">
         <h1 className="text-4xl md:text-5xl font-bold mb-4 text-teal-600">
           Let's Connect
@@ -146,18 +147,21 @@ const Contact = () => {
               <a
                 href="#"
                 className="bg-teal-100 text-teal-600 p-3 rounded-full hover:bg-teal-600 hover:text-white transition"
+                aria-label="LinkedIn"
               >
                 <FaLinkedin className="text-xl" />
               </a>
               <a
                 href="#"
                 className="bg-teal-100 text-teal-600 p-3 rounded-full hover:bg-teal-600 hover:text-white transition"
+                aria-label="Twitter"
               >
                 <FaTwitter className="text-xl" />
               </a>
               <a
                 href="#"
                 className="bg-teal-100 text-teal-600 p-3 rounded-full hover:bg-teal-600 hover:text-white transition"
+                aria-label="Instagram"
               >
                 <FaInstagram className="text-xl" />
               </a>
@@ -178,6 +182,7 @@ const Contact = () => {
             allowFullScreen=""
             loading="lazy"
             className="rounded-lg"
+            title="SkillNest Location on Google Maps"
           ></iframe>
         </div>
       </div>

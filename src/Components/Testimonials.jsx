@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Swal from "sweetalert2";
 
+// Testimonial data with user info and feedback
 const testimonials = [
   {
     id: 1,
@@ -45,6 +46,7 @@ const testimonials = [
   },
 ];
 
+// StarRating component to display rating stars dynamically
 const StarRating = ({ rating }) => {
   return (
     <div className="flex justify-center mb-3">
@@ -65,8 +67,9 @@ const StarRating = ({ rating }) => {
 };
 
 const Testimonials = () => {
-  const [activeCard, setActiveCard] = useState(null);
+  const [activeCard, setActiveCard] = useState(null); // Track hovered testimonial card
 
+  // Show alert on Read More click
   const handleReadMoreClick = () => {
     Swal.fire({
       title: "More Stories Coming Soon!",
@@ -80,6 +83,7 @@ const Testimonials = () => {
   return (
     <section className="bg-[#FAF7F5] rounded-2xl py-20 px-6 sm:px-8 lg:px-16">
       <div className="max-w-7xl mx-auto ">
+        {/* Section header with animation */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -96,6 +100,7 @@ const Testimonials = () => {
           </p>
         </motion.div>
 
+        {/* Testimonials grid */}
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {testimonials.map((testimonial) => (
             <motion.div
@@ -120,6 +125,7 @@ const Testimonials = () => {
                     alt={testimonial.name}
                     className="w-16 h-16 rounded-full object-cover border-4 border-white shadow-md"
                   />
+                  {/* Checkmark icon on hover */}
                   {activeCard === testimonial.id && (
                     <div className="absolute -bottom-2 -right-2 bg-teal-500 rounded-full p-1">
                       <svg
@@ -139,12 +145,15 @@ const Testimonials = () => {
                   )}
                 </div>
 
+                {/* Star rating display */}
                 <StarRating rating={testimonial.rating} />
 
+                {/* Quote text */}
                 <p className="text-gray-700 italic mb-5 leading-relaxed">
                   "{testimonial.quote}"
                 </p>
 
+                {/* User name and role */}
                 <div>
                   <h3 className="text-gray-900 font-semibold text-lg">
                     {testimonial.name}
@@ -158,6 +167,7 @@ const Testimonials = () => {
           ))}
         </div>
 
+        {/* Read More button with fade-in */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}

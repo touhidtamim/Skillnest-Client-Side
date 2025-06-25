@@ -5,6 +5,7 @@ const BrowseTasks = () => {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // Fetch tasks on component mount
   useEffect(() => {
     fetch("https://skillnest-server-side.vercel.app/tasks")
       .then((res) => res.json())
@@ -32,12 +33,13 @@ const BrowseTasks = () => {
           </p>
         </div>
 
-        {/* Loading Spinner */}
+        {/* Loading State */}
         {loading ? (
           <div className="flex justify-center items-center h-64">
             <div className="animate-spin h-10 w-10 border-4 border-teal-500 border-t-transparent rounded-full"></div>
           </div>
         ) : tasks.length === 0 ? (
+          // No tasks available message
           <div className="text-center py-20 text-gray-600">
             <svg
               className="mx-auto h-20 w-20 mb-4 text-gray-400"
@@ -57,7 +59,7 @@ const BrowseTasks = () => {
             <p>Come back later or be the first to post one!</p>
           </div>
         ) : (
-          // Task Grid
+          // Tasks grid display
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {tasks.map((task) => (
               <div
@@ -65,7 +67,7 @@ const BrowseTasks = () => {
                 className="bg-white rounded-2xl shadow hover:shadow-lg transition-all duration-300 border border-gray-100 flex flex-col justify-between"
               >
                 <div className="p-6">
-                  {/* Top Info */}
+                  {/* Task category & budget */}
                   <div className="flex justify-between items-center mb-4">
                     <span className="bg-teal-100 text-black text-md font-semibold px-3 py-1 rounded-full">
                       {task.category}
@@ -75,17 +77,17 @@ const BrowseTasks = () => {
                     </span>
                   </div>
 
-                  {/* Title */}
+                  {/* Task title */}
                   <h3 className="text-lg font-semibold text-gray-800 mb-2 line-clamp-2">
                     {task.title}
                   </h3>
 
-                  {/* Description */}
+                  {/* Task description */}
                   <p className="text-sm text-gray-800 mb-3 line-clamp-3">
                     {task.description}
                   </p>
 
-                  {/* Deadline */}
+                  {/* Deadline info */}
                   <div className="flex items-center text-sm text-gray-700">
                     <svg
                       className="w-4 h-4 mr-2"
@@ -104,7 +106,7 @@ const BrowseTasks = () => {
                   </div>
                 </div>
 
-                {/* Button */}
+                {/* View Details Button */}
                 <div className="px-6 pb-6">
                   <Link
                     to={`/skillnest/all-tasks/${task._id}`}

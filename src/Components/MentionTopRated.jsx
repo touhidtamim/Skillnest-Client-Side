@@ -50,6 +50,7 @@ const topUsers = [
 const TopFreelancersClients = () => {
   const [activeCard, setActiveCard] = useState(null);
 
+  // Render star rating with partial stars support
   const StarRating = ({ rating }) => {
     const stars = [];
     for (let i = 1; i <= 5; i++) {
@@ -62,6 +63,7 @@ const TopFreelancersClients = () => {
         >
           {i <= rating ? (
             i === Math.ceil(rating) && rating % 1 !== 0 ? (
+              // Partial star overlay for fractional rating
               <span className="relative">
                 <span className="text-gray-300">★</span>
                 <span
@@ -89,6 +91,7 @@ const TopFreelancersClients = () => {
       className="bg-[#FAF7F5] rounded-2xl py-20 px-6 sm:px-8 lg:px-16"
     >
       <div className="max-w-7xl mx-auto">
+        {/* Section header with fade-in animation */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -104,6 +107,7 @@ const TopFreelancersClients = () => {
           </p>
         </motion.div>
 
+        {/* User cards grid */}
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {topUsers.map((user) => (
             <motion.div
@@ -121,8 +125,10 @@ const TopFreelancersClients = () => {
                   : ""
               }`}
             >
+              {/* Top gradient border */}
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-teal-400 to-teal-600"></div>
 
+              {/* Hover overlay */}
               {activeCard === user.id && (
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-br from-teal-50/20 to-transparent pointer-events-none"
@@ -132,7 +138,9 @@ const TopFreelancersClients = () => {
                 />
               )}
 
+              {/* Card content */}
               <div className="flex flex-col items-center text-center relative z-10">
+                {/* Profile photo with glow effect on hover */}
                 <div className="relative mb-4 group">
                   <div className="absolute inset-0 rounded-full bg-gradient-to-br from-teal-400 to-teal-600 blur-sm opacity-70 group-hover:opacity-100 transition-all -z-10"></div>
                   <img
@@ -142,6 +150,7 @@ const TopFreelancersClients = () => {
                   />
                 </div>
 
+                {/* Star rating with numeric value */}
                 <div className="flex items-center mb-2">
                   <StarRating rating={user.rating} />
                   <span className="ml-1 text-xs text-gray-500">
@@ -149,6 +158,7 @@ const TopFreelancersClients = () => {
                   </span>
                 </div>
 
+                {/* User name with hover scale effect */}
                 <motion.h3
                   className="text-gray-900 font-semibold text-xl mb-1 hover:text-teal-600 transition-colors"
                   whileHover={{ scale: 1.05 }}
@@ -156,10 +166,12 @@ const TopFreelancersClients = () => {
                   {user.name}
                 </motion.h3>
 
+                {/* Role badge */}
                 <p className="text-teal-600 text-sm font-medium mb-2 px-3 py-1 bg-teal-50 rounded-full">
                   {user.role}
                 </p>
 
+                {/* Stats with icon */}
                 <p className="text-gray-600 text-sm mb-3 flex items-center">
                   <svg
                     className="w-4 h-4 mr-1 text-teal-500"
@@ -178,6 +190,7 @@ const TopFreelancersClients = () => {
                   {user.stats}
                 </p>
 
+                {/* Badge with shine animation on hover */}
                 <motion.span
                   className="inline-block bg-gradient-to-r from-teal-100 to-teal-50 text-teal-700 text-xs font-medium px-3 py-1 rounded-full border border-teal-200 relative overflow-hidden"
                   whileHover={{ scale: 1.05 }}
@@ -197,6 +210,7 @@ const TopFreelancersClients = () => {
           ))}
         </div>
 
+        {/* View all profiles button with animation */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}

@@ -6,6 +6,7 @@ const AddTask = () => {
   const { user } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
 
+  // Predefined task categories
   const categories = [
     "Web Development",
     "Mobile Development",
@@ -24,12 +25,15 @@ const AddTask = () => {
     "Other",
   ];
 
+  // Handle form submission to add a new task
   const handleAddTask = async (e) => {
     e.preventDefault();
     setLoading(true);
 
     const form = e.target;
     const formData = new FormData(form);
+
+    // Prepare task data from form inputs & current user info
     const taskData = {
       title: formData.get("title"),
       category: formData.get("category"),
@@ -41,18 +45,19 @@ const AddTask = () => {
     };
 
     try {
+      // POST request to add task
       const res = await fetch(
         "https://skillnest-server-side.vercel.app/tasks",
         {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify(taskData),
         }
       );
 
       const data = await res.json();
+
+      // Show success alert if insertion acknowledged
       if (data.insertedId || data.acknowledged) {
         await Swal.fire({
           title: "Success!",
@@ -61,7 +66,7 @@ const AddTask = () => {
           timer: 2000,
           showConfirmButton: false,
         });
-        form.reset();
+        form.reset(); // Clear form after success
       }
     } catch (error) {
       console.error("Failed to add task:", error);
@@ -82,6 +87,7 @@ const AddTask = () => {
         Add a New Task
       </h2>
       <form onSubmit={handleAddTask} className="space-y-5">
+        {/* Task Title Input */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
             Task Title
@@ -95,6 +101,7 @@ const AddTask = () => {
           />
         </div>
 
+        {/* Category Select */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
             Category
@@ -113,6 +120,7 @@ const AddTask = () => {
           </select>
         </div>
 
+        {/* Description Textarea */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
             Description
@@ -126,6 +134,7 @@ const AddTask = () => {
           />
         </div>
 
+        {/* Deadline and Budget Inputs */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -155,6 +164,7 @@ const AddTask = () => {
           </div>
         </div>
 
+        {/* Readonly Email and Name */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -180,6 +190,7 @@ const AddTask = () => {
           </div>
         </div>
 
+        {/* Submit Button */}
         <button
           type="submit"
           disabled={loading}

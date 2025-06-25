@@ -4,6 +4,7 @@ import { FaLock, FaUserShield, FaDatabase, FaShieldAlt } from "react-icons/fa";
 const PrivacyPolicy = () => {
   return (
     <div className="max-w-6xl mx-auto py-8 md:py-16 px-6 text-gray-800">
+      {/* Header */}
       <div className="text-center mb-16">
         <h1 className="text-3xl lg:text-4xl md:text-5xl font-bold mb-6 text-teal-600">
           Privacy Policy
@@ -14,13 +15,17 @@ const PrivacyPolicy = () => {
         </p>
       </div>
 
+      {/* Last Updated */}
       <div className="bg-teal-50 p-6 rounded-xl mb-12">
         <p className="text-lg text-center text-teal-700 font-medium">
           Last Updated: May 15, 2025
         </p>
       </div>
 
-      <div className="mb-16">
+      {/* Sections */}
+
+      {/* 1. Introduction */}
+      <section className="mb-16">
         <h2 className="text-2xl font-bold mb-6 text-gray-800">
           1. Introduction
         </h2>
@@ -29,11 +34,15 @@ const PrivacyPolicy = () => {
           Privacy Policy explains how we collect, use, disclose, and safeguard
           your information when you use our services.
         </p>
+      </section>
 
+      {/* 2. Data We Collect */}
+      <section className="mb-16">
         <h2 className="text-2xl font-bold mb-6 text-gray-800">
           2. Data We Collect
         </h2>
         <div className="grid md:grid-cols-2 gap-8 mb-12">
+          {/* Personal Information */}
           <div className="border border-teal-100 rounded-xl p-6">
             <div className="flex items-center mb-4">
               <FaUserShield className="text-teal-600 text-2xl mr-3" />
@@ -46,6 +55,7 @@ const PrivacyPolicy = () => {
               <li>Government identification (for verification)</li>
             </ul>
           </div>
+          {/* Usage Data */}
           <div className="border border-teal-100 rounded-xl p-6">
             <div className="flex items-center mb-4">
               <FaDatabase className="text-teal-600 text-2xl mr-3" />
@@ -59,7 +69,10 @@ const PrivacyPolicy = () => {
             </ul>
           </div>
         </div>
+      </section>
 
+      {/* 3. How We Use Your Data */}
+      <section className="mb-16">
         <h2 className="text-2xl font-bold mb-6 text-gray-800">
           3. How We Use Your Data
         </h2>
@@ -99,7 +112,10 @@ const PrivacyPolicy = () => {
             </div>
           </div>
         </div>
+      </section>
 
+      {/* 4. Data Sharing */}
+      <section className="mb-16">
         <h2 className="text-2xl font-bold mb-6 text-gray-800">
           4. Data Sharing
         </h2>
@@ -112,7 +128,10 @@ const PrivacyPolicy = () => {
           <li>Business partners in anonymized, aggregated form</li>
           <li>Other users as part of the freelance service process</li>
         </ul>
+      </section>
 
+      {/* 5. Your Rights */}
+      <section className="mb-16">
         <h2 className="text-2xl font-bold mb-6 text-gray-800">
           5. Your Rights
         </h2>
@@ -121,7 +140,10 @@ const PrivacyPolicy = () => {
           You may also object to processing or request data portability. Contact
           us at privacy@skillnest.com to exercise these rights.
         </p>
+      </section>
 
+      {/* 6. Changes to This Policy */}
+      <section className="mb-16">
         <h2 className="text-2xl font-bold mb-6 text-gray-800">
           6. Changes to This Policy
         </h2>
@@ -129,18 +151,19 @@ const PrivacyPolicy = () => {
           We may update this policy periodically. We will notify you of
           significant changes through our platform or via email.
         </p>
+      </section>
 
-        <div className="bg-teal-600 text-white p-8 rounded-xl text-center">
-          <h3 className="text-xl font-bold mb-4">
-            Questions About Our Privacy Policy?
-          </h3>
-          <p className="mb-4">Contact our Data Protection Officer at:</p>
-          <div className="flex gap-2 justify-center">
-            <span className="mt-1.5">
-              <Mail size={23} />
-            </span>
-            <p className="text-xl font-medium">privacy@skillnest.com</p>
-          </div>
+      {/* Contact Info */}
+      <div className="bg-teal-600 text-white p-8 rounded-xl text-center">
+        <h3 className="text-xl font-bold mb-4">
+          Questions About Our Privacy Policy?
+        </h3>
+        <p className="mb-4">Contact our Data Protection Officer at:</p>
+        <div className="flex gap-2 justify-center">
+          <span className="mt-1.5">
+            <Mail size={23} />
+          </span>
+          <p className="text-xl font-medium">privacy@skillnest.com</p>
         </div>
       </div>
     </div>

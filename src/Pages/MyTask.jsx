@@ -10,6 +10,7 @@ const MyTask = () => {
   const userEmail = user?.email;
   const navigate = useNavigate();
 
+  // Fetch user's tasks on mount or when userEmail changes
   useEffect(() => {
     if (!userEmail) return;
 
@@ -31,6 +32,7 @@ const MyTask = () => {
       });
   }, [userEmail]);
 
+  // Confirm and delete a task by id
   const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -58,6 +60,7 @@ const MyTask = () => {
     });
   };
 
+  // Show bids count for a task using SweetAlert
   const handleViewBids = (taskId) => {
     fetch(`https://skillnest-server-side.vercel.app/tasks/${taskId}`)
       .then((res) => res.json())
@@ -77,12 +80,14 @@ const MyTask = () => {
       });
   };
 
+  // Loading, unauthorized, and empty states
   if (loading) return <p className="text-center mt-6">Loading your tasks...</p>;
   if (!userEmail)
     return <p className="text-center mt-6">Please login to view your tasks.</p>;
   if (tasks.length === 0)
     return <p className="text-center mt-6">No tasks posted yet.</p>;
 
+  // Main task list table
   return (
     <div className="max-w-4xl mx-auto px-4 py-6">
       <h2 className="text-2xl font-bold mb-4 text-center">My Posted Tasks</h2>

@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { ClipboardList, Users, CheckCircle } from "lucide-react";
 
 const HowItWorks = () => {
+  // Steps data with icon, title, description and accent color for styling
   const steps = [
     {
       id: 1,
@@ -33,6 +34,7 @@ const HowItWorks = () => {
   return (
     <section className="bg-[#FAF7F5] rounded-2xl py-20 px-6 sm:px-12 lg:px-24">
       <div className="max-w-7xl mx-auto">
+        {/* Section header with fade-in animation */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -49,6 +51,7 @@ const HowItWorks = () => {
           </p>
         </motion.div>
 
+        {/* Steps grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {steps.map((step, index) => (
             <motion.div
@@ -60,21 +63,32 @@ const HowItWorks = () => {
               whileHover={{ y: -10 }}
               className="relative group"
             >
+              {/* Hover background accent */}
               <div
                 className={`absolute -inset-1 rounded-2xl ${step.accentColor} opacity-0 group-hover:opacity-100 transition-all duration-300 blur-sm`}
               ></div>
 
+              {/* Step card container */}
               <div className="relative bg-white rounded-2xl p-8 h-full flex flex-col items-center text-center shadow-sm hover:shadow-md transition-all">
+                {/* Icon wrapper */}
                 <div className="mb-6 p-4 rounded-full bg-[#FAF7F5]">
                   {step.icon}
                 </div>
+
+                {/* Step number badge */}
                 <div className="flex items-center justify-center w-10 h-10 bg-[#43727A] text-white rounded-full font-bold absolute -top-5">
                   {step.id}
                 </div>
+
+                {/* Step title */}
                 <h3 className="text-2xl font-semibold text-[#43727A] mb-4">
                   {step.title}
                 </h3>
+
+                {/* Step description */}
                 <p className="text-[#1E1E1E] mb-6">{step.description}</p>
+
+                {/* Progress bar */}
                 <div className="mt-auto w-full">
                   <div className="h-1 bg-[#F4C22C]/30 w-full rounded-full overflow-hidden">
                     <motion.div

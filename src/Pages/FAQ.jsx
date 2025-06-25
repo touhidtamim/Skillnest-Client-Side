@@ -3,10 +3,14 @@ import { FaChevronDown, FaChevronUp, FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const FAQ = () => {
+  // State to track currently opened FAQ index
   const [activeIndex, setActiveIndex] = useState(null);
+  // State for search input
   const [searchTerm, setSearchTerm] = useState("");
+  // State for selected FAQ category filter
   const [activeCategory, setActiveCategory] = useState("all");
 
+  // FAQ categories list
   const faqCategories = [
     { id: "all", name: "All Categories" },
     { id: "account", name: "Account" },
@@ -16,6 +20,7 @@ const FAQ = () => {
     { id: "safety", name: "Safety" },
   ];
 
+  // All FAQs data
   const faqs = [
     {
       question: "How do I create an account?",
@@ -109,10 +114,12 @@ const FAQ = () => {
     },
   ];
 
+  // Toggle open/close FAQ item by index
   const toggleFAQ = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
 
+  // Filter FAQs by search term and category
   const filteredFAQs = faqs.filter((faq) => {
     const matchesSearch =
       faq.question.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -124,6 +131,7 @@ const FAQ = () => {
 
   return (
     <div className="max-w-5xl mx-auto py-8 md:py-16 px-4 sm:px-6 lg:px-8">
+      {/* Header */}
       <div className="text-center mb-12">
         <h1 className="text-3xl md:text-4xl font-bold mb-4 text-teal-600">
           Frequently Asked Questions
@@ -133,11 +141,14 @@ const FAQ = () => {
         </p>
       </div>
 
+      {/* Search and Category Filters */}
       <div className="mb-8">
         <div className="relative mb-6">
+          {/* Search icon inside input */}
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
             <FaSearch className="text-gray-400" />
           </div>
+          {/* Search input */}
           <input
             type="text"
             placeholder="Search FAQs..."
@@ -147,6 +158,7 @@ const FAQ = () => {
           />
         </div>
 
+        {/* Category buttons */}
         <div className="flex flex-wrap gap-2 mb-6">
           {faqCategories.map((category) => (
             <button
@@ -164,13 +176,15 @@ const FAQ = () => {
         </div>
       </div>
 
+      {/* FAQ list */}
       <div className="space-y-4 mb-12">
         {filteredFAQs.length > 0 ? (
           filteredFAQs.map((faq, index) => (
             <div
               key={index}
-              className="border  border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition"
+              className="border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition"
             >
+              {/* Question button */}
               <button
                 className="w-full cursor-pointer px-6 py-5 text-left focus:outline-none flex justify-between items-center"
                 onClick={() => toggleFAQ(index)}
@@ -183,6 +197,7 @@ const FAQ = () => {
                 </span>
               </button>
 
+              {/* Answer panel, toggle visibility */}
               <div
                 className={`px-6 pb-5 pt-0 text-gray-600 transition-all duration-300 ${
                   activeIndex === index ? "block" : "hidden"
@@ -196,6 +211,7 @@ const FAQ = () => {
             </div>
           ))
         ) : (
+          // No FAQs match filter
           <div className="text-center py-10">
             <p className="text-gray-500">
               No FAQs found matching your criteria.
@@ -204,6 +220,7 @@ const FAQ = () => {
         )}
       </div>
 
+      {/* Support call to action */}
       <div className="bg-gradient-to-r from-teal-50 to-blue-50 rounded-xl p-8 text-center">
         <h3 className="text-2xl font-semibold text-gray-800 mb-3">
           Still need help?
