@@ -90,6 +90,32 @@ Skillnest stands out by providing a **simple yet powerful platform** that bridge
 
 ---
 
+## 💻 Running Locally & Contribution Guide
+
+The **Skillnest** project’s **backend (server) code** is maintained in a separate GitHub repository with the same name.
+
+To run the project locally or contribute:
+
+- Clone both the frontend and backend repositories.  
+- Follow the instructions in each repository to install dependencies and set up environment variables.  
+- Run the backend server first, then start the frontend development server.
+
+If you encounter any issues, want to suggest improvements, or contribute code, please feel free to contact me via my GitHub profile. Contributions are welcome, and I’m happy to assist you!
+
+---
+
+### 🔗 Repository Links
+
+- **Backend (Server) Repository:**  
+  [https://github.com/touhidtamim/Skillnest-Server-Side](https://github.com/touhidtamim/Skillnest-Server-Side)  
+  
+- **Frontend (Client) Repository:**  
+  [https://github.com/touhidtamim/Skillnest-Client-Side](https://github.com/touhidtamim/Skillnest-Client-Side)
+
+
+---
+
+
 ## 👤 Developed By
 
 **Touhid Tamim**  
