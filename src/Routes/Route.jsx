@@ -1,21 +1,22 @@
 import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "./../Layouts/MainLayout";
 import NotFound from "../Components/NotFound";
-import Home from "../Pages/Home";
-import BrowseTask from "../Pages/BrowseTask";
 import AddTask from "../Pages/AddTask";
 import MyTask from "../Pages/MyTask";
 import MyProfile from "./../Pages/MyProfile";
 import Login from "./../Pages/Login";
 import Register from "./../Pages/Register";
-import Contact from "./../Pages/Contact";
-import About from "./../Pages/About";
-import FAQ from "./../Pages/FAQ";
-import PrivacyPolicy from "./../Pages/PrivacyPolicy";
-import TermsAndConditions from "./../Pages/TermsAndConditions";
+import Contact from "../Pages/Contact/Contact";
+import About from "../Pages/About/About";
+import FAQ from "../Pages/FaQ/FAQ";
+import PrivacyPolicy from "../Pages/Legal/PrivacyPolicy";
+import TermsAndConditions from "../Pages/Legal/TermsAndConditions";
 import PrivateRouter from "./PrivateRoute";
 import TaskDetails from "./../Pages/TaskDetails";
 import UpdateTask from "../Pages/UpdateTask";
+import ExploreJobs from "../Pages/ExploreJobs/ExploreJobs";
+import Home from "./../Pages/Home/Home";
+import AllFreelancers from "./../Pages/AllFreelancers/AllFreelancers";
 
 const router = createBrowserRouter([
   {
@@ -25,12 +26,17 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home></Home>,
+        element: <Home />,
+      },
+
+      {
+        path: "/freelancers",
+        element: <AllFreelancers />,
       },
 
       {
         path: "/all-tasks",
-        element: <BrowseTask></BrowseTask>,
+        element: <ExploreJobs />,
       },
 
       {

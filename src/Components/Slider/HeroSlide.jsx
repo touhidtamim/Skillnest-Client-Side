@@ -90,17 +90,15 @@ const slides = [
 ];
 
 const HeroSlide = () => {
-  const progressCircle = useRef(null); // Ref for progress circle svg
-  const progressContent = useRef(null); // Ref for progress text
-  const swiperRef = useRef(null); // Swiper instance ref
+  const progressCircle = useRef(null);
+  const progressContent = useRef(null);
+  const swiperRef = useRef(null);
 
-  // Update progress circle and countdown text on autoplay time left event
   const onAutoplayTimeLeft = (swiper, time, progress) => {
     progressCircle.current.style.setProperty("--progress", 1 - progress);
     progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
   };
 
-  // Handle CTA button clicks: scroll or navigate or show alert if path empty
   const handleCTAClick = (path) => {
     if (!path) {
       Swal.fire({
@@ -113,65 +111,58 @@ const HeroSlide = () => {
     }
 
     if (path.startsWith("/")) {
-      window.location.href = path; // Redirect to path
+      window.location.href = path;
     } else {
       scroller.scrollTo(path, {
         duration: 800,
-        delay: 0,
         smooth: "easeInOutQuart",
-        offset: -70, // Offset for fixed header
+        offset: -70,
       });
     }
   };
 
   return (
-    <section className="w-full rounded-2xl relative overflow-hidden">
+    <section className="w-full  relative overflow-hidden">
       <Swiper
         ref={swiperRef}
         spaceBetween={30}
         centeredSlides={true}
         loop={true}
-        autoplay={{
-          delay: 5000,
-          disableOnInteraction: false,
-        }}
-        pagination={{
-          clickable: true,
-          dynamicBullets: true,
-        }}
+        autoplay={{ delay: 5000, disableOnInteraction: false }}
+        pagination={{ clickable: true, dynamicBullets: true }}
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
         onAutoplayTimeLeft={onAutoplayTimeLeft}
-        className="hero-swiper"
         onMouseEnter={() => swiperRef.current?.swiper.autoplay.stop()}
         onMouseLeave={() => swiperRef.current?.swiper.autoplay.start()}
+        className="hero-swiper"
       >
-        {/* Render each slide */}
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>
-            <div className={`bg-gradient-to-r ${slide.bgGradient} h-full`}>
-              <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-16 lg:py-24">
+            <div
+              className={`bg-gradient-to-r ${slide.bgGradient} h-[60vh] flex items-center`}
+            >
+              <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-4 sm:gap-6 lg:gap-10 max-w-7xl mx-auto px-4 sm:px-6 md:px-12 lg:px-20 py-6 sm:py-8 md:py-12 lg:py-16 h-full">
                 <motion.div
                   initial={{ opacity: 0, x: -50 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8, ease: "easeOut" }}
                   className="text-center lg:text-left"
                 >
-                  <h1 className="text-4xl md:text-5xl font-extrabold text-[#43727A] leading-snug mb-6 max-w-2xl mx-auto lg:mx-0">
+                  <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-5xl font-extrabold text-[#43727A] leading-snug mb-3 sm:mb-4 max-w-2xl mx-auto lg:mx-0">
                     {slide.title}
                   </h1>
-                  <p className="text-lg md:text-xl text-[#1E1E1E] mb-8 max-w-xl mx-auto lg:mx-0">
+                  <p className="text-sm sm:text-base md:text-lg text-[#1E1E1E] mb-4 sm:mb-6 max-w-xl mx-auto lg:mx-0">
                     {slide.subtitle}
                   </p>
-                  <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
-                    {/* Render CTAs */}
+                  <div className="flex flex-wrap gap-3 sm:gap-4 justify-center lg:justify-start">
                     {slide.ctas.map((cta, i) => (
                       <motion.button
                         key={i}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={() => handleCTAClick(cta.path)}
-                        className={`px-6 py-3 cursor-pointer text-sm sm:text-base rounded-full font-semibold shadow-sm hover:shadow-md transition-all duration-300 ${cta.color} ${cta.textColor}`}
+                        className={`px-4 py-2 sm:px-6 sm:py-3 text-xs sm:text-sm rounded-full font-semibold shadow-sm hover:shadow-md transition-all duration-300 ${cta.color} ${cta.textColor}`}
                       >
                         {cta.label}
                       </motion.button>
@@ -179,18 +170,17 @@ const HeroSlide = () => {
                   </div>
                 </motion.div>
 
-                {/* Slide image */}
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
                   className="flex justify-center"
                 >
-                  <div className="bg-white/60 p-4 rounded-2xl shadow-md">
+                  <div className="bg-white/60 p-2 sm:p-4 rounded-2xl shadow-md">
                     <img
                       src={slide.img}
                       alt="Slide"
-                      className="max-h-[350px] md:max-h-[450px] w-auto object-contain"
+                      className="max-h-[150px] sm:max-h-[200px] md:max-h-[320px] w-auto object-contain"
                     />
                   </div>
                 </motion.div>
@@ -199,7 +189,6 @@ const HeroSlide = () => {
           </SwiperSlide>
         ))}
 
-        {/* Autoplay progress indicator */}
         <div className="autoplay-progress" slot="container-end">
           <svg viewBox="0 0 48 48" ref={progressCircle}>
             <circle cx="24" cy="24" r="20"></circle>
@@ -208,7 +197,6 @@ const HeroSlide = () => {
         </div>
       </Swiper>
 
-      {/* Swiper custom styles */}
       <style jsx global>{`
         .hero-swiper {
           --swiper-theme-color: #43727a;

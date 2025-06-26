@@ -1,10 +1,10 @@
 import React from "react";
-import PlatformStats from "../Components/PlatformStats";
-import HowItWorks from "../Components/HowItWorks";
-import Testimonials from "../Components/Testimonials";
-import TopFreelancersClients from "../Components/MentionTopRated";
-import HeroSlide from "../Components/HeroSlide";
-import FeaturedTasks from "../Components/FeaturedTask";
+import FeaturedTasks from "./FeaturedTask";
+import TopFreelancersClients from "./MentionTopRated";
+import PlatformStats from "./PlatformStats";
+import Testimonials from "./Testimonials";
+import HowItWorks from "../../Components/HowItWorks/HowItWorks";
+import HeroSlide from "./../../Components/Slider/HeroSlide";
 
 const Home = () => {
   return (

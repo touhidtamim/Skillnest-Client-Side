@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-const BrowseTasks = () => {
+const ExploreJobs = () => {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -124,4 +124,4 @@ const BrowseTasks = () => {
   );
 };
 
-export default BrowseTasks;
+export default ExploreJobs;
