@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Register = () => {
-  const { createUser, updateUser, googleSignIn, user } =
+  const { createUser, updateUser, googleSignIn, user, darkMode } =
     useContext(AuthContext);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -15,6 +15,7 @@ const Register = () => {
     hasNumber: false,
   });
   const [showPassword, setShowPassword] = useState(false);
+  const [userType, setUserType] = useState("freelancer");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -54,13 +55,19 @@ const Register = () => {
       setIsLoading(true);
       setError("");
       await createUser(email, password);
-      await updateUser({ displayName: name, photoURL: photo });
+      await updateUser({
+        displayName: name,
+        photoURL: photo,
+        metadata: { userType }, // Store user type in metadata
+      });
 
       await Swal.fire({
         title: "Registration Successful!",
-        text: "Your account has been created successfully",
+        text: `Your ${userType} account has been created successfully`,
         icon: "success",
         confirmButtonColor: "#0d9488",
+        background: darkMode ? "#1f2937" : "#fff",
+        color: darkMode ? "#fff" : "#000",
       });
 
       navigate("/");
@@ -94,6 +101,8 @@ const Register = () => {
         text: "You've been logged in with Google",
         icon: "success",
         confirmButtonColor: "#0d9488",
+        background: darkMode ? "#1f2937" : "#fff",
+        color: darkMode ? "#fff" : "#000",
       });
 
       navigate("/");
@@ -109,7 +118,7 @@ const Register = () => {
       <div
         className={`w-4 h-4 rounded-full mr-2 flex items-center justify-center ${
           valid ? "bg-teal-100 text-teal-500" : "bg-gray-100 text-gray-400"
-        }`}
+        } ${darkMode ? "dark:bg-gray-600" : ""}`}
       >
         {valid && (
           <svg
@@ -128,82 +137,181 @@ const Register = () => {
           </svg>
         )}
       </div>
-      <span className={`text-xs ${valid ? "text-gray-700" : "text-gray-500"}`}>
+      <span
+        className={`text-xs ${
+          valid
+            ? "text-gray-700 dark:text-gray-300"
+            : "text-gray-500 dark:text-gray-400"
+        }`}
+      >
         {text}
       </span>
     </div>
   );
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4">
-      <div className="w-full max-w-md">
-        <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
-          <div className="text-center mb-6">
-            <h2 className="text-2xl font-bold text-gray-800">Create Account</h2>
-            <p className="text-gray-500 mt-1">Join our community today</p>
-          </div>
+    <div
+      className={`min-h-screen ${
+        darkMode ? "bg-gray-900 text-gray-100" : "bg-gray-50 text-gray-800"
+      } py-12 px-4 transition-colors duration-300`}
+    >
+      <div className="max-w-4xl mx-auto">
+        {/* Common heading section */}
+        <div className="text-center mb-10">
+          <h1 className="text-3xl font-bold text-gray-800 dark:text-white mb-2">
+            Join Our Community
+          </h1>
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            Create your account and get started as a freelancer or client
+          </p>
+        </div>
 
+        <div
+          className={`${
+            darkMode
+              ? "bg-gray-800 border-gray-700"
+              : "bg-white border-gray-200"
+          } p-8 rounded-xl shadow-sm border transition-colors duration-300`}
+        >
           {error && (
-            <div className="mb-4 p-3 text-sm text-rose-600 bg-rose-50 rounded-lg">
+            <div
+              className={`mb-6 p-3 text-sm rounded-lg ${
+                darkMode ? "bg-red-900 text-red-100" : "bg-red-50 text-red-600"
+              }`}
+            >
               {error}
             </div>
           )}
 
-          <form onSubmit={handleRegister} className="space-y-4">
-            <div>
-              <label
-                htmlFor="name"
-                className="block text-sm text-gray-600 mb-1"
-              >
-                Full Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                placeholder="Jhon Doe"
-                required
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
-              />
+          <form onSubmit={handleRegister} className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Left Column */}
+              <div className="space-y-4">
+                <div>
+                  <label
+                    htmlFor="name"
+                    className={`block text-sm font-medium mb-1 ${
+                      darkMode ? "text-gray-300" : "text-gray-700"
+                    }`}
+                  >
+                    Full Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="John Doe"
+                    required
+                    className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent ${
+                      darkMode
+                        ? "bg-gray-700 border-gray-600 text-white placeholder-gray-400"
+                        : "border-gray-300"
+                    }`}
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="photo"
+                    className={`block text-sm font-medium mb-1 ${
+                      darkMode ? "text-gray-300" : "text-gray-700"
+                    }`}
+                  >
+                    Photo URL (optional)
+                  </label>
+                  <input
+                    type="text"
+                    id="photo"
+                    name="photo"
+                    placeholder="https://example.com/photo.jpg"
+                    className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent ${
+                      darkMode
+                        ? "bg-gray-700 border-gray-600 text-white placeholder-gray-400"
+                        : "border-gray-300"
+                    }`}
+                  />
+                </div>
+              </div>
+
+              {/* Right Column */}
+              <div className="space-y-4">
+                <div>
+                  <label
+                    htmlFor="email"
+                    className={`block text-sm font-medium mb-1 ${
+                      darkMode ? "text-gray-300" : "text-gray-700"
+                    }`}
+                  >
+                    Email Address
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="your@email.com"
+                    required
+                    className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent ${
+                      darkMode
+                        ? "bg-gray-700 border-gray-600 text-white placeholder-gray-400"
+                        : "border-gray-300"
+                    }`}
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="userType"
+                    className={`block text-sm font-medium mb-1 ${
+                      darkMode ? "text-gray-300" : "text-gray-700"
+                    }`}
+                  >
+                    I want to join as
+                  </label>
+                  <div className="relative">
+                    <select
+                      id="userType"
+                      value={userType}
+                      onChange={(e) => setUserType(e.target.value)}
+                      className={`w-full px-4 py-3 border rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent ${
+                        darkMode
+                          ? "bg-gray-700 border-gray-600 text-white"
+                          : "border-gray-300"
+                      }`}
+                    >
+                      <option value="freelancer">Freelancer</option>
+                      <option value="client">Client</option>
+                    </select>
+                    <div
+                      className={`absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none ${
+                        darkMode ? "text-gray-300" : "text-gray-500"
+                      }`}
+                    >
+                      <svg
+                        className="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M19 9l-7 7-7-7"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div>
-              <label
-                htmlFor="email"
-                className="block text-sm text-gray-600 mb-1"
-              >
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="your@email.com"
-                required
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
-              />
-            </div>
-
-            <div>
-              <label
-                htmlFor="photo"
-                className="block text-sm text-gray-600 mb-1"
-              >
-                Photo URL (optional)
-              </label>
-              <input
-                type="text"
-                id="photo"
-                name="photo"
-                placeholder="https://example.com/photo.jpg"
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
-              />
-            </div>
-
+            {/* Password (full width) */}
             <div>
               <label
                 htmlFor="password"
-                className="block text-sm text-gray-600 mb-1"
+                className={`block text-sm font-medium mb-1 ${
+                  darkMode ? "text-gray-300" : "text-gray-700"
+                }`}
               >
                 Password
               </label>
@@ -215,12 +323,20 @@ const Register = () => {
                   placeholder="••••••"
                   required
                   onChange={(e) => validatePassword(e.target.value)}
-                  className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 pr-10"
+                  className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent pr-10 ${
+                    darkMode
+                      ? "bg-gray-700 border-gray-600 text-white placeholder-gray-400"
+                      : "border-gray-300"
+                  }`}
                 />
                 <button
                   type="button"
                   onClick={togglePasswordVisibility}
-                  className="absolute  inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600 cursor-pointer"
+                  className={`absolute inset-y-0 right-0 pr-3 flex items-center ${
+                    darkMode
+                      ? "text-gray-400 hover:text-gray-300"
+                      : "text-gray-500 hover:text-gray-600"
+                  } cursor-pointer`}
                   aria-label={showPassword ? "Hide password" : "Show password"}
                 >
                   {showPassword ? (
@@ -262,7 +378,7 @@ const Register = () => {
                   )}
                 </button>
               </div>
-              <div className="mt-2">
+              <div className="mt-2 grid grid-cols-2 gap-2">
                 <ValidationItem
                   valid={passwordValidation.hasUpper}
                   text="Uppercase letter"
@@ -277,58 +393,80 @@ const Register = () => {
                 />
                 <ValidationItem
                   valid={passwordValidation.hasLength}
-                  text="Minimum 6 characters"
+                  text="6+ characters"
                 />
               </div>
             </div>
 
-            <button
-              type="submit"
-              disabled={isLoading}
-              className={`w-full cursor-pointer py-3 px-4 bg-teal-600 text-white rounded-lg flex items-center justify-center ${
-                isLoading ? "opacity-80" : "hover:bg-teal-700"
-              }`}
-            >
-              {isLoading ? (
-                <>
-                  <svg
-                    className="animate-spin -ml-1 mr-2 h-4 w-4 text-white "
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <circle
-                      className="opacity-25"
-                      cx="12"
-                      cy="12"
-                      r="10"
-                      stroke="currentColor"
-                      strokeWidth="4"
-                    ></circle>
-                    <path
-                      className="opacity-75"
-                      fill="currentColor"
-                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                    ></path>
-                  </svg>
-                  Creating account...
-                </>
-              ) : (
-                "Register"
-              )}
-            </button>
+            <div className="pt-2">
+              <button
+                type="submit"
+                disabled={isLoading}
+                className={`w-full py-3 px-4 bg-teal-600 hover:bg-teal-700 text-white rounded-lg flex items-center justify-center font-medium ${
+                  isLoading ? "opacity-80" : ""
+                }`}
+              >
+                {isLoading ? (
+                  <>
+                    <svg
+                      className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      ></circle>
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                      ></path>
+                    </svg>
+                    Creating account...
+                  </>
+                ) : (
+                  `Sign up as ${
+                    userType === "freelancer" ? "a Freelancer" : "a Client"
+                  }`
+                )}
+              </button>
+            </div>
           </form>
 
           <div className="my-6 flex items-center">
-            <div className="flex-1 border-t border-gray-200"></div>
-            <span className="px-3 text-sm text-gray-400">or</span>
-            <div className="flex-1 border-t border-gray-200"></div>
+            <div
+              className={`flex-1 border-t ${
+                darkMode ? "border-gray-700" : "border-gray-200"
+              }`}
+            ></div>
+            <span
+              className={`px-3 text-sm ${
+                darkMode ? "text-gray-400" : "text-gray-500"
+              }`}
+            >
+              or continue with
+            </span>
+            <div
+              className={`flex-1 border-t ${
+                darkMode ? "border-gray-700" : "border-gray-200"
+              }`}
+            ></div>
           </div>
 
           <button
             onClick={handleGoogle}
             disabled={isLoading}
-            className="w-full cursor-pointer flex items-center justify-center py-2.5 px-4 border border-gray-200 rounded-lg bg-white hover:bg-gray-50"
+            className={`w-full flex items-center justify-center py-2.5 px-4 border rounded-lg font-medium ${
+              darkMode
+                ? "bg-gray-700 border-gray-600 hover:bg-gray-600 text-white"
+                : "bg-white border-gray-200 hover:bg-gray-50"
+            }`}
           >
             <svg
               className="w-5 h-5 mr-3"
@@ -352,16 +490,20 @@ const Register = () => {
                 fill="#EA4335"
               />
             </svg>
-            Continue with Google
+            Google
           </button>
 
-          <div className="mt-6 text-center text-sm text-gray-500">
+          <div
+            className={`mt-6 text-center text-sm ${
+              darkMode ? "text-gray-400" : "text-gray-500"
+            }`}
+          >
             Already have an account?{" "}
             <Link
-              to="/skillnest/login"
-              className="text-teal-600 font-semibold hover:underline"
+              to="/login"
+              className="text-teal-600 font-semibold hover:underline dark:text-teal-400"
             >
-              Login
+              Sign in
             </Link>
           </div>
         </div>

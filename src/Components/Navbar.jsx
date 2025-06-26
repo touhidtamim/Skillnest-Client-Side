@@ -51,13 +51,13 @@ const Navbar = () => {
   const commonLinks = (
     <>
       <NavLink
-        to="/skillnest/all-tasks"
+        to="/all-tasks"
         className={({ isActive }) => (isActive ? activeClass : normalClass)}
       >
         Browse Tasks
       </NavLink>
       <NavLink
-        to="/skillnest/add-task"
+        to="/add-task"
         className={({ isActive }) => (isActive ? activeClass : normalClass)}
       >
         Add Task
@@ -69,13 +69,13 @@ const Navbar = () => {
   const authLinks = (
     <>
       <NavLink
-        to="/skillnest/my-task"
+        to="/my-task"
         className={({ isActive }) => (isActive ? activeClass : normalClass)}
       >
         My Tasks
       </NavLink>
       <NavLink
-        to="/skillnest/my-profile"
+        to="/my-profile"
         className={({ isActive }) => (isActive ? activeClass : normalClass)}
       >
         My Profile
@@ -87,19 +87,19 @@ const Navbar = () => {
   const guestLinks = (
     <>
       <NavLink
-        to="/skillnest/about"
+        to="/about"
         className={({ isActive }) => (isActive ? activeClass : normalClass)}
       >
         About Us
       </NavLink>
       <NavLink
-        to="/skillnest/faq"
+        to="/faq"
         className={({ isActive }) => (isActive ? activeClass : normalClass)}
       >
         FAQ
       </NavLink>
       <NavLink
-        to="/skillnest/contact"
+        to="/contact"
         className={({ isActive }) => (isActive ? activeClass : normalClass)}
       >
         Contact
@@ -192,7 +192,7 @@ const Navbar = () => {
                     }
                     alt="avatar"
                     className="h-9 w-9 rounded-full border-2 border-blue-500 object-cover cursor-pointer"
-                    onClick={() => navigate("/skillnest/my-profile")}
+                    onClick={() => navigate("/my-profile")}
                   />
                   <Tooltip
                     anchorId="user-avatar"
@@ -217,13 +217,13 @@ const Navbar = () => {
               ) : (
                 <>
                   <Link
-                    to="/skillnest/login"
+                    to="/login"
                     className="text-base font-semibold px-4 py-1.5 border border-[#F4C22C] text-[#F4C22C] hover:bg-[#efdfb1] rounded"
                   >
                     Login
                   </Link>
                   <Link
-                    to="/skillnest/register"
+                    to="/register"
                     className="text-base font-semibold px-4 py-1.5 bg-teal-500 text-white rounded hover:bg-teal-600"
                   >
                     Register
@@ -244,7 +244,7 @@ const Navbar = () => {
                     }
                     alt="avatar"
                     className="h-9 w-9 rounded-full border-2 border-blue-500 cursor-pointer"
-                    onClick={() => navigate("/skillnest/my-profile")}
+                    onClick={() => navigate("/my-profile")}
                   />
                   <Tooltip
                     anchorId="mobile-avatar"
@@ -256,7 +256,7 @@ const Navbar = () => {
                 </>
               ) : (
                 <Link
-                  to="/skillnest/login"
+                  to="/login"
                   className="text-base font-semibold px-3 py-1 border border-[#43727A] text-[#43727A] hover:bg-teal-100 hover:text-black rounded"
                 >
                   Login

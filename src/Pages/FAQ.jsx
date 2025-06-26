@@ -231,7 +231,7 @@ const FAQ = () => {
         </p>
         <div className="flex justify-center gap-4">
           <Link
-            to="/skillnest/contact"
+            to="/contact"
             className="bg-teal-600 hover:bg-teal-700 text-white font-medium py-2 px-6 rounded-lg transition"
           >
             Contact Support

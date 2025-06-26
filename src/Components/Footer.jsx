@@ -3,7 +3,7 @@ import { Facebook, Twitter, Instagram, Github, Mail } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-black text-gray-300 border-t border-gray-800 mt-12 dark:bg-gray-900 dark:border-gray-700">
+    <footer className="bg-black text-gray-300 border-t border-gray-800  dark:bg-gray-900 dark:border-gray-700">
       <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-10">
         {/* Logo & description */}
         <div className="space-y-4">
@@ -32,25 +32,25 @@ const Footer = () => {
           </h3>
           <div className="space-y-2">
             <Link
-              to="/skillnest/all-tasks"
+              to="/all-tasks"
               className="block text-gray-400 hover:text-[#7adce6] dark:hover:text-[#9ee5ec] transition-all duration-200 hover:pl-1 hover:glow-text"
             >
               Browse Tasks
             </Link>
             <Link
-              to="/skillnest/about"
+              to="/about"
               className="block text-gray-400 hover:text-[#7adce6] dark:hover:text-[#9ee5ec] transition-all duration-200 hover:pl-1 hover:glow-text"
             >
               About Us
             </Link>
             <Link
-              to="/skillnest/contact"
+              to="/contact"
               className="block text-gray-400 hover:text-[#7adce6] dark:hover:text-[#9ee5ec] transition-all duration-200 hover:pl-1 hover:glow-text"
             >
               Contact Us
             </Link>
             <Link
-              to="/skillnest/faq"
+              to="/faq"
               className="block text-gray-400 hover:text-[#7adce6] dark:hover:text-[#9ee5ec] transition-all duration-200 hover:pl-1 hover:glow-text"
             >
               FAQ
@@ -65,13 +65,13 @@ const Footer = () => {
           </h3>
           <div className="space-y-2">
             <Link
-              to="/skillnest/privacy-policy"
+              to="/privacy-policy"
               className="block text-gray-400 hover:text-[#7adce6] dark:hover:text-[#9ee5ec] transition-all duration-200 hover:pl-1 hover:glow-text"
             >
               Privacy Policy
             </Link>
             <Link
-              to="/skillnest/terms-conditions"
+              to="/terms-conditions"
               className="block text-gray-400 hover:text-[#7adce6] dark:hover:text-[#9ee5ec] transition-all duration-200 hover:pl-1 hover:glow-text"
             >
               Terms & Conditions

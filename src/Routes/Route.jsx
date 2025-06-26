@@ -29,12 +29,12 @@ const router = createBrowserRouter([
       },
 
       {
-        path: "/skillnest/all-tasks",
+        path: "/all-tasks",
         element: <BrowseTask></BrowseTask>,
       },
 
       {
-        path: "/skillnest/all-tasks/:id",
+        path: "/all-tasks/:id",
         element: (
           <PrivateRouter>
             <TaskDetails></TaskDetails>
@@ -43,7 +43,7 @@ const router = createBrowserRouter([
       },
 
       {
-        path: "/skillnest/add-task",
+        path: "/add-task",
         element: (
           <PrivateRouter>
             <AddTask></AddTask>
@@ -52,7 +52,7 @@ const router = createBrowserRouter([
       },
 
       {
-        path: "/skillnest/my-task",
+        path: "/my-task",
         element: (
           <PrivateRouter>
             <MyTask></MyTask>
@@ -61,7 +61,7 @@ const router = createBrowserRouter([
       },
 
       {
-        path: "/skillnest/update-task/:id",
+        path: "/update-task/:id",
         element: (
           <PrivateRouter>
             <UpdateTask></UpdateTask>
@@ -70,7 +70,7 @@ const router = createBrowserRouter([
       },
 
       {
-        path: "/skillnest/my-profile",
+        path: "/my-profile",
         element: (
           <PrivateRouter>
             <MyProfile></MyProfile>
@@ -79,37 +79,37 @@ const router = createBrowserRouter([
       },
 
       {
-        path: "/skillnest/contact",
+        path: "/contact",
         element: <Contact></Contact>,
       },
 
       {
-        path: "/skillnest/about",
+        path: "/about",
         element: <About></About>,
       },
 
       {
-        path: "/skillnest/faq",
+        path: "/faq",
         element: <FAQ></FAQ>,
       },
 
       {
-        path: "/skillnest/privacy-policy",
+        path: "/privacy-policy",
         element: <PrivacyPolicy></PrivacyPolicy>,
       },
 
       {
-        path: "/skillnest/terms-conditions",
+        path: "/terms-conditions",
         element: <TermsAndConditions></TermsAndConditions>,
       },
 
       {
-        path: "/skillnest/login",
+        path: "/login",
         element: <Login></Login>,
       },
 
       {
-        path: "/skillnest/register",
+        path: "/register",
         element: <Register></Register>,
       },
     ],

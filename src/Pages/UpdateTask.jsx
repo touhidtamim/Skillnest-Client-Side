@@ -43,9 +43,7 @@ const UpdateTask = () => {
 
     const fetchTask = async () => {
       try {
-        const response = await fetch(
-          `https://skillnest-server-side.vercel.app/tasks/${id}`
-        );
+        const response = await fetch(`http://localhost:5000/tasks/${id}`);
         if (!response.ok) throw new Error("Task not found");
 
         const data = await response.json();
@@ -65,7 +63,7 @@ const UpdateTask = () => {
           icon: "error",
           confirmButtonText: "OK",
         });
-        navigate("/skillnest/my-task");
+        navigate("/my-task");
       } finally {
         setLoading(false);
       }
@@ -92,17 +90,14 @@ const UpdateTask = () => {
         throw new Error("Please fill in all required fields");
       }
 
-      const response = await fetch(
-        `https://skillnest-server-side.vercel.app/tasks/${id}`,
-        {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            ...taskData,
-            budget: parseFloat(taskData.budget) || 0,
-          }),
-        }
-      );
+      const response = await fetch(`http://localhost:5000/tasks/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...taskData,
+          budget: parseFloat(taskData.budget) || 0,
+        }),
+      });
 
       if (!response.ok) throw new Error("Failed to update task");
 
@@ -114,7 +109,7 @@ const UpdateTask = () => {
         showConfirmButton: false,
       });
 
-      navigate("/skillnest/my-task");
+      navigate("/my-task");
     } catch (error) {
       Swal.fire({
         title: "Error!",

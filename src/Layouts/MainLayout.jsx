@@ -19,7 +19,7 @@ const MainLayout = () => {
       {navigation.state === "loading" && <Spinner />}
 
       {/* Main content area with responsive width */}
-      <div className="md:w-11/12 mx-auto min-h-screen">
+      <div className="min-h-screen">
         <Outlet /> {/* Render matched child routes */}
       </div>
 

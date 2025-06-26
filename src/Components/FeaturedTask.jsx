@@ -8,7 +8,7 @@ const FeaturedTasks = () => {
 
   useEffect(() => {
     // Fetch featured tasks on mount
-    fetch("https://skillnest-server-side.vercel.app/featured-tasks")
+    fetch("http://localhost:5000/featured-tasks")
       .then((res) => res.json())
       .then((data) => {
         setTasks(data);
@@ -86,7 +86,7 @@ const FeaturedTasks = () => {
                 {/* View details button */}
                 <div className="px-6 pb-6">
                   <Link
-                    to={`/skillnest/all-tasks/${task._id}`}
+                    to={`/all-tasks/${task._id}`}
                     className="block text-center w-full px-4 py-2 bg-gradient-to-r from-teal-500 to-teal-600 text-white font-medium rounded-full hover:from-teal-600 hover:to-teal-700 transition"
                   >
                     View Details
@@ -100,7 +100,7 @@ const FeaturedTasks = () => {
         {/* Browse all tasks button */}
         <div className="mt-16 text-center">
           <button
-            onClick={() => navigate("/skillnest/all-tasks")}
+            onClick={() => navigate("/all-tasks")}
             className="relative cursor-pointer px-8 py-3 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-full font-medium shadow-md hover:shadow-lg transition-all overflow-hidden group"
           >
             <span className="relative z-10">Browse All Tasks</span>

@@ -174,7 +174,7 @@ const Login = () => {
 
             <div className="text-left text-sm">
               <Link
-                to="/skillnest/forgot-password"
+                to="/forgot-password"
                 className="text-teal-600 hover:text-teal-500 hover:underline"
               >
                 Forgot password?
@@ -258,7 +258,7 @@ const Login = () => {
           <p className="mt-6 text-center text-sm text-gray-600">
             Don't have an account?{" "}
             <Link
-              to="/skillnest/register"
+              to="/register"
               className="text-teal-600 hover:text-teal-500 font-semibold hover:underline"
             >
               Register

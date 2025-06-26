@@ -16,9 +16,7 @@ const MyTask = () => {
 
     setLoading(true);
     fetch(
-      `https://skillnest-server-side.vercel.app/my-tasks?email=${encodeURIComponent(
-        userEmail
-      )}`
+      `http://localhost:5000/my-tasks?email=${encodeURIComponent(userEmail)}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -44,7 +42,7 @@ const MyTask = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://skillnest-server-side.vercel.app/tasks/${id}`, {
+        fetch(`http://localhost:5000/tasks/${id}`, {
           method: "DELETE",
         })
           .then((res) => {
@@ -62,7 +60,7 @@ const MyTask = () => {
 
   // Show bids count for a task using SweetAlert
   const handleViewBids = (taskId) => {
-    fetch(`https://skillnest-server-side.vercel.app/tasks/${taskId}`)
+    fetch(`http://localhost:5000/tasks/${taskId}`)
       .then((res) => res.json())
       .then((task) => {
         const bidCount = task.bidsCount || 0;
@@ -115,7 +113,7 @@ const MyTask = () => {
                 <td className="p-2 border border-gray-300">${budget}</td>
                 <td className="p-2 border border-gray-300 space-x-1 flex flex-wrap gap-2">
                   <button
-                    onClick={() => navigate(`/skillnest/update-task/${_id}`)}
+                    onClick={() => navigate(`/update-task/${_id}`)}
                     className="bg-blue-500 text-white px-3 py-1 rounded flex-1 min-w-[70px] text-center hover:bg-blue-600 transition"
                   >
                     Update
