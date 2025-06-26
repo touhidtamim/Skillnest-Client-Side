@@ -25,6 +25,14 @@ const AddTask = () => {
     "Other",
   ];
 
+  // Urgency levels
+  const urgencyLevels = [
+    { value: "low", label: "Low (1-2 weeks)" },
+    { value: "medium", label: "Medium (3-7 days)" },
+    { value: "high", label: "High (1-3 days)" },
+    { value: "urgent", label: "Urgent (24 hours)" },
+  ];
+
   // Handle form submission to add a new task
   const handleAddTask = async (e) => {
     e.preventDefault();
@@ -40,8 +48,17 @@ const AddTask = () => {
       description: formData.get("description"),
       deadline: formData.get("deadline"),
       budget: parseFloat(formData.get("budget")),
+      image: formData.get("image"),
+      skillsRequired: formData
+        .get("skillsRequired")
+        .split(",")
+        .map((skill) => skill.trim()),
+      urgency: formData.get("urgency"),
+      proposalCount: 0, // Initialize with 0 proposals
       email: user?.email,
       name: user?.displayName,
+      status: "open", // Default status
+      createdAt: new Date().toISOString(),
     };
 
     try {
@@ -79,75 +96,66 @@ const AddTask = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-lg">
-      <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
+    <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-lg">
+      <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
         Add a New Task
       </h2>
-      <form onSubmit={handleAddTask} className="space-y-5">
-        {/* Task Title Input */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Task Title
-          </label>
-          <input
-            type="text"
-            name="title"
-            placeholder="e.g. Build a responsive website"
-            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-            required
-          />
-        </div>
-
-        {/* Category Select */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Category
-          </label>
-          <select
-            name="category"
-            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-            required
-          >
-            <option value="">Select a category</option>
-            {categories.map((category, index) => (
-              <option key={index} value={category}>
-                {category}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        {/* Description Textarea */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Description
-          </label>
-          <textarea
-            name="description"
-            placeholder="Describe your task in detail..."
-            rows="4"
-            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-            required
-          />
-        </div>
-
-        {/* Deadline and Budget Inputs */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <form onSubmit={handleAddTask} className="space-y-6">
+        {/* First Row - Title and Category */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Task Title Input */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              Deadline
+              Task Title *
             </label>
             <input
-              type="date"
-              name="deadline"
-              min={new Date().toISOString().split("T")[0]}
+              type="text"
+              name="title"
+              placeholder="e.g. Build a responsive website"
               className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               required
             />
           </div>
+
+          {/* Category Select */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              Budget ($)
+              Category *
+            </label>
+            <select
+              name="category"
+              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              required
+            >
+              <option value="">Select a category</option>
+              {categories.map((category, index) => (
+                <option key={index} value={category}>
+                  {category}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+
+        {/* Second Row - Image and Budget */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Image Upload */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Task Image (URL)
+            </label>
+            <input
+              type="url"
+              name="image"
+              placeholder="https://example.com/image.jpg"
+              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            />
+          </div>
+
+          {/* Budget Input */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Budget ($) *
             </label>
             <input
               type="number"
@@ -161,8 +169,72 @@ const AddTask = () => {
           </div>
         </div>
 
-        {/* Readonly Email and Name */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        {/* Third Row - Deadline and Urgency */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Deadline Input */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Deadline *
+            </label>
+            <input
+              type="date"
+              name="deadline"
+              min={new Date().toISOString().split("T")[0]}
+              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              required
+            />
+          </div>
+
+          {/* Urgency Select */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Urgency Level *
+            </label>
+            <select
+              name="urgency"
+              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              required
+            >
+              <option value="">Select urgency level</option>
+              {urgencyLevels.map((level) => (
+                <option key={level.value} value={level.value}>
+                  {level.label}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+
+        {/* Skills Required */}
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Skills Required (comma separated) *
+          </label>
+          <input
+            type="text"
+            name="skillsRequired"
+            placeholder="e.g. React, Node.js, MongoDB"
+            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            required
+          />
+        </div>
+
+        {/* Description Textarea */}
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Detailed Description *
+          </label>
+          <textarea
+            name="description"
+            placeholder="Describe your task in detail including requirements, deliverables, and any special instructions..."
+            rows="6"
+            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            required
+          />
+        </div>
+
+        {/* Readonly User Info */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Your Email
@@ -188,43 +260,45 @@ const AddTask = () => {
         </div>
 
         {/* Submit Button */}
-        <button
-          type="submit"
-          disabled={loading}
-          className={`w-full py-3 px-4 rounded-lg font-medium text-white transition-colors ${
-            loading
-              ? "bg-teal-400 cursor-not-allowed"
-              : "bg-teal-600 hover:bg-teal-700"
-          }`}
-        >
-          {loading ? (
-            <span className="flex items-center justify-center">
-              <svg
-                className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-              >
-                <circle
-                  className="opacity-25"
-                  cx="12"
-                  cy="12"
-                  r="10"
-                  stroke="currentColor"
-                  strokeWidth="4"
-                ></circle>
-                <path
-                  className="opacity-75"
-                  fill="currentColor"
-                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                ></path>
-              </svg>
-              Processing...
-            </span>
-          ) : (
-            "Add Task"
-          )}
-        </button>
+        <div className="pt-4">
+          <button
+            type="submit"
+            disabled={loading}
+            className={`w-full py-3 px-4 rounded-lg font-medium text-white transition-colors ${
+              loading
+                ? "bg-teal-400 cursor-not-allowed"
+                : "bg-teal-600 hover:bg-teal-700"
+            }`}
+          >
+            {loading ? (
+              <span className="flex items-center justify-center">
+                <svg
+                  className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  ></circle>
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  ></path>
+                </svg>
+                Processing...
+              </span>
+            ) : (
+              "Publish Task"
+            )}
+          </button>
+        </div>
       </form>
     </div>
   );

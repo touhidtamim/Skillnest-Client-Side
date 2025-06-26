@@ -187,7 +187,7 @@ const Navbar = () => {
                     }
                     alt="User profile"
                     className="h-9 w-9 rounded-full border-2 border-blue-500 object-cover cursor-pointer"
-                    onClick={() => navigate("/my-profile")}
+                    onClick={() => navigate("/dashboard/my-profile")}
                   />
                   <Tooltip
                     anchorId="user-avatar"
@@ -231,7 +231,7 @@ const Navbar = () => {
                     }
                     alt="User profile"
                     className="h-9 w-9 rounded-full border-2 border-blue-500 cursor-pointer"
-                    onClick={() => navigate("/my-profile")}
+                    onClick={() => navigate("/dashboard/my-profile")}
                   />
                   <Tooltip
                     anchorId="mobile-avatar"

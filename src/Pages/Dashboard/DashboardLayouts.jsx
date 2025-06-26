@@ -2,53 +2,75 @@ import { NavLink, Outlet } from "react-router-dom";
 
 const DashboardLayout = () => {
   return (
-    <div className="min-h-screen flex">
-      {/* Sidebar */}
-      <aside className="w-64 bg-gray-100 p-4">
-        <h2 className="text-xl font-bold mb-6">Dashboard</h2>
-        <nav className="space-y-2">
+    <div className="min-h-screen bg-gray-50 flex flex-col lg:flex-row">
+      {/* Sidebar (Left on Desktop, Top on Mobile/Tablet) */}
+      <aside className="bg-white shadow-md w-full lg:w-64 px-4 py-4 lg:px-6 lg:py-8 flex flex-col lg:min-h-screen">
+        {/* Title (only on small screens) */}
+        <h2 className="text-2xl font-bold text-gray-800 mb-4 lg:hidden">
+          Dashboard
+        </h2>
+
+        <nav className="flex flex-wrap lg:flex-col gap-2 lg:gap-3 text-sm font-medium">
           <NavLink
             to="/dashboard"
             end
             className={({ isActive }) =>
-              isActive ? "font-bold text-blue-500" : "text-gray-700"
+              `px-4 py-2 rounded-md transition ${
+                isActive
+                  ? "bg-blue-50 text-blue-600 font-semibold"
+                  : "text-gray-600 hover:bg-gray-100"
+              }`
             }
           >
             Overview
           </NavLink>
 
           <NavLink
-            to="/dashboard/add-task"
+            to="/dashboard/my-profile"
             className={({ isActive }) =>
-              isActive ? "font-bold text-blue-500" : "text-gray-700"
+              `px-4 py-2 rounded-md transition ${
+                isActive
+                  ? "bg-blue-50 text-blue-600 font-semibold"
+                  : "text-gray-600 hover:bg-gray-100"
+              }`
             }
           >
-            Add Task
+            My Profile
+          </NavLink>
+
+          <NavLink
+            to="/dashboard/add-task"
+            className={({ isActive }) =>
+              `px-4 py-2 rounded-md transition ${
+                isActive
+                  ? "bg-blue-50 text-blue-600 font-semibold"
+                  : "text-gray-600 hover:bg-gray-100"
+              }`
+            }
+          >
+            Post a Job
           </NavLink>
 
           <NavLink
             to="/dashboard/my-task"
             className={({ isActive }) =>
-              isActive ? "font-bold text-blue-500" : "text-gray-700"
+              `px-4 py-2 rounded-md transition ${
+                isActive
+                  ? "bg-blue-50 text-blue-600 font-semibold"
+                  : "text-gray-600 hover:bg-gray-100"
+              }`
             }
           >
-            My Task
-          </NavLink>
-
-          <NavLink
-            to="/dashboard/my-profile"
-            className={({ isActive }) =>
-              isActive ? "font-bold text-blue-500" : "text-gray-700"
-            }
-          >
-            My Profile
+            My Posted Jobs
           </NavLink>
         </nav>
       </aside>
 
-      {/* Main Content */}
-      <main className="flex-1 p-6 bg-white">
-        <Outlet />
+      {/* Main Content Area */}
+      <main className="flex-1 p-4 lg:p-8 overflow-auto">
+        <div className="max-w-6xl mx-auto">
+          <Outlet />
+        </div>
       </main>
     </div>
   );
