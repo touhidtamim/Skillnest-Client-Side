@@ -3,11 +3,8 @@ import { FaChevronDown, FaChevronUp, FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const FAQ = () => {
-  // State to track currently opened FAQ index
   const [activeIndex, setActiveIndex] = useState(null);
-  // State for search input
   const [searchTerm, setSearchTerm] = useState("");
-  // State for selected FAQ category filter
   const [activeCategory, setActiveCategory] = useState("all");
 
   // FAQ categories list
@@ -133,10 +130,10 @@ const FAQ = () => {
     <div className="max-w-5xl mx-auto py-8 md:py-16 px-4 sm:px-6 lg:px-8">
       {/* Header */}
       <div className="text-center mb-12">
-        <h1 className="text-3xl md:text-4xl font-bold mb-4 text-teal-600">
-          Frequently Asked Questions
+        <h1 className="text-3xl md:text-4xl font-bold mb-4">
+          Frequently <span className="text-teal-600">Asked Questions</span>
         </h1>
-        <p className="text-lg md:text-xl text-gray-600">
+        <p className="text-md md:text-lg text-gray-600">
           Everything you need to know about SkillNest
         </p>
       </div>
@@ -189,7 +186,7 @@ const FAQ = () => {
                 className="w-full cursor-pointer px-6 py-5 text-left focus:outline-none flex justify-between items-center"
                 onClick={() => toggleFAQ(index)}
               >
-                <h2 className="text-lg font-semibold text-gray-800">
+                <h2 className="text-md font-semibold text-gray-800">
                   {faq.question}
                 </h2>
                 <span className="text-teal-600">

@@ -13,8 +13,8 @@ const Contact = () => {
     <div className="max-w-4xl mx-auto py-6 md:py-16 px-6 text-gray-800">
       {/* Header */}
       <div className="text-center mb-12">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4 text-teal-600">
-          Let's Connect
+        <h1 className="text-3xl md:text-4xl font-bold mb-4 ">
+          Let's <span className="text-teal-600">Connect</span>
         </h1>
         <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
           We're excited to hear from you! Whether you have questions, feedback,

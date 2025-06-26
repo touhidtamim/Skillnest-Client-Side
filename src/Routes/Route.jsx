@@ -18,6 +18,7 @@ import ExploreJobs from "../Pages/ExploreJobs/ExploreJobs";
 import Home from "./../Pages/Home/Home";
 import AllFreelancers from "./../Pages/AllFreelancers/AllFreelancers";
 import FreelancerDetails from "../Pages/AllFreelancers/FreelsncersDetails";
+import Dashboard from "../Pages/Dashboard/Dashboard";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,11 @@ const router = createBrowserRouter([
       {
         path: "/all-tasks",
         element: <ExploreJobs />,
+      },
+
+      {
+        path: "/dashboard",
+        element: <Dashboard />,
       },
 
       {

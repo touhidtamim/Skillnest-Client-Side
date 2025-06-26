@@ -11,8 +11,8 @@ const About = () => {
     <div className="max-w-6xl mx-auto py-8 md:py-16 px-6 text-gray-800">
       {/* Hero Section */}
       <div className="text-center mb-16">
-        <h1 className="text-3xl lg:text-4xl md:text-5xl font-bold mb-6 text-teal-600">
-          About SkillNest
+        <h1 className="text-3xl lg:text-4xl md:text-5xl font-bold mb-6 ">
+          About <span className="text-teal-600">SkillNest</span>
         </h1>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
           Where talent meets opportunity in a trusted digital ecosystem

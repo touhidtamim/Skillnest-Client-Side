@@ -54,16 +54,10 @@ const Navbar = () => {
   const authLinks = (
     <>
       <NavLink
-        to="/my-task"
+        to="/dashboard"
         className={({ isActive }) => (isActive ? activeClass : normalClass)}
       >
-        My Tasks
-      </NavLink>
-      <NavLink
-        to="/my-profile"
-        className={({ isActive }) => (isActive ? activeClass : normalClass)}
-      >
-        My Profile
+        Dashboard
       </NavLink>
     </>
   );
@@ -202,7 +196,7 @@ const Navbar = () => {
                   />
                   <button
                     onClick={handleLogout}
-                    className="text-base font-semibold px-4 py-1.5 bg-red-500 text-white rounded hover:bg-red-600"
+                    className="text-base font-semibold cursor-pointer px-4 py-1.5 bg-red-500 text-white rounded hover:bg-red-600"
                   >
                     Logout
                   </button>

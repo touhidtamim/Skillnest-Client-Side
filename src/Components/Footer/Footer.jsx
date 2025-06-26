@@ -34,6 +34,12 @@ const Footer = () => {
               Explore Jobs
             </Link>
             <Link
+              to="/freelancers"
+              className="block text-gray-400 hover:text-teal-400 transition-all duration-200 hover:pl-1"
+            >
+              Hire Experts
+            </Link>
+            <Link
               to="/about"
               className="block text-gray-400 hover:text-teal-400 transition-all duration-200 hover:pl-1"
             >
