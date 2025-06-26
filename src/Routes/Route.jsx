@@ -1,8 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "./../Layouts/MainLayout";
 import NotFound from "../Components/NotFound";
-import AddTask from "../Pages/AddTask";
-import MyTask from "../Pages/MyTask";
 import MyProfile from "./../Pages/MyProfile";
 import Login from "./../Pages/Login";
 import Register from "./../Pages/Register";
@@ -18,7 +16,10 @@ import ExploreJobs from "../Pages/ExploreJobs/ExploreJobs";
 import Home from "./../Pages/Home/Home";
 import AllFreelancers from "./../Pages/AllFreelancers/AllFreelancers";
 import FreelancerDetails from "../Pages/AllFreelancers/FreelsncersDetails";
-import Dashboard from "../Pages/Dashboard/Dashboard";
+import DashboardLayouts from "../Pages/Dashboard/DashboardLayouts";
+import Overview from "./../Pages/Dashboard/Overview";
+import AddTask from "./../Pages/AddTask";
+import MyTask from "./../Pages/MyTask";
 
 const router = createBrowserRouter([
   {
@@ -48,48 +49,44 @@ const router = createBrowserRouter([
 
       {
         path: "/dashboard",
-        element: <Dashboard />,
-      },
+        element: <DashboardLayouts />,
+        children: [
+          {
+            index: true,
+            element: <Overview />,
+          },
+          {
+            path: "add-task",
+            element: <AddTask></AddTask>,
+          },
+          {
+            path: "my-task",
+            element: <MyTask></MyTask>,
+          },
 
-      {
-        path: "/all-tasks/:id",
-        element: <TaskDetails></TaskDetails>,
-      },
+          {
+            path: "all-tasks/:id",
+            element: <TaskDetails></TaskDetails>,
+          },
 
-      {
-        path: "/add-task",
-        element: (
-          <PrivateRouter>
-            <AddTask></AddTask>
-          </PrivateRouter>
-        ),
-      },
+          {
+            path: "update-task/:id",
+            element: (
+              <PrivateRouter>
+                <UpdateTask></UpdateTask>
+              </PrivateRouter>
+            ),
+          },
 
-      {
-        path: "/my-task",
-        element: (
-          <PrivateRouter>
-            <MyTask></MyTask>
-          </PrivateRouter>
-        ),
-      },
-
-      {
-        path: "/update-task/:id",
-        element: (
-          <PrivateRouter>
-            <UpdateTask></UpdateTask>
-          </PrivateRouter>
-        ),
-      },
-
-      {
-        path: "/my-profile",
-        element: (
-          <PrivateRouter>
-            <MyProfile></MyProfile>
-          </PrivateRouter>
-        ),
+          {
+            path: "my-profile",
+            element: (
+              <PrivateRouter>
+                <MyProfile></MyProfile>
+              </PrivateRouter>
+            ),
+          },
+        ],
       },
 
       {
