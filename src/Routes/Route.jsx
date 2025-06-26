@@ -17,6 +17,7 @@ import UpdateTask from "../Pages/UpdateTask";
 import ExploreJobs from "../Pages/ExploreJobs/ExploreJobs";
 import Home from "./../Pages/Home/Home";
 import AllFreelancers from "./../Pages/AllFreelancers/AllFreelancers";
+import FreelancerDetails from "../Pages/AllFreelancers/FreelsncersDetails";
 
 const router = createBrowserRouter([
   {
@@ -35,17 +36,18 @@ const router = createBrowserRouter([
       },
 
       {
+        path: "/freelancers/:id",
+        element: <FreelancerDetails />,
+      },
+
+      {
         path: "/all-tasks",
         element: <ExploreJobs />,
       },
 
       {
         path: "/all-tasks/:id",
-        element: (
-          <PrivateRouter>
-            <TaskDetails></TaskDetails>
-          </PrivateRouter>
-        ),
+        element: <TaskDetails></TaskDetails>,
       },
 
       {

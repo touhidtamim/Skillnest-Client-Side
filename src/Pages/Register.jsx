@@ -402,7 +402,7 @@ const Register = () => {
               <button
                 type="submit"
                 disabled={isLoading}
-                className={`w-full py-3 px-4 bg-teal-600 hover:bg-teal-700 text-white rounded-lg flex items-center justify-center font-medium ${
+                className={`w-full cursor-pointer py-3 px-4 bg-teal-600 hover:bg-teal-700 text-white rounded-lg flex items-center justify-center font-medium ${
                   isLoading ? "opacity-80" : ""
                 }`}
               >
@@ -462,7 +462,7 @@ const Register = () => {
           <button
             onClick={handleGoogle}
             disabled={isLoading}
-            className={`w-full flex items-center justify-center py-2.5 px-4 border rounded-lg font-medium ${
+            className={`w-full cursor-pointer flex items-center justify-center py-2.5 px-4 border rounded-lg font-medium ${
               darkMode
                 ? "bg-gray-700 border-gray-600 hover:bg-gray-600 text-white"
                 : "bg-white border-gray-200 hover:bg-gray-50"
