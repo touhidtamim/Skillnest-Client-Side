@@ -565,7 +565,7 @@ const TaskDetails = () => {
                   disabled={bidLoading}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className={`w-full py-3 px-4 rounded-lg font-medium text-white transition-colors flex items-center justify-center ${
+                  className={`w-full cursor-pointer py-3 px-4 rounded-lg font-medium text-white transition-colors flex items-center justify-center ${
                     bidLoading
                       ? "bg-gray-400 cursor-not-allowed"
                       : "bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700"

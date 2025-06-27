@@ -202,7 +202,7 @@ const ProfilePage = () => {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={() => setEditMode(true)}
-                      className="flex items-center justify-center px-8 py-3 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition min-w-[160px]"
+                      className="flex cursor-pointer items-center justify-center px-8 py-3 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition min-w-[160px]"
                     >
                       <FiEdit className="mr-2" />
                       Edit Profile
@@ -243,7 +243,7 @@ const ProfilePage = () => {
               />
               <button
                 onClick={() => setShowModal(false)}
-                className="absolute -top-4 -right-4 bg-white rounded-full p-1 shadow-md hover:bg-red-100 transition"
+                className="absolute cursor-pointer -top-4 -right-4 bg-white rounded-full p-1 shadow-md hover:bg-red-100 transition"
               >
                 <FiXCircle className="text-red-500 text-2xl" />
               </button>

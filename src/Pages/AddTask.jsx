@@ -267,7 +267,7 @@ const AddTask = () => {
           <button
             type="submit"
             disabled={loading}
-            className={`w-full py-3 px-4 rounded-lg font-medium text-white transition-colors ${
+            className={`w-full cursor-pointer py-3 px-4 rounded-lg font-medium text-white transition-colors ${
               loading
                 ? "bg-teal-400 cursor-not-allowed"
                 : "bg-teal-600 hover:bg-teal-700"

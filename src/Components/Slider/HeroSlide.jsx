@@ -45,7 +45,7 @@ const slides = [
         label: "How It Works",
         color: "bg-white hover:bg-gray-100 border border-[#43727A]",
         textColor: "text-[#43727A]",
-        path: "",
+        path: "how-it-works-section",
       },
     ],
     img: "/Images/Slide2.png",
@@ -162,7 +162,7 @@ const HeroSlide = () => {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={() => handleCTAClick(cta.path)}
-                        className={`px-4 py-2 sm:px-6 sm:py-3 text-xs sm:text-sm rounded-full font-semibold shadow-sm hover:shadow-md transition-all duration-300 ${cta.color} ${cta.textColor}`}
+                        className={`px-4 cursor-pointer py-2 sm:px-6 sm:py-3 text-xs sm:text-sm rounded-full font-semibold shadow-sm hover:shadow-md transition-all duration-300 ${cta.color} ${cta.textColor}`}
                       >
                         {cta.label}
                       </motion.button>

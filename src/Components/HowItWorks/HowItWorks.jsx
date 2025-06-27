@@ -89,7 +89,10 @@ const HowItWorks = () => {
   };
 
   return (
-    <section className="bg-[#FAF7F5] py-8 sm:py-8 md:py-14 px-4 sm:px-8 md:px-12 lg:px-20 border-b border-gray-500">
+    <section
+      id="how-it-works-section"
+      className="bg-[#FAF7F5] py-8 sm:py-8 md:py-14 px-4 sm:px-8 md:px-12 lg:px-20 border-b border-gray-500"
+    >
       <div className="max-w-7xl mx-auto">
         {/* Section header */}
         <motion.div
