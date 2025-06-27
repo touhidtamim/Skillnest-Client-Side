@@ -87,21 +87,70 @@ const TaskDetails = () => {
     },
   };
 
+  // Load task and bids from localStorage when component mounts
   useEffect(() => {
     const fetchTaskData = async () => {
       setLoading(true);
       try {
-        // Fetch task details
-        const taskRes = await fetch(`http://localhost:5000/tasks/${id}`);
-        if (!taskRes.ok) throw new Error("Failed to fetch task");
-        const taskData = await taskRes.json();
+        // For demo purposes, we'll use mock data
+        const mockTask = {
+          _id: id,
+          title: "Website Development Project",
+          description:
+            "We need a professional website built with React and Node.js. The website should have a modern design, responsive layout, and integrate with our existing API. Key features needed:\n\n- User authentication system\n- Product catalog\n- Shopping cart functionality\n- Admin dashboard\n\nPlease provide details about your experience with similar projects in your bid.",
+          budget: 1500,
+          category: "Web Development",
+          skillsRequired: ["React", "Node.js", "MongoDB", "CSS", "JavaScript"],
+          deadline: new Date(
+            Date.now() + 10 * 24 * 60 * 60 * 1000
+          ).toISOString(),
+          createdAt: new Date(
+            Date.now() - 2 * 24 * 60 * 60 * 1000
+          ).toISOString(),
+          status: "open",
+          name: "Sarah Johnson",
+          email: "sarah@techcompany.com",
+          company: "Tech Solutions Inc",
+          urgency: "high",
+          estimatedDuration: "3-5 weeks",
+          image:
+            "https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+        };
 
-        // Fetch bids for this task
-        const bidsRes = await fetch(`http://localhost:5000/tasks/${id}/bids`);
-        const bidsData = await bidsRes.json();
+        setTask(mockTask);
 
-        setTask(taskData);
-        setBids(bidsData);
+        // Load bids from localStorage
+        const savedBids = localStorage.getItem(`task_${id}_bids`);
+        if (savedBids) {
+          setBids(JSON.parse(savedBids));
+        } else {
+          // Initialize with some sample bids if none exist
+          const initialBids = [
+            {
+              _id: "1",
+              amount: 1200,
+              message:
+                "I have 5 years of experience building e-commerce sites with React and Node. I can deliver this project within 4 weeks.",
+              bidderName: "Alex Chen",
+              createdAt: new Date(
+                Date.now() - 1 * 24 * 60 * 60 * 1000
+              ).toISOString(),
+            },
+            {
+              _id: "2",
+              amount: 1350,
+              message:
+                "Our team specializes in MERN stack applications. We can provide ongoing maintenance after project completion.",
+              bidderName: "DevTeam Solutions",
+              createdAt: new Date(
+                Date.now() - 12 * 60 * 60 * 1000
+              ).toISOString(),
+            },
+          ];
+          setBids(initialBids);
+          localStorage.setItem(`task_${id}_bids`, JSON.stringify(initialBids));
+        }
+
         setError(null);
       } catch (err) {
         setError(err.message);
@@ -112,6 +161,13 @@ const TaskDetails = () => {
 
     fetchTaskData();
   }, [id]);
+
+  // Save bids to localStorage whenever bids change
+  useEffect(() => {
+    if (task) {
+      localStorage.setItem(`task_${id}_bids`, JSON.stringify(bids));
+    }
+  }, [bids, id, task]);
 
   const handleBidSubmit = async (e) => {
     e.preventDefault();
@@ -141,44 +197,27 @@ const TaskDetails = () => {
     setBidLoading(true);
 
     try {
-      const res = await fetch(`http://localhost:5000/tasks/${id}/bids`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          amount: amount,
-          message: bidMessage.trim(),
-        }),
-      });
+      // Simulate API call delay
+      await new Promise((resolve) => setTimeout(resolve, 800));
 
-      const data = await res.json();
-
-      if (!res.ok) {
-        throw new Error(data.message || "Failed to place bid");
-      }
-
-      // Ensure the response has the expected structure
-      if (!data._id || !data.amount) {
-        throw new Error("Invalid bid response from server");
-      }
+      // Create new bid object
+      const newBid = {
+        _id: Date.now().toString(),
+        amount: amount,
+        message: bidMessage.trim(),
+        bidderName: "You",
+        createdAt: new Date().toISOString(),
+      };
 
       // Update bids list with the new bid
-      setBids((prevBids) => [
-        ...prevBids,
-        {
-          ...data,
-          bidderName: data.bidderName || "You",
-          createdAt: data.createdAt || new Date().toISOString(),
-        },
-      ]);
+      setBids((prevBids) => [...prevBids, newBid]);
 
       setBidAmount("");
       setBidMessage("");
       toast.success("Bid placed successfully!");
     } catch (err) {
       console.error("Bid submission error:", err);
-      toast.error(err.message || "An error occurred while placing your bid");
+      toast.error("An error occurred while placing your bid");
     } finally {
       setBidLoading(false);
     }
@@ -338,7 +377,7 @@ const TaskDetails = () => {
 
               {/* Task Body */}
               <div className="p-6">
-                {/* Image if available */}
+                {/* Image */}
                 {task.image && (
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}

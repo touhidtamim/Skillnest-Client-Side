@@ -40,7 +40,11 @@ const router = createBrowserRouter([
 
       {
         path: "/freelancers/:id",
-        element: <FreelancerDetails />,
+        element: (
+          <PrivateRouter>
+            <FreelancerDetails />
+          </PrivateRouter>
+        ),
       },
 
       {
@@ -50,12 +54,20 @@ const router = createBrowserRouter([
 
       {
         path: "/all-tasks/:id",
-        element: <TaskDetails></TaskDetails>,
+        element: (
+          <PrivateRouter>
+            <TaskDetails></TaskDetails>
+          </PrivateRouter>
+        ),
       },
 
       {
         path: "/dashboard",
-        element: <DashboardLayouts />,
+        element: (
+          <PrivateRouter>
+            <DashboardLayouts />
+          </PrivateRouter>
+        ),
         children: [
           {
             index: true,
@@ -81,11 +93,7 @@ const router = createBrowserRouter([
 
           {
             path: "my-profile",
-            element: (
-              <PrivateRouter>
-                <MyProfile></MyProfile>
-              </PrivateRouter>
-            ),
+            element: <MyProfile></MyProfile>,
           },
         ],
       },
