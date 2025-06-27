@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import Swal from "sweetalert2";
 
 const FreelancerDetails = () => {
   const { id } = useParams();
@@ -353,6 +354,50 @@ const FreelancerDetails = () => {
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
+                  type="button"
+                  onClick={() => {
+                    const name = document
+                      .querySelector('input[placeholder="John Doe"]')
+                      ?.value.trim();
+                    const email = document
+                      .querySelector('input[placeholder="john@example.com"]')
+                      ?.value.trim();
+                    const message = document
+                      .querySelector(
+                        'textarea[placeholder="Describe your project..."]'
+                      )
+                      ?.value.trim();
+
+                    if (!name || !email || !message) {
+                      Swal.fire({
+                        icon: "error",
+                        title: "Missing Fields",
+                        text: "Please fill in all fields before sending a message.",
+                        timer: 2500,
+                        showConfirmButton: false,
+                      });
+                      return;
+                    }
+
+                    Swal.fire({
+                      icon: "success",
+                      title: "Message Sent!",
+                      text: "Your message has been sent to the freelancer.",
+                      timer: 2500,
+                      showConfirmButton: false,
+                    });
+
+                    // Clear form
+                    document.querySelector(
+                      'input[placeholder="John Doe"]'
+                    ).value = "";
+                    document.querySelector(
+                      'input[placeholder="john@example.com"]'
+                    ).value = "";
+                    document.querySelector(
+                      'textarea[placeholder="Describe your project..."]'
+                    ).value = "";
+                  }}
                   className="w-full cursor-pointer py-3 bg-gradient-to-r from-teal-500 to-teal-600 text-white font-medium rounded-lg hover:from-teal-600 hover:to-teal-700 transition-all"
                 >
                   Send Message
