@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import Swal from "sweetalert2";
 
 const stats = [
   {
@@ -209,6 +210,22 @@ const PlatformStats = () => {
               boxShadow: "0 10px 25px -5px rgba(68, 180, 171, 0.4)",
             }}
             whileTap={{ scale: 0.98 }}
+            onClick={() => {
+              Swal.fire({
+                title: "Coming Soon!",
+                text: "We’re working on adding this feature to our website. Our team is actively building it. Stay tuned!",
+                icon: "info",
+                confirmButtonText: "Okay",
+                confirmButtonColor: "#14b8a6", // teal
+                background: "#fff",
+                width: "360px",
+                customClass: {
+                  popup: "rounded-xl shadow-lg",
+                  title: "text-lg font-semibold",
+                  content: "text-gray-700",
+                },
+              });
+            }}
           >
             <span className="relative z-10">Join Our Community</span>
             <span className="absolute inset-0 bg-gradient-to-r from-teal-600 to-teal-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>

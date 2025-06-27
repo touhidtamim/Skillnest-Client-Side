@@ -20,6 +20,7 @@ import DashboardLayouts from "../Pages/Dashboard/DashboardLayouts";
 import Overview from "./../Pages/Dashboard/Overview";
 import AddTask from "./../Pages/AddTask";
 import MyTask from "./../Pages/MyTask";
+import FindJobs from "../Pages/Dashboard/FindJobs";
 
 const router = createBrowserRouter([
   {
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
           {
             index: true,
             element: <Overview />,
+          },
+          {
+            path: "find-jobs",
+            element: <FindJobs></FindJobs>,
           },
           {
             path: "add-task",

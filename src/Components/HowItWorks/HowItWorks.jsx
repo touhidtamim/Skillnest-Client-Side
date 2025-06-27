@@ -9,6 +9,7 @@ import {
   ShieldCheck,
   Briefcase,
 } from "lucide-react";
+import { Link } from "react-router";
 
 const HowItWorks = () => {
   const steps = [
@@ -197,7 +198,6 @@ const HowItWorks = () => {
           ))}
         </motion.div>
       </div>
-      {/* Add this just below the closing div of steps grid inside the container div */}
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -206,22 +206,24 @@ const HowItWorks = () => {
         viewport={{ once: true }}
         className="mt-12 sm:mt-16 text-center"
       >
-        <motion.button
-          className="relative cursor-pointer px-8 py-3 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-full font-medium shadow-md hover:shadow-lg transition-all overflow-hidden group"
-          whileHover={{
-            scale: 1.05,
-            boxShadow: "0 10px 25px -5px rgba(68, 180, 171, 0.4)",
-          }}
-          whileTap={{ scale: 0.98 }}
-        >
-          <span className="relative z-10">Get Started Now</span>
-          <span className="absolute inset-0 bg-gradient-to-r from-teal-600 to-teal-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+        <Link to="/dashboard/add-task">
+          <motion.button
+            className="relative cursor-pointer px-8 py-3 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-full font-medium shadow-md hover:shadow-lg transition-all overflow-hidden group"
+            whileHover={{
+              scale: 1.05,
+              boxShadow: "0 10px 25px -5px rgba(68, 180, 171, 0.4)",
+            }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <span className="relative z-10">Get Started Now</span>
+            <span className="absolute inset-0 bg-gradient-to-r from-teal-600 to-teal-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
 
-          {/* Shine effect on hover */}
-          <span className="absolute top-0 left-0 w-full h-full overflow-hidden">
-            <span className="absolute top-0 left-0 w-1/3 h-full bg-white/20 -skew-x-12 transform translate-x-[-150%] group-hover:translate-x-[300%] transition-transform duration-500"></span>
-          </span>
-        </motion.button>
+            {/* Shine effect on hover */}
+            <span className="absolute top-0 left-0 w-full h-full overflow-hidden">
+              <span className="absolute top-0 left-0 w-1/3 h-full bg-white/20 -skew-x-12 transform translate-x-[-150%] group-hover:translate-x-[300%] transition-transform duration-500"></span>
+            </span>
+          </motion.button>
+        </Link>
       </motion.div>
     </section>
   );

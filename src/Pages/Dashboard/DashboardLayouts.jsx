@@ -39,6 +39,19 @@ const DashboardLayout = () => {
           </NavLink>
 
           <NavLink
+            to="/dashboard/find-jobs"
+            className={({ isActive }) =>
+              `px-4 py-2 rounded-md transition ${
+                isActive
+                  ? "bg-blue-50 text-blue-600 font-semibold"
+                  : "text-gray-600 hover:bg-gray-100"
+              }`
+            }
+          >
+            Find Jobs
+          </NavLink>
+
+          <NavLink
             to="/dashboard/add-task"
             className={({ isActive }) =>
               `px-4 py-2 rounded-md transition ${
