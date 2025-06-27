@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 const FreelancerCard = ({ freelancer }) => {
   const { _id, name, image, speciality, hourlyRate, rating } = freelancer;
 
-  // Animation variants
   const cardVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -93,7 +92,6 @@ const FreelancerCard = ({ freelancer }) => {
       variants={cardVariants}
       className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 overflow-hidden flex flex-col h-full"
     >
-      {/* Image with subtle teal accent */}
       <div className="relative pt-6 flex-shrink-0">
         <motion.div
           className="absolute inset-x-0 top-0 h-1 bg-teal-500"
@@ -118,12 +116,10 @@ const FreelancerCard = ({ freelancer }) => {
         </motion.div>
       </div>
 
-      {/* Content - flex-1 makes this section grow to fill remaining space */}
       <motion.div
         variants={contentVariants}
         className="p-5 text-center flex-1 flex flex-col"
       >
-        {/* Name with line clamp to prevent overflow */}
         <motion.h3
           variants={itemVariants}
           className="text-lg font-semibold text-gray-900 mb-1 line-clamp-2 min-h-[3rem]"
@@ -131,7 +127,6 @@ const FreelancerCard = ({ freelancer }) => {
           {name || "Anonymous Freelancer"}
         </motion.h3>
 
-        {/* Speciality with line clamp */}
         <motion.p
           variants={itemVariants}
           className="text-sm text-teal-600 font-medium mb-2 line-clamp-2 min-h-[2.5rem]"
@@ -139,7 +134,6 @@ const FreelancerCard = ({ freelancer }) => {
           {speciality || "General Specialist"}
         </motion.p>
 
-        {/* Rating + Rate - fixed height */}
         <motion.div
           variants={itemVariants}
           className="flex justify-center items-center gap-4 my-3 h-6"
@@ -155,7 +149,6 @@ const FreelancerCard = ({ freelancer }) => {
           </div>
         </motion.div>
 
-        {/* CTA Button - fixed at bottom */}
         <motion.div
           variants={buttonVariants}
           whileHover="hover"

@@ -24,7 +24,9 @@ const MyTask = () => {
 
     setLoading(true);
     fetch(
-      `http://localhost:5000/my-tasks?email=${encodeURIComponent(userEmail)}`
+      `https://skillnest-server-side.vercel.app/my-tasks?email=${encodeURIComponent(
+        userEmail
+      )}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -49,7 +51,7 @@ const MyTask = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/tasks/${id}`, {
+        fetch(`https://skillnest-server-side.vercel.app/tasks/${id}`, {
           method: "DELETE",
         })
           .then((res) => {
@@ -66,7 +68,7 @@ const MyTask = () => {
   };
 
   const handleViewBids = (taskId) => {
-    fetch(`http://localhost:5000/tasks/${taskId}`)
+    fetch(`https://skillnest-server-side.vercel.app/tasks/${taskId}`)
       .then((res) => res.json())
       .then((task) => {
         const bidCount = task.bidsCount || 0;

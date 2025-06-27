@@ -51,7 +51,6 @@ const topUsers = [
 const TopFreelancersClients = () => {
   const [activeCard, setActiveCard] = useState(null);
 
-  // Render star rating with partial stars support
   const StarRating = ({ rating }) => {
     const stars = [];
     for (let i = 1; i <= 5; i++) {
@@ -64,7 +63,6 @@ const TopFreelancersClients = () => {
         >
           {i <= rating ? (
             i === Math.ceil(rating) && rating % 1 !== 0 ? (
-              // Partial star overlay for fractional rating
               <span className="relative">
                 <span className="text-gray-300">★</span>
                 <span
@@ -126,10 +124,8 @@ const TopFreelancersClients = () => {
                   : ""
               }`}
             >
-              {/* Top gradient border */}
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-teal-400 to-teal-600"></div>
 
-              {/* Hover overlay */}
               {activeCard === user.id && (
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-br from-teal-50/20 to-transparent pointer-events-none"

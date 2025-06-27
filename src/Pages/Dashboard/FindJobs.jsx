@@ -19,7 +19,7 @@ const FindJobs = () => {
   ];
 
   useEffect(() => {
-    fetch("http://localhost:5000/tasks")
+    fetch("https://skillnest-server-side.vercel.app/tasks")
       .then((res) => res.json())
       .then((data) => {
         setTasks(data);

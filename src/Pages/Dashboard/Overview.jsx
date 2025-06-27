@@ -20,7 +20,7 @@ const Overview = () => {
   const [errorTotal, setErrorTotal] = useState(null);
   const [errorMy, setErrorMy] = useState(null);
   const [hasAnimated, setHasAnimated] = useState(false);
-  const API_BASE = "http://localhost:5000";
+  const API_BASE = "https://skillnest-server-side.vercel.app";
 
   useEffect(() => {
     const fetchTotalItems = async () => {

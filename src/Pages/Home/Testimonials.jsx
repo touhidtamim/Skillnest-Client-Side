@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Swal from "sweetalert2";
 
-// Testimonial data with user info and feedback
 const testimonials = [
   {
     id: 1,
@@ -46,7 +45,6 @@ const testimonials = [
   },
 ];
 
-// StarRating component to display rating stars dynamically
 const StarRating = ({ rating }) => {
   return (
     <div className="flex justify-center mb-3">
@@ -67,9 +65,8 @@ const StarRating = ({ rating }) => {
 };
 
 const Testimonials = () => {
-  const [activeCard, setActiveCard] = useState(null); // Track hovered testimonial card
+  const [activeCard, setActiveCard] = useState(null);
 
-  // Show alert on Read More click
   const handleReadMoreClick = () => {
     Swal.fire({
       title: "More Stories Coming Soon!",

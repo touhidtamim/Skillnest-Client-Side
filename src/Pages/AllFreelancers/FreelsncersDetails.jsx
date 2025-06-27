@@ -57,7 +57,9 @@ const FreelancerDetails = () => {
   useEffect(() => {
     const fetchFreelancer = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/freelancers/${id}`);
+        const res = await fetch(
+          `https://skillnest-server-side.vercel.app/freelancers/${id}`
+        );
         const data = await res.json();
         setFreelancer(data);
       } catch (error) {

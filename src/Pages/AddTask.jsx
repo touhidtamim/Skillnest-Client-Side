@@ -8,7 +8,6 @@ const AddTask = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  // Predefined task categories
   const categories = [
     "Web Development",
     "Mobile Development",
@@ -56,20 +55,23 @@ const AddTask = () => {
         .split(",")
         .map((skill) => skill.trim()),
       urgency: formData.get("urgency"),
-      proposalCount: 0, // Initialize with 0 proposals
+      proposalCount: 0,
       email: user?.email,
       name: user?.displayName,
-      status: "open", // Default status
+      status: "open",
       createdAt: new Date().toISOString(),
     };
 
     try {
       // POST request to add task
-      const res = await fetch("http://localhost:5000/tasks", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(taskData),
-      });
+      const res = await fetch(
+        "https://skillnest-server-side.vercel.app/tasks",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(taskData),
+        }
+      );
 
       const data = await res.json();
 

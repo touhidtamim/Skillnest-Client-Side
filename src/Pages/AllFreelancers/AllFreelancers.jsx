@@ -55,11 +55,12 @@ const AllFreelancers = () => {
     const fetchFreelancers = async () => {
       setLoading(true);
       try {
-        const res = await fetch("http://localhost:5000/freelancers");
+        const res = await fetch(
+          "https://skillnest-server-side.vercel.app/freelancers"
+        );
         if (!res.ok) throw new Error(`Error ${res.status}: ${res.statusText}`);
         const data = await res.json();
 
-        // Normalize data: ensure all required fields exist and are lowercase where needed
         const normalizedData = data.map((f) => ({
           ...f,
           name: f.name || "",
@@ -72,7 +73,7 @@ const AllFreelancers = () => {
           rate: typeof f.rate === "number" ? f.rate : 0,
           rank: f.rank || "",
           description: f.description || "",
-          _id: f._id || Math.random().toString(36).substr(2, 9), // fallback id if none
+          _id: f._id || Math.random().toString(36).substr(2, 9),
         }));
 
         setFreelancers(normalizedData);

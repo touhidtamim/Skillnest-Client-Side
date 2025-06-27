@@ -53,7 +53,9 @@ const UpdateTask = () => {
 
     const fetchTask = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/tasks/${id}`);
+        const response = await fetch(
+          `https://skillnest-server-side.vercel.app/tasks/${id}`
+        );
         if (!response.ok) throw new Error("Task not found");
 
         const data = await response.json();
@@ -116,15 +118,18 @@ const UpdateTask = () => {
         throw new Error("Please fill in all required fields");
       }
 
-      const response = await fetch(`http://localhost:5000/tasks/${id}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...taskData,
-          budget: parseFloat(taskData.budget) || 0,
-          skillsRequired: taskData.skillsRequired,
-        }),
-      });
+      const response = await fetch(
+        `https://skillnest-server-side.vercel.app/tasks/${id}`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            ...taskData,
+            budget: parseFloat(taskData.budget) || 0,
+            skillsRequired: taskData.skillsRequired,
+          }),
+        }
+      );
 
       if (!response.ok) throw new Error("Failed to update task");
 

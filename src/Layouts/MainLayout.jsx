@@ -9,8 +9,8 @@ const MainLayout = () => {
   const navigation = useNavigation();
 
   return (
-    <div>
-      <div className="min-h-screen text-gray-800">
+    <>
+      <div className="bg-white dark:bg-gray-900 text-black dark:text-white min-h-screen">
         <Navbar />
 
         <ScrollToTop />
@@ -23,7 +23,7 @@ const MainLayout = () => {
 
         <Footer />
       </div>
-    </div>
+    </>
   );
 };
 

@@ -152,10 +152,7 @@ const PlatformStats = () => {
               }}
               className="relative bg-white rounded-xl p-6 shadow-sm transition-all duration-300 overflow-hidden"
             >
-              {/* Hover layers unchanged */}
-
               <div className="flex flex-col items-center text-center relative z-10">
-                {/* Icon container with margin */}
                 <motion.div
                   className="text-[#F4C22C] mb-4"
                   whileHover={{
@@ -216,7 +213,7 @@ const PlatformStats = () => {
                 text: "We’re working on adding this feature to our website. Our team is actively building it. Stay tuned!",
                 icon: "info",
                 confirmButtonText: "Okay",
-                confirmButtonColor: "#14b8a6", // teal
+                confirmButtonColor: "#14b8a6",
                 background: "#fff",
                 width: "360px",
                 customClass: {
