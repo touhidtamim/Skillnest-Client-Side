@@ -17,7 +17,7 @@ const DashboardLayout = () => {
             className={({ isActive }) =>
               `px-4 py-2 rounded-md transition ${
                 isActive
-                  ? "bg-blue-50 text-blue-600 font-semibold"
+                  ? "bg-teal-50 text-teal-600 font-semibold"
                   : "text-gray-600 hover:bg-gray-100"
               }`
             }
@@ -30,7 +30,7 @@ const DashboardLayout = () => {
             className={({ isActive }) =>
               `px-4 py-2 rounded-md transition ${
                 isActive
-                  ? "bg-blue-50 text-blue-600 font-semibold"
+                  ? "bg-teal-50 text-teal-600 font-semibold"
                   : "text-gray-600 hover:bg-gray-100"
               }`
             }
@@ -43,7 +43,7 @@ const DashboardLayout = () => {
             className={({ isActive }) =>
               `px-4 py-2 rounded-md transition ${
                 isActive
-                  ? "bg-blue-50 text-blue-600 font-semibold"
+                  ? "bg-teal-50 text-teal-600 font-semibold"
                   : "text-gray-600 hover:bg-gray-100"
               }`
             }
@@ -56,7 +56,7 @@ const DashboardLayout = () => {
             className={({ isActive }) =>
               `px-4 py-2 rounded-md transition ${
                 isActive
-                  ? "bg-blue-50 text-blue-600 font-semibold"
+                  ? "bg-teal-50 text-teal-600 font-semibold"
                   : "text-gray-600 hover:bg-gray-100"
               }`
             }
@@ -69,7 +69,7 @@ const DashboardLayout = () => {
             className={({ isActive }) =>
               `px-4 py-2 rounded-md transition ${
                 isActive
-                  ? "bg-blue-50 text-blue-600 font-semibold"
+                  ? "bg-teal-50 text-teal-600 font-semibold"
                   : "text-gray-600 hover:bg-gray-100"
               }`
             }

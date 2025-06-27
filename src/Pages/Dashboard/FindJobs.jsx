@@ -140,10 +140,10 @@ const FindJobs = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-12">
+    <div className="max-w-7xl mx-auto px-4">
       <div className="text-center py-8">
-        <h1 className="text-3xl md:text-4xl font-bold text-gray-900">
-          Available <span className="text-teal-600">Jobs</span>
+        <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
+          Available Jobs
         </h1>
         <p className="mt-2 text-gray-600 max-w-2xl mx-auto leading-relaxed">
           Browse all active jobs with their deadlines. Expired jobs are hidden.

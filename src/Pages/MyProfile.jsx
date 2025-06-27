@@ -119,7 +119,7 @@ const ProfilePage = () => {
 
             {/* Right Column - Profile Info */}
             <div className="w-full lg:w-2/3">
-              <h2 className="text-3xl font-bold text-teal-600 mb-6 text-center lg:text-left">
+              <h2 className="text-3xl font-bold  mb-6 text-center lg:text-left">
                 My Profile
               </h2>
 
