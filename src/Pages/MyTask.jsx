@@ -10,7 +10,6 @@ const MyTask = () => {
   const userEmail = user?.email;
   const navigate = useNavigate();
 
-  // Fetch user's tasks on mount or when userEmail changes
   useEffect(() => {
     if (!userEmail) return;
 
@@ -30,7 +29,6 @@ const MyTask = () => {
       });
   }, [userEmail]);
 
-  // Confirm and delete a task by id
   const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -58,7 +56,6 @@ const MyTask = () => {
     });
   };
 
-  // Show bids count for a task using SweetAlert
   const handleViewBids = (taskId) => {
     fetch(`http://localhost:5000/tasks/${taskId}`)
       .then((res) => res.json())
@@ -78,58 +75,73 @@ const MyTask = () => {
       });
   };
 
-  // Loading, unauthorized, and empty states
-  if (loading) return <p className="text-center mt-6">Loading your tasks...</p>;
+  // States
+  if (loading)
+    return (
+      <p className="text-center mt-6 text-gray-500">Loading your tasks...</p>
+    );
   if (!userEmail)
-    return <p className="text-center mt-6">Please login to view your tasks.</p>;
+    return (
+      <p className="text-center mt-6 text-gray-500">
+        Please login to view your tasks.
+      </p>
+    );
   if (tasks.length === 0)
-    return <p className="text-center mt-6">No tasks posted yet.</p>;
+    return (
+      <p className="text-center mt-6 text-gray-500">No tasks posted yet.</p>
+    );
 
-  // Main task list table
+  // Main Table
   return (
-    <div className="max-w-4xl mx-auto px-4 py-6">
-      <h2 className="text-2xl font-bold mb-4 text-center">My Posted Tasks</h2>
+    <div className="max-w-6xl mx-auto px-4 lg:px-0 py-6">
+      <h2 className="text-2xl font-bold mb-6 text-gray-800 text-center">
+        My Posted Tasks
+      </h2>
 
-      <div className="overflow-x-auto">
-        <table className="w-full border border-gray-300 rounded min-w-[600px]">
-          <thead>
-            <tr className="bg-gray-200">
-              <th className="p-2 border border-gray-300 text-left">Title</th>
-              <th className="p-2 border border-gray-300 text-left">Category</th>
-              <th className="p-2 border border-gray-300 text-left">Deadline</th>
-              <th className="p-2 border border-gray-300 text-left">Budget</th>
-              <th className="p-2 border border-gray-300 text-left">Actions</th>
+      <div className="overflow-x-auto bg-white shadow-md rounded-lg border border-gray-200">
+        <table className="w-full min-w-[640px] text-sm">
+          <thead className="bg-gray-100 text-gray-700 text-left">
+            <tr>
+              <th className="px-4 py-3 border-b whitespace-nowrap">Title</th>
+              <th className="px-4 py-3 border-b whitespace-nowrap">Category</th>
+              <th className="px-4 py-3 border-b whitespace-nowrap">Deadline</th>
+              <th className="px-4 py-3 border-b whitespace-nowrap">Budget</th>
+              <th className="px-4 py-3 border-b text-center whitespace-nowrap">
+                Actions
+              </th>
             </tr>
           </thead>
           <tbody>
             {tasks.map(({ _id, title, category, deadline, budget }) => (
               <tr
                 key={_id}
-                className="hover:bg-gray-100 even:bg-gray-50 transition-colors"
+                className="border-t hover:bg-gray-50 transition-colors"
               >
-                <td className="p-2 border border-gray-300">{title}</td>
-                <td className="p-2 border border-gray-300">{category}</td>
-                <td className="p-2 border border-gray-300">{deadline}</td>
-                <td className="p-2 border border-gray-300">${budget}</td>
-                <td className="p-2 border border-gray-300 space-x-1 flex flex-wrap gap-2">
-                  <button
-                    onClick={() => navigate(`/update-task/${_id}`)}
-                    className="bg-blue-500 text-white px-3 py-1 rounded flex-1 min-w-[70px] text-center hover:bg-blue-600 transition"
-                  >
-                    Update
-                  </button>
-                  <button
-                    onClick={() => handleDelete(_id)}
-                    className="bg-red-500 text-white px-3 py-1 rounded flex-1 min-w-[70px] text-center hover:bg-red-600 transition"
-                  >
-                    Delete
-                  </button>
-                  <button
-                    onClick={() => handleViewBids(_id)}
-                    className="bg-teal-500 text-white px-3 py-1 rounded flex-1 min-w-[70px] text-center hover:bg-teal-600 transition"
-                  >
-                    Bids
-                  </button>
+                <td className="px-4 py-3 whitespace-nowrap">{title}</td>
+                <td className="px-4 py-3 whitespace-nowrap">{category}</td>
+                <td className="px-4 py-3 whitespace-nowrap">{deadline}</td>
+                <td className="px-4 py-3 whitespace-nowrap">${budget}</td>
+                <td className="px-4 py-3 whitespace-nowrap">
+                  <div className="flex flex-col sm:flex-row gap-2 justify-center">
+                    <button
+                      onClick={() => navigate(`/dashboard/update-task/${_id}`)}
+                      className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded text-xs"
+                    >
+                      Update
+                    </button>
+                    <button
+                      onClick={() => handleDelete(_id)}
+                      className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs"
+                    >
+                      Delete
+                    </button>
+                    <button
+                      onClick={() => handleViewBids(_id)}
+                      className="bg-emerald-500 hover:bg-emerald-600 text-white px-3 py-1 rounded text-xs"
+                    >
+                      Bids
+                    </button>
+                  </div>
                 </td>
               </tr>
             ))}

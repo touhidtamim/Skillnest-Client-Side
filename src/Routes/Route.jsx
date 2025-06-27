@@ -48,6 +48,11 @@ const router = createBrowserRouter([
       },
 
       {
+        path: "/all-tasks/:id",
+        element: <TaskDetails></TaskDetails>,
+      },
+
+      {
         path: "/dashboard",
         element: <DashboardLayouts />,
         children: [
@@ -65,17 +70,8 @@ const router = createBrowserRouter([
           },
 
           {
-            path: "all-tasks/:id",
-            element: <TaskDetails></TaskDetails>,
-          },
-
-          {
             path: "update-task/:id",
-            element: (
-              <PrivateRouter>
-                <UpdateTask></UpdateTask>
-              </PrivateRouter>
-            ),
+            element: <UpdateTask></UpdateTask>,
           },
 
           {

@@ -88,27 +88,27 @@ const TopFreelancersClients = () => {
   return (
     <section
       id="find-talent-section"
-      className="bg-[#FAF7F5] rounded-2xl py-20 px-6 sm:px-8 lg:px-16"
+      className="bg-[#FAF7F5] py-8 sm:py-8 md:py-14 px-4 sm:px-8 md:px-12 lg:px-20 border-b border-gray-500"
     >
       <div className="max-w-7xl mx-auto">
-        {/* Section header with fade-in animation */}
+        {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-[#43727A] mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#43727A] mb-4 leading-tight">
             Top Freelancers & Clients
           </h2>
-          <p className="text-lg text-[#1E1E1E] max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-[#1E1E1E] max-w-2xl mx-auto">
             Meet our community's most trusted professionals and clients
           </p>
         </motion.div>
 
         {/* User cards grid */}
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {topUsers.map((user) => (
             <motion.div
               key={user.id}
@@ -140,7 +140,7 @@ const TopFreelancersClients = () => {
 
               {/* Card content */}
               <div className="flex flex-col items-center text-center relative z-10">
-                {/* Profile photo with glow effect on hover */}
+                {/* Profile photo */}
                 <div className="relative mb-4 group">
                   <div className="absolute inset-0 rounded-full bg-gradient-to-br from-teal-400 to-teal-600 blur-sm opacity-70 group-hover:opacity-100 transition-all -z-10"></div>
                   <img
@@ -150,7 +150,7 @@ const TopFreelancersClients = () => {
                   />
                 </div>
 
-                {/* Star rating with numeric value */}
+                {/* Rating */}
                 <div className="flex items-center mb-2">
                   <StarRating rating={user.rating} />
                   <span className="ml-1 text-xs text-gray-500">
@@ -158,7 +158,7 @@ const TopFreelancersClients = () => {
                   </span>
                 </div>
 
-                {/* User name with hover scale effect */}
+                {/* Name */}
                 <motion.h3
                   className="text-gray-900 font-semibold text-xl mb-1 hover:text-teal-600 transition-colors"
                   whileHover={{ scale: 1.05 }}
@@ -166,12 +166,12 @@ const TopFreelancersClients = () => {
                   {user.name}
                 </motion.h3>
 
-                {/* Role badge */}
+                {/* Role */}
                 <p className="text-teal-600 text-sm font-medium mb-2 px-3 py-1 bg-teal-50 rounded-full">
                   {user.role}
                 </p>
 
-                {/* Stats with icon */}
+                {/* Stats */}
                 <p className="text-gray-600 text-sm mb-3 flex items-center">
                   <svg
                     className="w-4 h-4 mr-1 text-teal-500"
@@ -190,7 +190,7 @@ const TopFreelancersClients = () => {
                   {user.stats}
                 </p>
 
-                {/* Badge with shine animation on hover */}
+                {/* Badge */}
                 <motion.span
                   className="inline-block bg-gradient-to-r from-teal-100 to-teal-50 text-teal-700 text-xs font-medium px-3 py-1 rounded-full border border-teal-200 relative overflow-hidden"
                   whileHover={{ scale: 1.05 }}
@@ -210,13 +210,13 @@ const TopFreelancersClients = () => {
           ))}
         </div>
 
-        {/* View all profiles button with animation */}
+        {/* Button */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
           viewport={{ once: true }}
-          className="mt-16 text-center"
+          className="pt-12 sm:pt-16 text-center"
         >
           <motion.button
             className="relative cursor-pointer px-8 py-3 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-full font-medium shadow-md hover:shadow-lg transition-all overflow-hidden group"

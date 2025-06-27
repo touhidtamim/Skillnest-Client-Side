@@ -9,25 +9,17 @@ import HeroSlide from "./../../Components/Slider/HeroSlide";
 const Home = () => {
   return (
     <div>
-      <div className="mt-2 lg:mt-4">
+      <div className="my-2 lg:my-4">
         <HeroSlide />
       </div>
 
-      <div className="mt-2 lg:mt-4">
-        <FeaturedTasks />
-      </div>
+      <FeaturedTasks />
 
-      <div className="mt-2 md:mt-4 lg:mt-8">
-        <TopFreelancersClients />
-      </div>
+      <TopFreelancersClients />
 
-      <div className="my-2 md:my-4 lg:my-8">
-        <HowItWorks />
-      </div>
+      <HowItWorks />
 
-      <div className="mb-2 md:mb-4 lg:mb-8">
-        <Testimonials />
-      </div>
+      <Testimonials />
 
       <PlatformStats />
     </div>

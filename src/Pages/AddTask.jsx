@@ -1,10 +1,12 @@
 import { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Provider/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 const AddTask = () => {
   const { user } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   // Predefined task categories
   const categories = [
@@ -80,7 +82,8 @@ const AddTask = () => {
           timer: 2000,
           showConfirmButton: false,
         });
-        form.reset(); // Clear form after success
+        form.reset();
+        navigate("/dashboard/my-task");
       }
     } catch (error) {
       console.error("Failed to add task:", error);

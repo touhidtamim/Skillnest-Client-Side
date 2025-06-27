@@ -1,7 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-// Stats data with icons, values, and labels
 const stats = [
   {
     value: "100K+",
@@ -82,65 +81,142 @@ const stats = [
 ];
 
 const PlatformStats = () => {
+  // Animation variants
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 30 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
-    <section className="bg-[#FAF7F5] rounded-2xl py-20 px-4 sm:px-8 lg:px-16">
+    <section className="bg-[#FAF7F5] py-8 sm:py-8 md:py-14 px-4 sm:px-8 md:px-12 lg:px-20 ">
       <div className="max-w-7xl mx-auto">
-        {/* Section header with animation */}
+        {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-[#43727A] mb-4">
+          <motion.h2
+            className="text-3xl sm:text-4xl font-bold text-[#43727A] mb-4 leading-tight"
+            whileInView={{ scale: [0.95, 1] }}
+            transition={{ duration: 0.6 }}
+          >
             Our Growing Community
-          </h2>
-          <p className="text-[#1E1E1E] text-lg max-w-2xl mx-auto">
+          </motion.h2>
+          <motion.p
+            className="text-base sm:text-lg text-[#1E1E1E] max-w-2xl mx-auto"
+            whileInView={{ opacity: [0.5, 1] }}
+            transition={{ duration: 0.8 }}
+          >
             Join thousands of professionals and clients who trust SkillNest for
             their projects
-          </p>
+          </motion.p>
         </motion.div>
 
         {/* Stats grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-50px" }}
+          className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4"
+        >
           {stats.map((stat, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -5 }}
-              className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-all"
+              variants={item}
+              whileHover={{
+                y: -10,
+                scale: 1.03,
+                boxShadow: "0 10px 25px -5px rgba(0,0,0,0.1)",
+              }}
+              className="relative bg-white rounded-xl p-6 shadow-sm transition-all duration-300 overflow-hidden"
             >
-              <div className="flex flex-col items-center text-center">
-                {/* Icon */}
-                <div className="text-[#F4C22C] mb-4">{stat.icon}</div>
+              {/* Hover layers unchanged */}
+
+              <div className="flex flex-col items-center text-center relative z-10">
+                {/* Icon container with margin */}
+                <motion.div
+                  className="text-[#F4C22C] mb-4"
+                  whileHover={{
+                    scale: 1.1,
+                    rotate: [0, 5, -5, 0],
+                    transition: { duration: 0.5 },
+                  }}
+                >
+                  {stat.icon}
+                </motion.div>
+
                 {/* Value */}
-                <h3 className="text-4xl font-extrabold text-[#F4C22C] mb-2">
+                <motion.h3
+                  className="text-4xl font-extrabold text-[#F4C22C] mb-2"
+                  initial={{ scale: 0.8 }}
+                  whileInView={{ scale: 1 }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 100,
+                    damping: 10,
+                  }}
+                >
                   {stat.value}
-                </h3>
+                </motion.h3>
+
                 {/* Label */}
-                <p className="text-[#43727A] text-lg font-medium">
+                <motion.p
+                  className="text-[#43727A] text-lg font-medium"
+                  initial={{ opacity: 0.5 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 0.6 }}
+                >
                   {stat.label}
-                </p>
+                </motion.p>
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        {/* Call to action button */}
+        {/* CTA Button */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.6 }}
           viewport={{ once: true }}
-          className="mt-16 text-center"
+          className="mt-12 sm:mt-16 text-center"
         >
-          <button className="cursor-pointer px-8 py-3 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-full font-medium shadow-md hover:shadow-lg transition-all hover:scale-105">
-            Join Our Community
-          </button>
+          <motion.button
+            className="relative cursor-pointer px-8 py-3 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-full font-medium shadow-md hover:shadow-lg transition-all overflow-hidden group"
+            whileHover={{
+              scale: 1.05,
+              boxShadow: "0 10px 25px -5px rgba(68, 180, 171, 0.4)",
+            }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <span className="relative z-10">Join Our Community</span>
+            <span className="absolute inset-0 bg-gradient-to-r from-teal-600 to-teal-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+
+            <span className="absolute top-0 left-0 w-full h-full overflow-hidden">
+              <span className="absolute top-0 left-0 w-1/3 h-full bg-white/20 -skew-x-12 transform translate-x-[-150%] group-hover:translate-x-[300%] transition-transform duration-500"></span>
+            </span>
+          </motion.button>
         </motion.div>
       </div>
     </section>

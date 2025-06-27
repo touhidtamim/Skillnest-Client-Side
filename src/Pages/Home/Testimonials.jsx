@@ -81,27 +81,27 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="bg-[#FAF7F5] rounded-2xl py-20 px-6 sm:px-8 lg:px-16">
-      <div className="max-w-7xl mx-auto ">
-        {/* Section header with animation */}
+    <section className="bg-[#FAF7F5] py-8 sm:py-8 md:py-14 px-4 sm:px-8 md:px-12 lg:px-20 border-b border-gray-500">
+      <div className="max-w-7xl mx-auto">
+        {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-[#43727A] mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#43727A] mb-4 leading-tight">
             Voices of Success
           </h2>
-          <p className="text-lg text-[#1E1E1E] max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-[#1E1E1E] max-w-2xl mx-auto">
             Hear from professionals who've transformed their careers with
             SkillNest
           </p>
         </motion.div>
 
         {/* Testimonials grid */}
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {testimonials.map((testimonial) => (
             <motion.div
               key={testimonial.id}
@@ -112,20 +112,19 @@ const Testimonials = () => {
               whileHover={{ y: -10 }}
               onHoverStart={() => setActiveCard(testimonial.id)}
               onHoverEnd={() => setActiveCard(null)}
-              className={`bg-white rounded-xl p-6 shadow-sm transition-all duration-300 ${
+              className={`relative bg-white rounded-xl p-6 shadow-sm transition-all duration-300 ${
                 activeCard === testimonial.id
                   ? "shadow-lg border-t-4 border-teal-500"
                   : ""
               }`}
             >
-              <div className="flex flex-col items-center text-center">
+              <div className="flex flex-col items-center text-center relative z-10">
                 <div className="relative mb-4">
                   <img
                     src={testimonial.photo}
                     alt={testimonial.name}
                     className="w-16 h-16 rounded-full object-cover border-4 border-white shadow-md"
                   />
-                  {/* Checkmark icon on hover */}
                   {activeCard === testimonial.id && (
                     <div className="absolute -bottom-2 -right-2 bg-teal-500 rounded-full p-1">
                       <svg
@@ -145,17 +144,14 @@ const Testimonials = () => {
                   )}
                 </div>
 
-                {/* Star rating display */}
                 <StarRating rating={testimonial.rating} />
 
-                {/* Quote text */}
                 <p className="text-gray-700 italic mb-5 leading-relaxed">
                   "{testimonial.quote}"
                 </p>
 
-                {/* User name and role */}
                 <div>
-                  <h3 className="text-gray-900 font-semibold text-lg">
+                  <h3 className="text-gray-900 font-semibold text-xl mb-1">
                     {testimonial.name}
                   </h3>
                   <p className="text-teal-600 text-sm font-medium">
@@ -167,17 +163,17 @@ const Testimonials = () => {
           ))}
         </div>
 
-        {/* Read More button with fade-in */}
+        {/* Read More button */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
           viewport={{ once: true }}
-          className="mt-16 text-center"
+          className="mt-12 sm:mt-16 text-center"
         >
           <button
             onClick={handleReadMoreClick}
-            className="cursor-pointer px-8 py-3 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-full font-medium shadow-md hover:shadow-lg transition-all hover:scale-105"
+            className="relative cursor-pointer px-8 py-3 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-full font-medium shadow-md hover:shadow-lg transition-all hover:scale-105"
           >
             Read More Stories
           </button>
