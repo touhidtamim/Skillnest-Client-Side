@@ -162,8 +162,8 @@ const MyTask = () => {
             started!
           </p>
           <button
-            onClick={() => navigate("/dashboard/create-task")}
-            className="px-4 py-2 bg-teal-500 text-white rounded-md hover:bg-teal-600 transition"
+            onClick={() => navigate("/dashboard/add-task")}
+            className="px-4 cursor-pointer py-2 bg-teal-500 text-white rounded-md hover:bg-teal-600 transition"
           >
             Create New Task
           </button>
