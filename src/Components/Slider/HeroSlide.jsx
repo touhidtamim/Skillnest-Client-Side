@@ -17,7 +17,7 @@ const slides = [
       {
         label: "Find Talent",
         color: "bg-[#F4C22C] hover:bg-[#e0b123]",
-        textColor: "text-[#1E1E1E]",
+        textColor: "text-[#1E1E1E] dark:text-black",
         path: "find-talent-section",
       },
       {
@@ -38,12 +38,13 @@ const slides = [
       {
         label: "Post a Task",
         color: "bg-[#F4C22C] hover:bg-[#e0b123]",
-        textColor: "text-[#1E1E1E]",
+        textColor: "text-[#1E1E1E] dark:text-black",
         path: "/dashboard/add-task",
       },
       {
         label: "How It Works",
-        color: "bg-white hover:bg-gray-100 border border-[#43727A]",
+        color:
+          "bg-white dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 border border-[#43727A]",
         textColor: "text-[#43727A]",
         path: "how-it-works-section",
       },
@@ -79,7 +80,8 @@ const slides = [
       },
       {
         label: "Learn More",
-        color: "bg-white hover:bg-gray-100 border border-[#43727A]",
+        color:
+          "bg-white dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 border border-[#43727A]",
         textColor: "text-[#43727A]",
         path: "",
       },
@@ -122,7 +124,7 @@ const HeroSlide = () => {
   };
 
   return (
-    <section className="w-full  relative overflow-hidden">
+    <section className="w-full relative overflow-hidden bg-white dark:bg-gray-900 transition-colors duration-500">
       <Swiper
         ref={swiperRef}
         spaceBetween={30}
@@ -140,7 +142,7 @@ const HeroSlide = () => {
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>
             <div
-              className={`bg-gradient-to-r ${slide.bgGradient} h-[60vh] flex items-center`}
+              className={`bg-gradient-to-r ${slide.bgGradient} dark:bg-[#1e1e1e] h-[60vh] flex items-center`}
             >
               <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-4 sm:gap-6 lg:gap-10 max-w-7xl mx-auto px-4 sm:px-6 md:px-12 lg:px-20 py-6 sm:py-8 md:py-12 lg:py-16 h-full">
                 <motion.div
@@ -149,10 +151,10 @@ const HeroSlide = () => {
                   transition={{ duration: 0.8, ease: "easeOut" }}
                   className="text-center lg:text-left"
                 >
-                  <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-5xl font-extrabold text-[#43727A] leading-snug mb-3 sm:mb-4 max-w-2xl mx-auto lg:mx-0">
+                  <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-5xl font-extrabold text-[#43727A] dark:text-[#F4C22C] leading-snug mb-3 sm:mb-4 max-w-2xl mx-auto lg:mx-0">
                     {slide.title}
                   </h1>
-                  <p className="text-sm sm:text-base md:text-lg text-[#1E1E1E] mb-4 sm:mb-6 max-w-xl mx-auto lg:mx-0">
+                  <p className="text-sm sm:text-base md:text-lg text-[#1E1E1E] dark:text-gray-300 mb-4 sm:mb-6 max-w-xl mx-auto lg:mx-0">
                     {slide.subtitle}
                   </p>
                   <div className="flex flex-wrap gap-3 sm:gap-4 justify-center lg:justify-start">
@@ -162,7 +164,7 @@ const HeroSlide = () => {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={() => handleCTAClick(cta.path)}
-                        className={`px-4 cursor-pointer py-2 sm:px-6 sm:py-3 text-xs sm:text-sm rounded-full font-semibold shadow-sm hover:shadow-md transition-all duration-300 ${cta.color} ${cta.textColor}`}
+                        className={`px-4 cursor-pointer py-2 sm:px-6 sm:py-3 text-xs sm:text-sm rounded-full font-semibold shadow-sm hover:shadow-md transition-all duration-300 ${cta.color} ${cta.textColor} dark:shadow-lg`}
                       >
                         {cta.label}
                       </motion.button>
@@ -176,7 +178,7 @@ const HeroSlide = () => {
                   transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
                   className="flex justify-center"
                 >
-                  <div className="bg-white/60 p-2 sm:p-4 rounded-2xl shadow-md">
+                  <div className="bg-white/60 dark:bg-gray-800 p-2 sm:p-4 rounded-2xl shadow-md">
                     <img
                       src={slide.img}
                       alt="Slide"
