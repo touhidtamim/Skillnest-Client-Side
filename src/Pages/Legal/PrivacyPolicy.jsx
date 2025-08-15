@@ -130,7 +130,7 @@ const PrivacyPolicy = () => {
         </ul>
       </section>
 
-      {/* 5. Your Right */}
+      {/* 5. Your Rights */}
       <section className="mb-16">
         <h2 className="text-2xl font-bold mb-6 text-gray-800">
           5. Your Rights
