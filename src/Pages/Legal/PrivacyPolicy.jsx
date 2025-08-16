@@ -142,7 +142,7 @@ const PrivacyPolicy = () => {
         </p>
       </section>
 
-      {/* 6. Changes to This Policy */}
+      {/* 6. Changes to This  */}
       <section className="mb-16">
         <h2 className="text-2xl font-bold mb-6 text-gray-800">
           6. Changes to This Policy
