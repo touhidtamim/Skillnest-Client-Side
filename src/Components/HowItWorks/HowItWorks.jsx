@@ -221,7 +221,7 @@ const HowItWorks = () => {
             <span className="relative z-10">Get Started Now</span>
             <span className="absolute inset-0 bg-gradient-to-r from-teal-600 to-teal-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
 
-            {/* Shine effect on hover */}
+            {/* Shine effect */}
             <span className="absolute top-0 left-0 w-full h-full overflow-hidden">
               <span className="absolute top-0 left-0 w-1/3 h-full bg-white/20 -skew-x-12 transform translate-x-[-150%] group-hover:translate-x-[300%] transition-transform duration-500"></span>
             </span>
