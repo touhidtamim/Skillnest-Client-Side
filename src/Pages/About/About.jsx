@@ -24,7 +24,7 @@ const About = () => {
         <div>
           <h2 className="text-3xl font-bold mb-6 text-gray-800">Our Story</h2>
           <p className="mb-4 text-lg leading-relaxed">
-            SkillNest was born in 2020 from a simple idea: to create a freelance
+            SkillNest was born in 2021 from a simple idea: to create a freelance
             marketplace that actually works for everyone. Founded by a team of
             passionate developers and designers who experienced the frustrations
             of existing platforms firsthand, we set out to build something
